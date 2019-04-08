@@ -14,6 +14,13 @@ Text linkText(string) {
   ),);
 }
 
+Text focusText(string) {
+  return Text(string, 
+  style: TextStyle(
+    fontWeight: FontWeight.bold
+  ),);
+}
+
 Text smallText(string) {
   return Text(string, 
   style: TextStyle(

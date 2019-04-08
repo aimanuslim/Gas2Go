@@ -403,8 +403,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
           new RaisedButton(
             child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
             color: Colors.black,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0)),
+            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
             onPressed: () {
               // Perform some action
