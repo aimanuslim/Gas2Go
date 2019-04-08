@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // - Password
 // - Phone number
 
+// Screen 6
 class RegisterUserInfoPage extends StatefulWidget {
   @override
   RegisterUserInfoState createState() {

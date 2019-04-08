@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'texts.dart';
 
 Widget getLine(
     {color: Colors.black87,
@@ -14,3 +15,42 @@ Widget getLine(
           decoration: BoxDecoration(
               border: Border(bottom: BorderSide(width: width, color: color)))));
 }
+
+Widget getOrderCard(context) {
+  return Padding(
+      padding: EdgeInsets.all(5),
+      child: Container(
+        decoration: new BoxDecoration(border: Border.all(color: Colors.grey)
+            // new Border(top: BorderSide(
+            //   color: Colors.grey
+            // ))
+            ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  headerText(string: "Items".toUpperCase()),
+                  Text("1 x LPG 14 kg - NEW"),
+                  Text("RM 35")
+                ],
+              ),
+            ),
+            new FlatButton(
+              child: Icon(
+                Icons.cancel,
+                color: Colors.grey,
+              ),
+              color: Theme.of(context).cardColor,
+              onPressed: () {
+                // Perform some action
+              },
+            )
+          ],
+        ),
+      ));
+}
+

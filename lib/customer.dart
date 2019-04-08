@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'texts.dart';
+import 'commonelements.dart';
 
+//Screen 12
 class CustomerHomePage extends StatefulWidget {
   @override
   CustomerHomeState createState() {
@@ -227,6 +229,7 @@ class CustomerOrderPage extends StatefulWidget {
   }
 }
 
+//Screen 17
 class CustomerOrderState extends State<CustomerOrderPage> {
   @override
   Widget build(BuildContext context) {
@@ -424,40 +427,3 @@ Widget headerText(text) {
   );
 }
 
-Widget getOrderCard(context) {
-  return Padding(
-      padding: EdgeInsets.all(5),
-      child: Container(
-        decoration: new BoxDecoration(border: Border.all(color: Colors.grey)
-            // new Border(top: BorderSide(
-            //   color: Colors.grey
-            // ))
-            ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  headerText("Items".toUpperCase()),
-                  Text("1 x LPG 14 kg - NEW"),
-                  Text("RM 35")
-                ],
-              ),
-            ),
-            new FlatButton(
-              child: Icon(
-                Icons.cancel,
-                color: Colors.grey,
-              ),
-              color: Theme.of(context).cardColor,
-              onPressed: () {
-                // Perform some action
-              },
-            )
-          ],
-        ),
-      ));
-}
