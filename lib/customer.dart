@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'texts.dart';
 
 class CustomerHomePage extends StatefulWidget {
   @override
@@ -241,8 +242,6 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                   child: Column(
                     children: <Widget>[
                       getOrderCard(context),
-                      getOrderCard(context),
-                      getOrderCard(context),
                     ],
                   ),
                 ),
@@ -323,14 +322,90 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                             )),
                       )
                     ],
-                  )))
+                  ))),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Text.rich(TextSpan(children: [
+                            TextSpan(text: "Have a coupon code?"),
+                            TextSpan(
+                                text: " Enter here",
+                                style: TextStyle(color: Colors.blue)),
+                          ]))),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 5, bottom: 5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 1, color: Colors.black26))),
+                            // child: Row(
+                            //   children: <Widget>[
+                            //     Expanded(
+                            //       child: Text(""),
+                            //     )
+                            //   ],
+                            // )
+                          )),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              headerText("Subtotal"),
+                              normalText("RM45")
+                            ]),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              headerText("Delivery fee"),
+                              normalText("RM5")
+                            ]),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              top: 5, bottom: 10, left: 10, right: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 2, color: Colors.blueAccent))),
+                          )),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                headerText("Total amount"),
+                                normalText("RM50")
+                              ])),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              top: 4, bottom: 10, left: 15, right: 15),
+                          child: smallText(
+                              "Please pay by cash upon delivery. We are working on online payments."))
+                    ],
+                  ),
+                ),
+              ),
             ],
           )),
-          new FlatButton(
+          new RaisedButton(
             child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
             color: Colors.black,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
+            elevation: 50,
             onPressed: () {
               // Perform some action
             },
