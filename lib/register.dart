@@ -141,18 +141,66 @@ class SignInState extends State<SignInPage> {
               ),
               Column(
                 children: <Widget>[
-                    Padding(padding: EdgeInsets.symmetric(vertical: 5), child: linkText("Sign in as dealer")),
-                    Padding(padding: EdgeInsets.symmetric(vertical: 10), child: RaisedButton(
-            child: Text("Sign In", style: TextStyle(color: Colors.white)),
-            color: Colors.blue,
-            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-            elevation: 50,
-            onPressed: () {
-              // Perform some action
-            },))
-              ],)
-                  //   )
-                  // ])
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: linkText("Sign in as dealer")),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: RaisedButton(
+                      child: Text("Sign In",
+                          style: TextStyle(color: Colors.white)),
+                      color: Colors.blue,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      elevation: 50,
+                      onPressed: () {
+                        // Perform some action
+                      },
+                    ),
+                  ),
+                ],
+              )
+              //   )
+              // ])
             ]));
+  }
+}
+
+class ForgotPasswordPage extends StatefulWidget {
+  @override
+  ForgotPasswordState createState() {
+    return ForgotPasswordState();
+  }
+}
+
+class ForgotPasswordState extends State<ForgotPasswordPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Forgot Password"),
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context, false),
+        ),
+      ),
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: focusText("Please enter your email address and we'll send a link for you to reset your password."),
+            ),
+            createFormField("Email address", (value) {
+                    if (!value.isEmpty &&
+                        !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                      return 'Please enter a valid email address.';
+                    }
+                  }, false, null)
+          ],
+        )
+
+    );
   }
 }
