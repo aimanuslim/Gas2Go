@@ -16,6 +16,20 @@ Widget getLine(
               border: Border(bottom: BorderSide(width: width, color: color)))));
 }
 
+Widget createFormField(String placeholder, Function validation, bool isPassword,
+    TextEditingController controller) {
+  return Padding(
+      padding: EdgeInsets.all(15),
+      child: TextFormField(
+        validator: validation,
+        decoration: InputDecoration(labelText: placeholder),
+        obscureText: isPassword,
+        controller: controller,
+        maxLines: null,
+        autovalidate: true,
+      ));
+}
+
 Widget getOrderCard(context) {
   return Padding(
       padding: EdgeInsets.all(5),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'commonelements.dart';
+import 'texts.dart';
 
 // RegisterUserInfoPage includes
 // - Full name
@@ -87,7 +89,6 @@ class RegisterUserInfoState extends State<RegisterUserInfoPage> {
   }
 }
 
-
 // Screen 5a
 class SignInPage extends StatefulWidget {
   @override
@@ -95,6 +96,8 @@ class SignInPage extends StatefulWidget {
     return SignInState();
   }
 }
+
+final _formKey = GlobalKey<FormState>();
 
 class SignInState extends State<SignInPage> {
   @override
@@ -106,23 +109,50 @@ class SignInState extends State<SignInPage> {
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context, false),
-            )
-            ),
-
-            );
+            )),
+        body:
+            // SingleChildScrollView(
+            //   child: Form(
+            //   key: _formKey,
+            // child:
+            Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  createFormField("Email address", (value) {
+                    if (!value.isEmpty &&
+                        !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                      return 'Please enter a valid email address.';
+                    }
+                  }, false, null),
+                  createFormField("Password", (value) {
+                    if (!value.isEmpty && value.length < 8) {
+                      return 'Your password must be at least 8 characters';
+                    }
+                  }, true, null),
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: linkText("Forgot Password?"))
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                    Padding(padding: EdgeInsets.symmetric(vertical: 5), child: linkText("Sign in as dealer")),
+                    Padding(padding: EdgeInsets.symmetric(vertical: 10), child: RaisedButton(
+            child: Text("Sign In", style: TextStyle(color: Colors.white)),
+            color: Colors.blue,
+            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+            elevation: 50,
+            onPressed: () {
+              // Perform some action
+            },))
+              ],)
+                  //   )
+                  // ])
+            ]));
   }
-}
-
-Widget createFormField(String placeholder, Function validation, bool isPassword,
-    TextEditingController controller) {
-  return Padding(
-      padding: EdgeInsets.all(15),
-      child: TextFormField(
-        validator: validation,
-        decoration: InputDecoration(labelText: placeholder),
-        obscureText: isPassword,
-        controller: controller,
-        maxLines: null,
-        autovalidate: true,
-      ));
 }
