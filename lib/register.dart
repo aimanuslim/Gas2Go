@@ -90,21 +90,42 @@ class RegisterUserInfoState extends State<RegisterUserInfoPage> {
 }
 
 // Screen 5a
-class SignInPage extends StatefulWidget {
+mixin CustomerSignInPage implements StatefulWidget {
   @override
-  SignInState createState() {
-    return SignInState();
+  CustomerSignInState createState() {
+    return CustomerSignInState();
   }
 }
 
 final _formKey = GlobalKey<FormState>();
 
-class SignInState extends State<SignInPage> {
+class CustomerSignInState extends State<CustomerSignInPage> {
+  @override
+  Widget build(BuildContext context) {
+    return new SignInScaffold(
+      alternateSignInText: "Sign in as dealer",
+      scaffoldAppBarTitle: "Sign in",
+      );
+  }
+}
+
+class SignInScaffold extends StatelessWidget {
+  const SignInScaffold({
+    Key key,
+    this.scaffoldAppBarTitle,
+    this.alternateSignInText,
+  }) : super(key: key);
+
+  final String scaffoldAppBarTitle;
+  final String alternateSignInText;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("Sign In"),
+            title: Text(this.scaffoldAppBarTitle),
             automaticallyImplyLeading: true,
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -143,7 +164,7 @@ class SignInState extends State<SignInPage> {
                 children: <Widget>[
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: 5),
-                      child: linkText("Sign in as dealer")),
+                      child: linkText(this.alternateSignInText)),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: RaisedButton(
@@ -165,6 +186,24 @@ class SignInState extends State<SignInPage> {
             ]));
   }
 }
+
+
+class DealerSignInPage extends StatefulWidget {
+  @override
+  DealerSignInState createState() => DealerSignInState();
+}
+
+class DealerSignInState extends State<DealerSignInPage> {
+  @override
+  Widget build(BuildContext context) {
+    return SignInScaffold(
+      alternateSignInText: "Sign in as customer",
+      scaffoldAppBarTitle: "Dealer Sign In",
+    );
+  }
+}
+
+
 
 class ForgotPasswordPage extends StatefulWidget {
   @override
