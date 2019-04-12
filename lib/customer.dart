@@ -270,7 +270,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     headerText(
-                                        "Delivery Address".toUpperCase()),
+                                        string:
+                                            "Delivery Address".toUpperCase()),
                                     Text(
                                       "Ahmad Saiful",
                                       style: TextStyle(
@@ -300,7 +301,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                headerText("Delivery  Period".toUpperCase()),
+                                headerText(
+                                    string: "Delivery  Period".toUpperCase()),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -362,7 +364,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              headerText("Subtotal"),
+                              headerText(string: "Subtotal"),
                               normalText("RM45")
                             ]),
                       ),
@@ -371,7 +373,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              headerText("Delivery fee"),
+                              headerText(string: "Delivery fee"),
                               normalText("RM5")
                             ]),
                       ),
@@ -389,7 +391,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                headerText("Total amount"),
+                                headerText(string: "Total amount"),
                                 normalText("RM50")
                               ])),
                       Padding(
@@ -406,7 +408,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
           new RaisedButton(
             child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
             color: Colors.black,
-            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
             onPressed: () {
               // Perform some action
@@ -416,14 +419,74 @@ class CustomerOrderState extends State<CustomerOrderPage> {
   }
 }
 
-Widget headerText(text) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Arial',
-      color: Colors.grey,
-    ),
-  );
+class CustomerRegisterAddressPage extends StatefulWidget {
+  @override
+  CustomerRegisterAddressState createState() => CustomerRegisterAddressState();
 }
 
+class CustomerRegisterAddressState extends State<CustomerRegisterAddressPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          title: Text('Register'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context, false),
+          ),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: focusText(
+                      "Please key in your full address for us to deliver the goods to you."),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.room),
+                      linkText("Automatically detect my location", null),
+                    ],
+                  ),
+                ),
+                createFormField("Address 1", null, false, null),
+                createFormField("Address 2", null, false, null),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Infinite width issue if not wrapped with expanded: https://github.com/flutter/flutter/issues/17036
+                    Expanded(
+                      child: createFormField("City", null, false, null),
+                    ),
+                    Expanded(
+                      child: createFormField("Postcode", (value) {
+                        if (!value.isEmpty &&
+                            (!isNumeric(value) || value.length != 10)) {
+                          return "Please enter a valid phone number.";
+                        }
+                      }, false, null),
+                    ),
+                  ],
+                ),
+                createFormField("State", null, false, null),
+                Row(
+                  children: <Widget>[
+                    Checkbox(value: false),
+                    focusText("Save this address")
+                  ],
+                ),
+                createFormField("Home", null, false,
+                    null) // may need just default value instead of a title for form
+              ],
+            ),
+            CommonProceedButton(text: "Complete Registration")
+          ],
+        ));
+  }
+}

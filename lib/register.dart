@@ -10,21 +10,16 @@ import 'texts.dart';
 // - Phone number
 
 // Screen 6
-class RegisterUserInfoPage extends StatefulWidget {
+class CustomerRegisterPage extends StatefulWidget {
   @override
-  RegisterUserInfoState createState() {
-    return RegisterUserInfoState();
+  CustomerRegisterState createState() {
+    return CustomerRegisterState();
   }
 }
 
-bool _isNumeric(String str) {
-  if (str == null) {
-    return false;
-  }
-  return double.tryParse(str) != null;
-}
 
-class RegisterUserInfoState extends State<RegisterUserInfoPage> {
+
+class CustomerRegisterState extends State<CustomerRegisterPage> {
   @override
   final _formKey = GlobalKey<FormState>();
 
@@ -40,22 +35,22 @@ class RegisterUserInfoState extends State<RegisterUserInfoPage> {
     super.dispose();
   }
 
-  // TODO: button submit and validation
+  // TODO: validation not too immediately
   // TODO: need to validate only when enter is pressed not after every typing
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Register"),
-        ),
-        body: SingleChildScrollView(
-            child: Form(
+      appBar: AppBar(
+        title: Text("Register"),
+      ),
+      body: SingleChildScrollView(
+        child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               createFormField("Full Name", (value) {}, false, null),
               createFormField("New IC Number", (value) {
-                if (!value.isEmpty && !_isNumeric(value)) {
+                if (!value.isEmpty && !isNumeric(value)) {
                   return 'Please enter digits only.';
                 }
               }, false, null),
@@ -79,13 +74,21 @@ class RegisterUserInfoState extends State<RegisterUserInfoPage> {
               }, true, null),
               createFormField("Phone Number", (value) {
                 if (!value.isEmpty &&
-                    (!_isNumeric(value) || value.length != 10)) {
+                    (!isNumeric(value) || value.length != 10)) {
                   return "Please enter a valid phone number.";
                 }
               }, false, null)
             ],
           ),
-        )));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        // onPressed: _changeText,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+      ),
+    );
   }
 }
 
@@ -105,7 +108,7 @@ class CustomerSignInState extends State<CustomerSignInPage> {
     return new SignInScaffold(
       alternateSignInText: "Sign in as dealer",
       scaffoldAppBarTitle: "Sign in",
-      );
+    );
   }
 }
 
@@ -118,8 +121,6 @@ class SignInScaffold extends StatelessWidget {
 
   final String scaffoldAppBarTitle;
   final String alternateSignInText;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -157,28 +158,15 @@ class SignInScaffold extends StatelessWidget {
                   }, true, null),
                   Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: linkText("Forgot Password?"))
+                      child: linkText("Forgot Password?", null))
                 ],
               ),
               Column(
                 children: <Widget>[
                   Padding(
                       padding: EdgeInsets.symmetric(vertical: 5),
-                      child: linkText(this.alternateSignInText)),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: RaisedButton(
-                      child: Text("Sign In",
-                          style: TextStyle(color: Colors.white)),
-                      color: Colors.blue,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
-                      elevation: 50,
-                      onPressed: () {
-                        // Perform some action
-                      },
-                    ),
-                  ),
+                      child: linkText(this.alternateSignInText, null)),
+                  new CommonProceedButton(text: "Sign In",),
                 ],
               )
               //   )
@@ -186,6 +174,7 @@ class SignInScaffold extends StatelessWidget {
             ]));
   }
 }
+
 
 
 class DealerSignInPage extends StatefulWidget {
@@ -202,8 +191,6 @@ class DealerSignInState extends State<DealerSignInPage> {
     );
   }
 }
-
-
 
 class ForgotPasswordPage extends StatefulWidget {
   @override
@@ -224,22 +211,28 @@ class ForgotPasswordState extends State<ForgotPasswordPage> {
           onPressed: () => Navigator.pop(context, false),
         ),
       ),
-        body: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: focusText("Please enter your email address and we'll send a link for you to reset your password."),
-            ),
-            createFormField("Email address", (value) {
-                    if (!value.isEmpty &&
-                        !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                            .hasMatch(value)) {
-                      return 'Please enter a valid email address.';
-                    }
-                  }, false, null)
-          ],
-        )
-
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: focusText(
+                "Please enter your email address and we'll send a link for you to reset your password."),
+          ),
+          createFormField("Email address", (value) {
+            if (!value.isEmpty &&
+                !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    .hasMatch(value)) {
+              return 'Please enter a valid email address.';
+            }
+          }, false, null)
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        // onPressed: _changeText,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+      ),
     );
   }
 }

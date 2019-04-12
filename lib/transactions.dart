@@ -20,7 +20,7 @@ class OrderDetailsState extends State<OrderDetailsPage> {
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context, false),
-            )),
+            ),),
         body: ListView(children: <Widget>[
           Padding(
               padding: EdgeInsets.all(10),

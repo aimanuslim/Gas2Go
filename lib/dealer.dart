@@ -131,7 +131,7 @@ class DealerHomeState extends State<DealerHomePage> {
               ),
             ),
             Padding(padding: EdgeInsets.all(15),
-              child: linkText("View complete order history"), // TODO: add > icon later
+              child: linkText("View complete order history", null), // TODO: add > icon later
           )
           ],
           

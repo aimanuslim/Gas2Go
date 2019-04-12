@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 
 Text headerText({string, double headerSize = 12}) {
-  return Text(string, style: TextStyle(
-    color: Colors.grey,
-    fontSize: headerSize
-    ));
+  return Text(string,
+      style: TextStyle(color: Colors.grey, fontSize: headerSize));
 }
 
-Text linkText(string) {
-  return Text(string, 
-  style: TextStyle(
-    color: Colors.blue
-  ),);
+GestureDetector linkText(string, pressAction) {
+  return GestureDetector(
+    child: Text(
+      string,
+      style: TextStyle(color: Colors.blue),
+    ),
+    onTap: () {
+      if(pressAction != null) {
+        pressAction();
+      }
+    },        
+  );
 }
 
 Text focusText(string) {
-  return Text(string, 
-  style: TextStyle(
-    fontWeight: FontWeight.bold
-  ),);
+  return Text(
+    string,
+    style: TextStyle(fontWeight: FontWeight.bold),
+  );
 }
 
 Text smallText(string) {
-  return Text(string, 
-  style: TextStyle(
-    fontSize: 10
-  ),);
+  return Text(
+    string,
+    style: TextStyle(fontSize: 10),
+  );
 }
 
 Text normalText(string) {

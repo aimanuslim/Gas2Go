@@ -1,6 +1,42 @@
 import 'package:flutter/material.dart';
 import 'texts.dart';
 
+bool isNumeric(String str) {
+  if (str == null) {
+    return false;
+  }
+  return double.tryParse(str) != null;
+}
+
+class CommonProceedButton extends StatelessWidget {
+  const CommonProceedButton({
+    Key key,
+    this.text,
+
+  }) : super(key: key);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: RaisedButton(
+        child: Text(this.text,
+            style: TextStyle(color: Colors.white)),
+        color: Colors.blue,
+        shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(30.0)),
+        elevation: 5,
+        onPressed: () {
+          // Perform some action
+        },
+      ),
+    );
+  }
+}
+
+
 Widget getLine(
     {color: Colors.black87,
     double width: 1,
@@ -17,9 +53,9 @@ Widget getLine(
 }
 
 Widget createFormField(String placeholder, Function validation, bool isPassword,
-    TextEditingController controller) {
+      TextEditingController controller) {
   return Padding(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
         validator: validation,
         decoration: InputDecoration(labelText: placeholder),
