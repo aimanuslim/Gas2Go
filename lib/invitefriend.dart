@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//screen 24/25
 class InviteFriend extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
