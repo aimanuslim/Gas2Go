@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+//screen 15
 class RegisterAlternateAddress extends StatefulWidget {
   @override
   _RegisterAlternateAddressState createState() => _RegisterAlternateAddressState();
@@ -21,10 +21,9 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
               color: Colors.white,
             ),),
           backgroundColor: Colors.black,
-
-
-
         ),
+
+
         body: new Container(
             child: new Column(
                 children: <Widget>[
@@ -71,7 +70,7 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
                       child: new Center(child: FlatButton(
                         color: Colors.grey,
                         textColor: Colors.white,
-                        onPressed: ()=>debugPrint("add new"),
+                        onPressed: null,
                         child: new Text ("Add new address",
                           style: new TextStyle(
                               fontSize: 12.3
