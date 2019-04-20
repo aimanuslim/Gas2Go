@@ -156,8 +156,8 @@ class Dots extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(left: 8.0, right: 8.0),
           child: Container(
-            width: 20.0,
-            height: 20.0,
+            width: 14.0,
+            height: 14.0,
             decoration: BoxDecoration(
               color: Colors.orangeAccent.withOpacity(.3),
               borderRadius: BorderRadius.circular(50.0),
@@ -177,8 +177,8 @@ class Dots extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(left: 5.0, right: 5.0),
           child: Container(
-            width: 14.0,
-            height: 14.0,
+            width: 8.0,
+            height: 8.0,
             decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(50.0)),
@@ -203,20 +203,65 @@ class NextButtons extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Container(
-        child: new Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new OutlineButton(
-              child: Text('Sign In'),
-              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+          child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(right: 10.0),
+              child: OutlineButton(
+                padding: EdgeInsets.all(16.0),
+                child: Text("Sign In"),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                onPressed: () => null,
+              ),
             ),
-            new FlatButton(
-              child: Text('Register'),
-              color: Colors.red,
-            )
-          ],
-        ),
-      ),
+          ),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.0),
+                color: Colors.black,
+              ),
+              child: FlatButton(
+                // splashColor: Colors.blue,
+                child: Text(
+                  "Register",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () => null,
+              ),
+            ),
+          )
+        ],
+      )
+
+      // Old button implementation
+          /* child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              OutlineButton(
+                child: Text('Sign In'),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0)),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.black,
+                ),
+                child: FlatButton(
+                  child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              )
+            ],
+          ),
+          */
+          ),
     );
   }
 }
