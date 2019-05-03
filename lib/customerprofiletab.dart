@@ -19,6 +19,7 @@ class ProfileTab extends StatelessWidget {
       ),
       
       body: new Column(
+        children: <Widget>[
         new Row(
           children: <Widget>[
             Expanded(
@@ -57,6 +58,7 @@ class ProfileTab extends StatelessWidget {
             )
           ],
         ),
+        ]
       ),
       
       bottomNavigationBar: new BottomNavigationBar(
