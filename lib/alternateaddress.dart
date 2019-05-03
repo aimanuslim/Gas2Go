@@ -34,27 +34,27 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            createFormField ("Address Line 1",(value){
+                            createFormField ("Address Line 1",(){
 
                             },
                             ),
 
-                            createFormField("Address Line 2", (value){
+                            createFormField("Address Line 2", (){
 
                             }
                             ),
 
-                            createFormField("City", (value){
+                            createFormField("City", (){
 
                             }
                             ),
 
-                            createFormField("Postcode", (value){
+                            createFormField("Postcode", (){
 
                             }
                             ),
 
-                            createFormField("State", (value){
+                            createFormField("State", (){
 
                             }
                             ),
