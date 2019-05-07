@@ -93,7 +93,7 @@ class CustomerRegisterState extends State<CustomerRegisterPage> {
 }
 
 // Screen 5a
-mixin CustomerSignInPage implements StatefulWidget {
+class CustomerSignInPage extends StatefulWidget {
   @override
   CustomerSignInState createState() {
     return CustomerSignInState();
@@ -158,7 +158,11 @@ class SignInScaffold extends StatelessWidget {
                   }, true, null),
                   Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: linkText("Forgot Password?", null))
+                      child: linkText("Forgot Password?", () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => ForgotPasswordPage()
+                        ));
+                      } ))
                 ],
               ),
               Column(
@@ -192,6 +196,7 @@ class DealerSignInState extends State<DealerSignInPage> {
   }
 }
 
+// screen 8
 class ForgotPasswordPage extends StatefulWidget {
   @override
   ForgotPasswordState createState() {
