@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'commonelements.dart';
 import 'texts.dart';
+import 'customer.dart';
 
 // RegisterUserInfoPage includes
 // - Full name
@@ -87,6 +88,13 @@ class CustomerRegisterState extends State<CustomerRegisterPage> {
         // onPressed: _changeText,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
+        onPressed: () {
+          Navigator.push(context,
+            MaterialPageRoute(
+              builder: (context) => CustomerRegisterAddressPage()
+            )
+          );
+        },
       ),
     );
   }

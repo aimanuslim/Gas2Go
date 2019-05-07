@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'texts.dart';
 import 'commonelements.dart';
 
+import 'customerorder_confirmaddress.dart';
+import 'customerorder_completed.dart';
+
 //Screen 12
 class CustomerHomePage extends StatefulWidget {
   @override
@@ -217,6 +220,11 @@ class CustomerHomeState extends State<CustomerHomePage>
         // onPressed: _changeText,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ConfirmOrder()
+          ));
+        },
       ),
     );
   }
@@ -413,12 +421,17 @@ class CustomerOrderState extends State<CustomerOrderPage> {
             elevation: 50,
             onPressed: () {
               // Perform some action
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => CustomerOrderComplete()
+              ));
             },
           )
         ]));
   }
 }
 
+
+// screen 7a
 class CustomerRegisterAddressPage extends StatefulWidget {
   @override
   CustomerRegisterAddressState createState() => CustomerRegisterAddressState();
