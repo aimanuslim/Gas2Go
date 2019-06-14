@@ -24,7 +24,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   List<Color> colors = [Colors.orange];
   final List<String> text0 = [
-    "Welcome in your app",
+    "Welcome to your app",
     "Enjoy teaching...",
     "Showcase your skills",
   ];
