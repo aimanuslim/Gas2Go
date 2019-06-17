@@ -8,58 +8,87 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey,
         title: new Text(
             "Ahmad Saiful"), //this should be pulled from server. need a var
         actions: <Widget>[
           new IconButton(
             icon: Icon(Icons.settings),
-            onPressed: () => debugPrint("Edit"),
+            onPressed: () {
+              Navigator.push(context,
+              MaterialPageRoute(builder:(context) => ProfileTabSettings()),);
+            },
           )
         ],
       ),
       
-      body: new Column(
-        children: <Widget>[
-        new Row(
+      backgroundColor: Colors.black,
+      body: new Container(
+        padding: const EdgeInsets.all(10),
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              child: new Text(
-                "Invite friends",
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
+            new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text("Invite Friends",
+                      style: new TextStyle(
+                        color: Colors.white,
+                      ),),
+                  ),
+
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                    onPressed: () {
+              Navigator.push(context,
+              MaterialPageRoute(builder:(context) => InviteFriend()),);
+            },
+                  )
+                ],
               ),
+
+            new Row(
+              children: <Widget>[
+                Expanded (
+                  child: new Text("Redemption Code",
+                    style: new TextStyle(
+                        color: Colors.white
+                    ),),
+                ),
+
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  onPressed: null,
+                )
+              ],
+            ),
+
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text("About Us",
+                    style: new TextStyle(
+                        color: Colors.white
+                    ),),
+                ),
+
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  onPressed: () {
+              Navigator.push(context,
+              MaterialPageRoute(builder:(context) => ProfileTabAboutUs()),);
+            },
+                )
+              ],
             ),
           ],
         ),
-        
-        new Row(
-          children: <Widget>[
-            Expanded(
-              child: new Text(
-                "Redemption code",
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            )
-          ],
-        ),
-        
-        new Row(
-          children: <Widget>[
-            Expanded(
-              child: new Text(
-                "About gas",
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            )
-          ],
-        ),
-        ]
       ),
       
       bottomNavigationBar: new BottomNavigationBar(
@@ -95,7 +124,9 @@ class ProfileTabSettings extends StatelessWidget{
       appBar: AppBar(
         leading: IconButton(
           icon: new Icon (Icons.arrow_back, color: Colors.white,),
-          onPressed: null,
+          onPressed: () {
+              Navigator.pop(context);
+            },
         ),
         title: Text("Account settings",
           style: TextStyle(
@@ -207,7 +238,9 @@ class ProfileTabAboutUs extends StatelessWidget{
       appBar: new AppBar(
         leading: IconButton(
           icon: new Icon (Icons.arrow_back, color: Colors.white,),
-          onPressed: null,
+          onPressed: () {
+              Navigator.pop(context);
+            },
         ),
         title: new Text("About",
           style: new TextStyle(
@@ -328,7 +361,9 @@ class InviteFriend extends StatelessWidget{
         leading: IconButton(
           tooltip: "Previous page",
           icon: new Icon (Icons.arrow_back, color: Colors.white),
-          onPressed: null,
+          onPressed: () {
+              Navigator.pop(context);
+            },
         ),
       ),
 
