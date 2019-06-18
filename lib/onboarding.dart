@@ -4,16 +4,16 @@ import 'package:transformer_page_view/transformer_page_view.dart';
 // void main() => runApp(MyApp());
 
 // Screens 2, 3, 4
-class MyHomePage extends StatefulWidget {
+class OnboardingPage extends StatefulWidget {
   final String title;
-  MyHomePage({this.title});
+  OnboardingPage({this.title});
   @override
-  MyHomePageState createState() {
-    return new MyHomePageState();
+  OnboardingPageState createState() {
+    return new OnboardingPageState();
   }
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class OnboardingPageState extends State<OnboardingPage> {
   int _slideIndex = 0;
   final GlobalKey<ScaffoldState> _key = new GlobalKey<ScaffoldState>();
   final List<String> images = [
