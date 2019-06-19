@@ -90,9 +90,7 @@ class DealerHomeState extends State<DealerHomePage> {
                               shape: new RoundedRectangleBorder(
                                   borderRadius:
                                       new BorderRadius.circular(30.0)),
-                              onPressed: () {
-                                int y = 5;
-                              },
+                              onPressed: null
                             ),
                             FlatButton(
                               child: Text("Accept"),
@@ -100,9 +98,7 @@ class DealerHomeState extends State<DealerHomePage> {
                               shape: new RoundedRectangleBorder(
                                   borderRadius:
                                       new BorderRadius.circular(30.0)),
-                              onPressed: () {
-                                int y = 5;
-                              },
+                              onPressed: null
                             ),
                           ],
                         ),
@@ -138,7 +134,10 @@ class DealerHomeState extends State<DealerHomePage> {
           Padding(
             padding: EdgeInsets.all(15),
             child: linkText(
-                "View complete order history", null), // TODO: add > icon later
+                "View complete order history", () {
+              Navigator.push(context,
+              MaterialPageRoute(builder:(context) => DealerOrderHistory()),);
+            },), // TODO: add > icon later
           )
         ],
       ),
@@ -160,7 +159,9 @@ class DealerOrderHistoryState extends State<DealerOrderHistory> {
           backgroundColor: Colors.black,
           leading: IconButton(
               icon: new Icon(Icons.arrow_back_ios, color: Colors.white),
-              onPressed: null),
+              onPressed: () {
+              Navigator.pop(context);
+            },),
           title: new Text("History"),
           actions: <Widget>[
             new IconButton(
@@ -210,4 +211,3 @@ ListTile _order(String title, String subtitle) => ListTile(
     );
 
 // screen 11: Dealer - order details //
-
