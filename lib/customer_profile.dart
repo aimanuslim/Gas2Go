@@ -8,7 +8,7 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xff404040),
         title: new Text(
             "Ahmad Saiful"), //this should be pulled from server. need a var
         actions: <Widget>[
@@ -22,7 +22,7 @@ class ProfileTab extends StatelessWidget {
         ],
       ),
       
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff222222),
       body: new Container(
         padding: const EdgeInsets.all(10),
         child: new Column(
@@ -108,7 +108,7 @@ class ProfileTab extends StatelessWidget {
                 new Text("Profile", style: new TextStyle(color: Colors.white)),
           )
         ],
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff333333),
       ),
     );
   }
@@ -120,7 +120,7 @@ class ProfileTabSettings extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Color(0xff222222),
       appBar: AppBar(
         leading: IconButton(
           icon: new Icon (Icons.arrow_back, color: Colors.white,),
@@ -132,7 +132,7 @@ class ProfileTabSettings extends StatelessWidget{
           style: TextStyle(
             color: Colors.white,
           ),),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff404040),
       ),
 
       body: new Container(
@@ -145,7 +145,7 @@ class ProfileTabSettings extends StatelessWidget{
                   Expanded(
                     child: new Text("Personal details",
                       style: new TextStyle(
-                        color: Colors.white,
+                        color: Colors.grey, fontSize: 16.5
                       ),),
                   ),
                 ],
@@ -156,7 +156,7 @@ class ProfileTabSettings extends StatelessWidget{
                 Expanded (
                   child: new Text("Ahmad Saiful",
                     style: new TextStyle(
-                        color: Colors.white
+                        color: Colors.white, fontSize: 14.5
                     ),),
                 ),
 
@@ -174,7 +174,7 @@ class ProfileTabSettings extends StatelessWidget{
                 Expanded(
                   child: new Text("ahmadsaiful@gmail.com",
                     style: new TextStyle(
-                        color: Colors.white
+                        color: Colors.white, fontSize: 14.5
                     ),),
                 ),
 
@@ -192,7 +192,7 @@ class ProfileTabSettings extends StatelessWidget{
                 Expanded(
                   child: Text("+60172839056",
                     style: TextStyle(
-                        color: Colors.white
+                        color: Colors.white, fontSize: 14.5
                     ),),
                 ),
 
@@ -205,19 +205,21 @@ class ProfileTabSettings extends StatelessWidget{
               ],
             ),
 
-            Column(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.exit_to_app, color: Colors.white,),
+                  ],
+                ),
+                
                 Text("Sign out",
                   style: TextStyle(
                       color: Colors.white
                   ),),
 
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.exit_to_app, color: Colors.white,),
-                  ],
-                )
+                
               ],
             )
           ],
@@ -234,7 +236,7 @@ class ProfileTabAboutUs extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Color(0xff222222),
       appBar: new AppBar(
         leading: IconButton(
           icon: new Icon (Icons.arrow_back, color: Colors.white,),
@@ -246,7 +248,7 @@ class ProfileTabAboutUs extends StatelessWidget{
           style: new TextStyle(
             color: Colors.white,
           ),),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff404040),
       ),
 
       body: new Container(
@@ -267,7 +269,24 @@ class ProfileTabAboutUs extends StatelessWidget{
                     iconSize: 12,
                     alignment: Alignment.center,
                     icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
-                    onPressed: null,
+                    onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('About Gas2Go'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
                   )
                 ],
               ),
@@ -285,7 +304,24 @@ class ProfileTabAboutUs extends StatelessWidget{
                   iconSize: 12,
                   alignment: Alignment.center,
                   icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
-                  onPressed: null,
+                  onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Please click on the link below'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
                 )
               ],
             ),
@@ -303,7 +339,24 @@ class ProfileTabAboutUs extends StatelessWidget{
                   iconSize: 12,
                   alignment: Alignment.center,
                   icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
-                  onPressed: null,
+                  onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Our Privacy Policy'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
                 )
               ],
             ),
@@ -321,7 +374,24 @@ class ProfileTabAboutUs extends StatelessWidget{
                   iconSize: 12,
                   alignment: Alignment.center,
                   icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
-                  onPressed: null,
+                  onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Terms and Conditions'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
                 )
               ],
             ),
@@ -355,9 +425,9 @@ class InviteFriend extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color (0xff222222),
       appBar: new AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color (0xff404040),
         leading: IconButton(
           tooltip: "Previous page",
           icon: new Icon (Icons.arrow_back, color: Colors.white),
