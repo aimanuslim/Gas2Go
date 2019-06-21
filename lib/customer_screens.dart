@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gas2go/texts.dart';
-
 import 'commonelements.dart';
 import 'customer_profile.dart';
 
@@ -361,11 +361,11 @@ class ConfirmOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff404040),
         leading: IconButton(
           tooltip: "Previous Screen",
           icon: new Icon(
-            Icons.arrow_back_ios,
+            Icons.arrow_back,
             color: Colors.white,
           ),
           onPressed: null,
@@ -781,39 +781,38 @@ class _TransactionHistoryState extends State<TransactionHistory> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Transaction History",
-          style: new TextStyle(
-            color: Colors.white,
+          title: Text(
+            "Transaction History",
+            style: new TextStyle(
+              color: Colors.white,
+            ),
           ),
-        ),
-        backgroundColor: Colors.black,
-      ),
+          backgroundColor: Color(0xff404040)),
       body: new Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade800,
+          color: Color(0xff222222),
         ),
         child: ListView(
           children: <Widget>[
             _order("Order #10959", "21st March, 10:15am"),
             Divider(
-              color: Colors.grey,
+              color: Color(0xff4D4D4D),
             ),
             _order("Order #10678", "21st March, 10:15am"),
             Divider(
-              color: Colors.grey,
+              color: Color(0xff4D4D4D),
             ),
             _order("Order #10459", "21st March, 10:15am"),
             Divider(
-              color: Colors.grey,
+              color: Color(0xff4D4D4D),
             ),
             _order("Order #10244", "21st March, 10:15am"),
             Divider(
-              color: Colors.grey,
+              color: Color(0xff4D4D4D),
             ),
             _order("Order #10244", "21st March, 10:15am"),
             Divider(
-              color: Colors.grey,
+              color: Color(0xff4D4D4D),
             ),
           ],
         ),
@@ -835,14 +834,14 @@ ListTile _order(String title, String subtitle) => ListTile(
       ),
     );
 
+// Transaction Tab - Screen 20 //
+
 class OrderDetailsPage extends StatefulWidget {
   @override
   OrderDetailsState createState() {
     return OrderDetailsState();
   }
 }
-
-// Transaction Tab - Screen 20 //
 
 class OrderDetailsState extends State<OrderDetailsPage> {
   @override
@@ -1153,6 +1152,147 @@ class ProfileTabSettings extends StatelessWidget {
                   "Sign out",
                   style: TextStyle(color: Colors.white),
                 ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Profile tab - screen 23
+
+class ProfileTabAboutUs extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Color(0xff222222),
+      appBar: new AppBar(
+        leading: IconButton(
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: null,
+        ),
+        title: new Text(
+          "About",
+          style: new TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Color(0xff222222),
+      ),
+      body: new Container(
+        padding: const EdgeInsets.all(10),
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text(
+                    "About us",
+                    style: new TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onPressed: null,
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text(
+                    "Visit our website",
+                    style: new TextStyle(color: Colors.white),
+                  ),
+                ),
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onPressed: null,
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text(
+                    "Privacy Policy",
+                    style: new TextStyle(color: Colors.white),
+                  ),
+                ),
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onPressed: null,
+                )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text(
+                    "Terms & Conditions",
+                    style: new TextStyle(color: Colors.white),
+                  ),
+                ),
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onPressed: null,
+                )
+              ],
+            ),
+            new Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Text(
+                  "Follow us",
+                  style: new TextStyle(color: Colors.white),
+                ),
+                new Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(right: 10.0),
+                      child: new Icon(
+                        FontAwesomeIcons.facebook,
+                        color: Colors.white,
+                        size: 24.0,
+                        semanticLabel: "Facebook",
+                      ),
+                    ),
+                    new Icon(
+                      FontAwesomeIcons.instagram,
+                      color: Colors.white,
+                      size: 24.0,
+                      semanticLabel: "Instagram",
+                    ),
+                  ],
+                )
               ],
             )
           ],
