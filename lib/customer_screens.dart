@@ -1163,134 +1163,182 @@ class ProfileTabSettings extends StatelessWidget {
 
 // Profile tab - screen 23
 
-class ProfileTabAboutUs extends StatelessWidget {
+class ProfileTabAboutUs extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Color(0xff222222),
       appBar: new AppBar(
         leading: IconButton(
-          icon: new Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: null,
+          icon: new Icon (Icons.arrow_back, color: Colors.white,),
+          onPressed: () {
+              Navigator.pop(context);
+            },
         ),
-        title: new Text(
-          "About",
+        title: new Text("About",
           style: new TextStyle(
             color: Colors.white,
-          ),
-        ),
-        backgroundColor: Color(0xff222222),
+          ),),
+        backgroundColor: Color(0xff404040),
       ),
+
       body: new Container(
         padding: const EdgeInsets.all(10),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text("About us",
+                      style: new TextStyle(
+                        color: Colors.white,
+                      ),),
+                  ),
+
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                    onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('About Gas2Go'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
+                  )
+                ],
+              ),
+
+            new Row(
               children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "About us",
+                Expanded (
+                  child: new Text("Visit our website",
                     style: new TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+                        color: Colors.white
+                    ),),
                 ),
+
                 new IconButton(
                   iconSize: 12,
                   alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white,
-                  ),
-                  onPressed: null,
+                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Please click on the link below'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
                 )
               ],
             ),
+
             new Row(
               children: <Widget>[
                 Expanded(
-                  child: new Text(
-                    "Visit our website",
-                    style: new TextStyle(color: Colors.white),
-                  ),
+                  child: new Text("Privacy Policy",
+                    style: new TextStyle(
+                        color: Colors.white
+                    ),),
                 ),
+
                 new IconButton(
                   iconSize: 12,
                   alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white,
-                  ),
-                  onPressed: null,
+                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Our Privacy Policy'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
                 )
               ],
             ),
+
             new Row(
               children: <Widget>[
                 Expanded(
-                  child: new Text(
-                    "Privacy Policy",
-                    style: new TextStyle(color: Colors.white),
-                  ),
+                  child: new Text("Terms & Conditions",
+                    style: new TextStyle(
+                        color: Colors.white
+                    ),),
                 ),
+
                 new IconButton(
                   iconSize: 12,
                   alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white,
-                  ),
-                  onPressed: null,
-                )
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Terms & Conditions",
-                    style: new TextStyle(color: Colors.white),
-                  ),
+                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  onPressed: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Terms and Conditions'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.white,
-                  ),
-                  onPressed: null,
+              ],
+            );
+          },
+        );},
                 )
               ],
             ),
+
             new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Text(
-                  "Follow us",
-                  style: new TextStyle(color: Colors.white),
-                ),
+                new Text("Follow us",
+                  style: new TextStyle(
+                      color: Colors.white
+                  ),),
+
                 new Row(
                   children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: new Icon(
-                        FontAwesomeIcons.facebook,
-                        color: Colors.white,
-                        size: 24.0,
-                        semanticLabel: "Facebook",
-                      ),
-                    ),
-                    new Icon(
-                      FontAwesomeIcons.instagram,
-                      color: Colors.white,
-                      size: 24.0,
-                      semanticLabel: "Instagram",
-                    ),
+                    new Icon(Icons.battery_alert, color: Colors.white,),
+                    new Icon(Icons.battery_full, color: Colors.white,),
                   ],
                 )
               ],
@@ -1298,6 +1346,118 @@ class ProfileTabAboutUs extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+}
+
+//screen 24/25
+class InviteFriend extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Color (0xff222222),
+      appBar: new AppBar(
+        backgroundColor: Color (0xff404040),
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon: new Icon (Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+              Navigator.pop(context);
+            },
+        ),
+      ),
+
+      body: new Container (
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new Container(
+             child: new Image.asset("images/InviteFriend.png")
+              ),
+
+            new Container (
+              child: new Text("Enjoy Cashback & Perks", style: new TextStyle(
+                  color: Colors.white, fontSize: 15.1
+              ),),
+            ),
+
+            new Container (
+              child:new Text("Share your invite code an discover how you and your friends can get cashback",
+                textAlign: TextAlign.center,
+                style: new TextStyle(
+                    color: Colors.white, fontSize: 12.1
+                ),),
+            ),
+
+            new Container (
+              child: new Center(
+              child: new HowDoInvitesWork(),
+            ),
+            ),
+
+            new Container (
+              child: new Center (
+                child: new InviteCode ()
+              ),
+            ),
+          ],
+        ),
+      )
+
+
+
+    );
+  }
+
+}
+
+class InviteCode extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector (
+      onTap: null ,
+
+      child: new Container(
+        padding: const EdgeInsets.all(6) ,
+        decoration: BoxDecoration(
+          color: Colors.white30
+        ),
+        child: new Text ("saiful0145454",
+            style: new TextStyle (color: Colors.blueAccent, fontSize: 12.1)),
+      )
+    );
+  }
+
+}
+
+class HowDoInvitesWork extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('How do invites work?'),
+              content: const Text('LoremIpsum Bla bla blablalbla'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );},
+
+      child: new Text("How do invites work?",
+        style: new TextStyle(
+            color: Colors.white, fontSize: 12.1,
+        decoration: TextDecoration.underline),),
     );
   }
 }
