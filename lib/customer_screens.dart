@@ -1437,7 +1437,7 @@ class InviteFriend extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             new Container(
-             child: new Image.asset("images/InviteFriend.png")
+             child: new Image.asset("images/InviteFriends.jpg")
               ),
 
             new Container (
