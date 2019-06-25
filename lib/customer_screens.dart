@@ -365,7 +365,9 @@ class ConfirmOrder extends StatelessWidget {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: null,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: new Text("Confirm Address"),
       ),
@@ -409,7 +411,12 @@ class ConfirmOrder extends StatelessWidget {
                 child: FlatButton(
                   color: Colors.grey,
                   textColor: Colors.white,
-                  onPressed: () => debugPrint("Confirm"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DeliveryWindow()),
+                    );
+                  },
                   child: new Text(
                     "Confirm Address",
                     style: new TextStyle(fontSize: 12.3),
@@ -457,7 +464,9 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
               Icons.arrow_back,
               color: Colors.white,
             ),
-            onPressed: null,
+            onPressed: () {
+            Navigator.pop(context);
+          },
           ),
           title: new Text(
             "Enter New Address",
@@ -538,7 +547,9 @@ class DeliveryWindowState extends State<DeliveryWindow> {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: new Text("Select delivery period"),
       ),
@@ -565,7 +576,26 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                 value: "deliver-later",
                 groupValue: "deliver-asap",
                 onChanged: (String value) {},
-              )
+              ),
+               
+               new Container(
+              child: new Center(
+                child: FlatButton(
+                  color: Colors.grey,
+                  textColor: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CustomerOrderPage()),
+                    );
+                  },
+                  child: new Text(
+                    "Confirm Delivery Period",
+                    style: new TextStyle(fontSize: 12.3),
+                  ),
+                ),
+              ),
+            ),
             ],
           )),
     );
@@ -587,6 +617,11 @@ class DeliveryWindowState extends State<DeliveryWindow> {
 // }
 
 // Home Tab - Screen 17 //
+
+class CustomOrderPage extends StatefulWidget {
+  @override
+  CustomerOrderState createState() => new CustomerOrderState();
+}
 
 class CustomerOrderState extends State<CustomerOrderPage> {
   @override
@@ -819,7 +854,12 @@ class CustomerOrderComplete extends StatelessWidget {
           new Container(
             child: new FlatButton(
               color: Colors.grey,
-              onPressed: () => debugPrint("Home"), //to be navigate to home
+              onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeNav()),
+                    );
+                  },
               child: new Text("Home"),
             ),
           ),
@@ -1437,7 +1477,7 @@ class InviteFriend extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             new Container(
-             child: new Image.asset("images/InviteFriends.jpg")
+             child: new Image.asset("assets/InviteFriends.jpg")
               ),
 
             new Container (
