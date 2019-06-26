@@ -58,7 +58,7 @@ class _CustomerAppEntryState extends State<CustomerAppEntry> {
       body: currentPage,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab,
-        backgroundColor: Color(0xff222222),
+        backgroundColor: Color(0xff333333),
         unselectedItemColor: Color(0xff808080),
         selectedItemColor: Color(0xff00B3EF),
         onTap: (int index) {
@@ -141,19 +141,25 @@ class CustomerHomePageState extends State<CustomerHomePage>
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('GasKita'),
+        backgroundColor: Color(0xff222222),
+        title: new Text('EZ Gas'), centerTitle: true,
       ),
+      backgroundColor: Color(0xff222222),
       body: new ListView(
         children: <Widget>[
-          new Card(
+          new Container(
+            color: Color(0xff222222),
             child: new ListTile(
-              title: const Text('Select your LPG'),
+              title: new Text('Select your LPG',
+              style: new TextStyle(color: Colors.white),),
             ),
           ),
           new Container(
             decoration:
-                new BoxDecoration(color: Theme.of(context).primaryColor),
-            child: new TabBar(
+                new BoxDecoration(color: Color(0xff404040)),
+            child: new Column(
+              children: <Widget>[
+                new TabBar(
               controller: _tabController,
               indicatorColor: Color(0xff48beff),
               tabs: [
@@ -166,14 +172,15 @@ class CustomerHomePageState extends State<CustomerHomePage>
                     text: 'Refill'),
               ],
             ),
-          ),
-          new Container(
+
+            new Container(
             height: 200.0,
             alignment: Alignment.center,
             child: new TabBarView(
               controller: _tabController,
               children: <Widget>[
                 new Card(
+                  color: Color(0xff404040),
                   child: new Column(
                     children: <Widget>[
                       new Row(
@@ -181,7 +188,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           new RaisedButton(
-                            child: const Text('LPG 14 kg'),
+                            child: new Text('LPG 14 kg',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             splashColor: Colors.blueGrey,
@@ -192,7 +200,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                             },
                           ),
                           new RaisedButton(
-                            child: const Text('LPG 12 kg'),
+                            child: new Text('LPG 12 kg',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             shape: new RoundedRectangleBorder(
@@ -208,7 +217,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           new RaisedButton(
-                            child: const Text('-'),
+                            child: new Text('-',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             shape: new CircleBorder(
@@ -223,9 +233,10 @@ class CustomerHomePageState extends State<CustomerHomePage>
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 0),
                               child:
-                                  Text("1")), //TODO: to replace with variable
+                                  Text("1", style: new TextStyle(color: Colors.white)),), //TODO: to replace with variable
                           new RaisedButton(
-                            child: const Text('+'),
+                            child: new Text('+',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             shape: new CircleBorder(
@@ -239,17 +250,23 @@ class CustomerHomePageState extends State<CustomerHomePage>
                           )
                         ],
                       ),
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Text("Total Amount"),
-                          Text("RM35.00")
+                          Text("Total Amount",
+                          style: new TextStyle(color: Colors.white70),),
+                          Text("RM115.00",
+                          style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)
                         ],
                       ),
                     ],
                   ),
                 ),
                 new Card(
+                  color: Color(0xff404040),
                   child: new Column(
                     children: <Widget>[
                       new Row(
@@ -257,10 +274,11 @@ class CustomerHomePageState extends State<CustomerHomePage>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           new RaisedButton(
-                            child: const Text('LPG 14 kg'),
+                            child: new Text('LPG 14 kg',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
-                            splashColor: Colors.blueGrey,
+                            splashColor: Colors.amber,
                             shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(30.0)),
                             onPressed: () {
@@ -268,7 +286,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                             },
                           ),
                           new RaisedButton(
-                            child: const Text('LPG 12 kg'),
+                            child: new Text('LPG 12 kg',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             shape: new RoundedRectangleBorder(
@@ -284,7 +303,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           new RaisedButton(
-                            child: const Text('-'),
+                            child: new Text('-',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             shape: new CircleBorder(
@@ -301,7 +321,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                               child:
                                   Text("1")), //TODO: to replace with variable
                           new RaisedButton(
-                            child: const Text('+'),
+                            child: new Text('+',
+                            style: new TextStyle(color: Colors.white),),
                             color: Theme.of(context).accentColor,
                             elevation: 4.0,
                             shape: new CircleBorder(
@@ -315,11 +336,17 @@ class CustomerHomePageState extends State<CustomerHomePage>
                           )
                         ],
                       ),
+
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          Text("Total Amount"),
-                          Text("RM90.00")
+                          Text("Total Amount",
+                          style: new TextStyle(color: Colors.white70),),
+                          Text("RM37.00",
+                          style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)
                         ],
                       ),
                     ],
@@ -328,6 +355,11 @@ class CustomerHomePageState extends State<CustomerHomePage>
               ],
             ),
           ),
+
+              ],
+            ) 
+          ),
+          
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -344,21 +376,14 @@ class CustomerHomePageState extends State<CustomerHomePage>
   }
 }
 
-class CustomerOrderPage extends StatefulWidget {
-  @override
-  CustomerOrderState createState() {
-    return CustomerOrderState();
-  }
-}
-
 // Home Tab - Screen 13 //
 
 class ConfirmOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        backgroundColor: Color(0xff404040),
+      appBar: new AppBar(centerTitle: true,
+        backgroundColor: Color(0xff222222),
         leading: IconButton(
           tooltip: "Previous Screen",
           icon: new Icon(
@@ -369,10 +394,15 @@ class ConfirmOrder extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: new Text("Confirm Address"),
+        title: new Text("Select Address"),
       ),
+      backgroundColor: Color(0xff222222),
       body: new Container(
-        child: Column(
+        child: new Column(
+          children: <Widget>[
+            new Card(
+          color: Color(0xff404040),
+          child: new Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -382,11 +412,11 @@ class ConfirmOrder extends StatelessWidget {
                     Icons.location_on,
                     color: Colors.grey,
                   ),
-                  new Text("Delivery Address"),
+                  new Text("Delivery Address", style: new TextStyle(color: Colors.white),),
                 ],
               ),
             ),
-            new Expanded(
+            new Container(
               child: new Container(
                 child: Column(
                   children: <Widget>[
@@ -395,7 +425,8 @@ class ConfirmOrder extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: new Text(
-                              "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor"),
+                              "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor", 
+                              style: new TextStyle(color: Colors.white),),
                         ),
                       ],
                     )
@@ -403,41 +434,44 @@ class ConfirmOrder extends StatelessWidget {
                 ),
               ),
             ),
-            new Expanded(
+            new Container(
               child: new SelectDifferentAddress(),
             ),
-            new Container(
-              child: new Center(
-                child: FlatButton(
-                  color: Colors.grey,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DeliveryWindow()),
-                    );
-                  },
-                  child: new Text(
-                    "Confirm Address",
-                    style: new TextStyle(fontSize: 12.3),
-                  ),
-                ),
-              ),
-            ),
-          ],
+          
+         
+        ],
+        ),    
+        ), 
+        new Container(
+          child: new RaisedButton(
+            child: Text("Confirm Address", style: TextStyle(color: Colors.white)),
+            color: Color(0xff2892D7),
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0)),
+            elevation: 50,
+            onPressed: () {
+              // Perform some action
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DeliveryWindow()));
+            },
+          ),
         ),
-      ),
+        ]
+    ),
+    ),
     );
-  }
+    }
 }
 
 class SelectDifferentAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: null,
+        onTap: null, //<-to be connected to Register Alternate Address
         child: new Container(
-          padding: const EdgeInsets.all(6),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(color: Colors.white30),
           child: new Text("Select a different address",
               style: new TextStyle(color: Colors.blueAccent, fontSize: 12.1)),
@@ -457,7 +491,7 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
+        appBar: new AppBar(centerTitle: true,
           leading: IconButton(
             tooltip: "Previous Screen",
             icon: new Icon(
@@ -539,8 +573,8 @@ class DeliveryWindowState extends State<DeliveryWindow> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        backgroundColor: Colors.black,
+      appBar: new AppBar(centerTitle: true,
+        backgroundColor: Color(0xff222222),
         leading: IconButton(
           tooltip: "Previous Screen",
           icon: new Icon(
@@ -553,14 +587,16 @@ class DeliveryWindowState extends State<DeliveryWindow> {
         ),
         title: new Text("Select delivery period"),
       ),
+      backgroundColor: Color(0xff222222),
       body: new Container(
           padding: new EdgeInsets.all(20.0),
           child: ListView(
             children: <Widget>[
               RadioListTile(
-                title: Text("Deliver as soon as possible"),
+                title: Text("Deliver as soon as possible", style: new TextStyle(color: Colors.white),),
                 subtitle: Text(
-                    "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day."),
+                    "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
+                    style: new TextStyle(color: Colors.white24),),
                 value: "deliver-asap",
                 groupValue: "deliver-asap",
                 onChanged: (String value) {
@@ -570,55 +606,37 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                 },
               ),
               RadioListTile(
-                title: Text("Deliver later"),
+                title: Text("Deliver later",style: new TextStyle(color: Colors.white),),
                 subtitle: Text(
-                    "Typically customers will receive their orders within 2 days"),
+                    "Typically customers will receive their orders within 2 days",style: new TextStyle(color: Colors.white24),),
                 value: "deliver-later",
                 groupValue: "deliver-asap",
                 onChanged: (String value) {},
               ),
                
-               new Container(
-              child: new Center(
-                child: FlatButton(
-                  color: Colors.grey,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CustomerOrderPage()),
-                    );
-                  },
-                  child: new Text(
-                    "Confirm Delivery Period",
-                    style: new TextStyle(fontSize: 12.3),
-                  ),
-                ),
-              ),
-            ),
+               new RaisedButton(
+            child: Text("Confirm Delivery Period", style: TextStyle(color: Colors.white)),
+            color: Color(0xff2892D7),
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0)),
+            elevation: 50,
+            onPressed: () {
+              // Perform some action
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CustomerOrderPage()));
+            },
+          )
             ],
           )),
     );
   }
 }
 
-// for (int i = 0; i < 3; i++) {
-//   list.add(new RadioListTile(
-//     value: i,
-//     title: new Text('Radio $i'),
-//     groupValue: _selected,
-//     onChanged: (int value) {
-//       onChanged(value);
-//     },
-//     activeColor: Colors.red,
-//     secondary: new Icon(Icons.home),
-//     subtitle: new Text('Sub Title here'),
-//   ));
-// }
-
 // Home Tab - Screen 17 //
 
-class CustomOrderPage extends StatefulWidget {
+class CustomerOrderPage extends StatefulWidget {
   @override
   CustomerOrderState createState() => new CustomerOrderState();
 }
@@ -627,7 +645,9 @@ class CustomerOrderState extends State<CustomerOrderPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: AppBar(title: new Text('Confirm Order')),
+        appBar: AppBar(centerTitle: true,
+          title: new Text('Order Details'), backgroundColor: Color(0xff222222),),
+        backgroundColor: Color(0xff222222),
         body: new Column(children: <Widget>[
           Expanded(
               child: new ListView(
@@ -800,7 +820,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
           )),
           new RaisedButton(
             child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
-            color: Colors.black,
+            color: Color(0xff2892D7),
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
@@ -851,18 +871,20 @@ class CustomerOrderComplete extends StatelessWidget {
           ),
           //new Image(image: null,), //to add image
 
-          new Container(
-            child: new FlatButton(
-              color: Colors.grey,
-              onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomeNav()),
-                    );
-                  },
-              child: new Text("Home"),
-            ),
-          ),
+          new RaisedButton(
+            child: Text("Home", style: TextStyle(color: Colors.white)),
+            color: Color(0xff2892D7),
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30.0)),
+            elevation: 50,
+            onPressed: () {
+              // Perform some action
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeNav()));
+            },
+          )
         ],
       ),
     );
@@ -884,14 +906,14 @@ class _TransactionHistoryState extends State<TransactionHistory> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(centerTitle: true,
           title: Text(
             "Transaction History",
             style: new TextStyle(
               color: Colors.white,
             ),
           ),
-          backgroundColor: Color(0xff404040)),
+          backgroundColor: Color(0xff222222)),
       body: new Container(
         decoration: BoxDecoration(
           color: Color(0xff222222),
@@ -952,7 +974,8 @@ class OrderDetailsState extends State<OrderDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: true,
+          backgroundColor: Color(0xff222222),
+          centerTitle: true,
           title: Text('Order Details'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -1046,7 +1069,7 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Color(0xff404040),
+        backgroundColor: Color(0xff222222),
         title: new Text(
             "Ahmad Saiful"), //this should be pulled from server. need a var
         actions: <Widget>[
@@ -1272,7 +1295,7 @@ class ProfileTabAboutUs extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Color(0xff222222),
-      appBar: new AppBar(
+      appBar: new AppBar(        
         leading: IconButton(
           icon: new Icon (Icons.arrow_back, color: Colors.white,),
           onPressed: () {
@@ -1283,7 +1306,7 @@ class ProfileTabAboutUs extends StatelessWidget{
           style: new TextStyle(
             color: Colors.white,
           ),),
-        backgroundColor: Color(0xff404040),
+        backgroundColor: Color(0xff222222),
       ),
 
       body: new Container(
@@ -1462,7 +1485,7 @@ class InviteFriend extends StatelessWidget{
     return new Scaffold(
       backgroundColor: Color (0xff222222),
       appBar: new AppBar(
-        backgroundColor: Color (0xff404040),
+        backgroundColor: Color (0xff222222),
         leading: IconButton(
           tooltip: "Previous page",
           icon: new Icon (Icons.arrow_back, color: Colors.white),
