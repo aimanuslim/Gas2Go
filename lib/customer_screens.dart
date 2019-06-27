@@ -1601,7 +1601,8 @@ class InviteFriend extends StatelessWidget {
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              new Container(child: new Image.asset("assets/InviteFriends.jpg")),
+              new Container(
+                  child: new Image.asset("assets/invite_friends.png")),
               new Container(
                 child: new Text(
                   "Enjoy Cashback & Perks",
