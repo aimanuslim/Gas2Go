@@ -403,50 +403,52 @@ class ConfirmOrder extends StatelessWidget {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
+        padding: EdgeInsets.all(20.0),
         child: new Column(
           children: <Widget>[
-            new Card(
-          color: Theme.of(context).cardColor,
+            Container(
+              width: 350.0,
+              height: 450.0,
           child: new Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                children: <Widget>[
-                  new Icon(
-                    Icons.location_on,
-                    color: Colors.grey,
-                  ),
-                  new Text("Delivery Address", style: new TextStyle(color: Colors.white),),
-                ],
-              ),
-            ),
-            new Container(
-              child: new Container(
-                child: Column(
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
                   children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: new Text(
-                              "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor", 
-                              style: new TextStyle(color: Colors.white),),
-                        ),
-                      ],
-                    )
+                    new Icon(
+                      Icons.location_on,
+                      color: Colors.grey,
+                    ),
+                    new Text("Delivery Address", style: new TextStyle(color: Colors.white),),
                   ],
                 ),
               ),
-            ),
-            new Container(
-              child: new SelectDifferentAddress(),
-            ),    
-                 ],
+              new Container(
+                child: new Container(
+                  child: Column(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: new Text(
+                                "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor", 
+                                style: new TextStyle(color: Colors.white),),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              new Container(
+                child: new SelectDifferentAddress(),
+              ),    
+                   ],
         ),    
-        ), 
+            ), 
         new Container(
-          alignment: Alignment.bottomCenter,
+          width: 300.0,
           child: new RaisedButton(
             child: Text("Confirm Address", style: TextStyle(color: Colors.white)),
             color: Theme.of(context).accentColor,
@@ -594,46 +596,58 @@ class DeliveryWindowState extends State<DeliveryWindow> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
           padding: new EdgeInsets.all(20.0),
-          child: ListView(
+          child: Column(
             children: <Widget>[
-              RadioListTile(
-                title: Text("Deliver as soon as possible", style: new TextStyle(color: Colors.white),),
-                subtitle: Text(
-                    "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
-                    style: new TextStyle(color: Colors.white24),),
-                value: "deliver-asap",
-                groupValue: "deliver-asap",
-                onChanged: (String value) {
-                  setState(() {
-                    
-                  });
+              Container(
+                height: 450.0,
+                width: 350.0,
+                child: ListView(
+                  children: <Widget>[
+                    RadioListTile(
+                      title: Text("Deliver as soon as possible", style: new TextStyle(color: Colors.white),),
+                      subtitle: Text(
+                          "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
+                          style: new TextStyle(color: Colors.white24),),
+                      value: "deliver-asap",
+                      groupValue: "deliver-asap",
+                      onChanged: (String value) {
+                        setState(() {
+                          
+                        });
+                      },
+                    ),
+                    RadioListTile(
+                      title: Text("Deliver later",style: new TextStyle(color: Colors.white),),
+                      subtitle: Text(
+                          "Typically customers will receive their orders within 2 days",style: new TextStyle(color: Colors.white24),),
+                      value: "deliver-later",
+                      groupValue: "deliver-asap",
+                      onChanged: (String value) {},
+                    ),
+                  ],
+                ),
+              ),
+              
+              Container(
+                width: 300.0,
+                child: new RaisedButton(
+                child: Text("Confirm Delivery Period", style: TextStyle(color: Colors.white)),
+                color: Theme.of(context).accentColor,
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0)),
+                elevation: 50,
+                onPressed: () {
+                  // Perform some action
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CustomerOrderPage()));
                 },
+            ),
               ),
-              RadioListTile(
-                title: Text("Deliver later",style: new TextStyle(color: Colors.white),),
-                subtitle: Text(
-                    "Typically customers will receive their orders within 2 days",style: new TextStyle(color: Colors.white24),),
-                value: "deliver-later",
-                groupValue: "deliver-asap",
-                onChanged: (String value) {},
-              ),
-               
-               new RaisedButton(
-            child: Text("Confirm Delivery Period", style: TextStyle(color: Colors.white)),
-            color: Theme.of(context).accentColor,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0)),
-            elevation: 50,
-            onPressed: () {
-              // Perform some action
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CustomerOrderPage()));
-            },
-          )
             ],
-          )),
+          ),
+        ),
     );
   }
 }
@@ -653,191 +667,195 @@ class CustomerOrderState extends State<CustomerOrderPage> {
           title: new Text('Order Details'), 
           backgroundColor: Theme.of(context).backgroundColor,),
         backgroundColor: Theme.of(context).backgroundColor,
-        body: new Column(children: <Widget>[
-          Expanded(
-              child: new ListView(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 4),
-                child: Card(
-                  child: Column(
-                    children: <Widget>[
-                      getOrderCard(context),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                  padding: EdgeInsets.symmetric(vertical: 4),
-                  child: Card(
+        body: Container(
+          padding: EdgeInsets.all(20.0),
+            child: new Column(children: <Widget>[
+              Container(
+                height: 450.0,
+                width: 350.0,
+                  child: new ListView(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Card(
                       child: Column(
-                    children: <Widget>[
-                      Container(
-                        decoration: new BoxDecoration(
-                            border:
-                                Border(bottom: BorderSide(color: Colors.grey))
-                            // new Border(top: BorderSide(
-                            //   color: Colors.grey
-                            // ))
+                        children: <Widget>[
+                          getOrderCard(context),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4),
+                      child: Card(
+                          child: Column(
+                        children: <Widget>[
+                          Container(
+                            decoration: new BoxDecoration(
+                                border:
+                                    Border(bottom: BorderSide(color: Colors.grey))
+                                // new Border(top: BorderSide(
+                                //   color: Colors.grey
+                                // ))
+                                ),
+                            child: Row(
+                              children: <Widget>[
+                                Padding(
+                                    padding: EdgeInsets.all(15),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        headerText(
+                                            string:
+                                                "Delivery Address".toUpperCase()),
+                                        Text(
+                                          "Ahmad Saiful",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text("The Very Long Address"),
+                                        Text(
+                                          "Change address",
+                                          style: TextStyle(
+                                              color: Colors.blue, fontSize: 10),
+                                        ),
+                                      ],
+                                    )),
+                              ],
                             ),
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
+                          ),
+                          Container(
+                            decoration: new BoxDecoration(
+                                border:
+                                    Border(bottom: BorderSide(color: Colors.grey))
+                                // new Border(top: BorderSide(
+                                //   color: Colors.grey
+                                // ))
+                                ),
+                            child: Padding(
                                 padding: EdgeInsets.all(15),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     headerText(
-                                        string:
-                                            "Delivery Address".toUpperCase()),
-                                    Text(
-                                      "Ahmad Saiful",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                        string: "Delivery  Period".toUpperCase()),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text("Date"),
+                                        Text("31st March ....",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                      ],
                                     ),
-                                    Text("The Very Long Address"),
-                                    Text(
-                                      "Change address",
-                                      style: TextStyle(
-                                          color: Colors.blue, fontSize: 10),
-                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Text("Time Frame"),
+                                        Text("2 - 5 pm",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                      ],
+                                    )
                                   ],
                                 )),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        decoration: new BoxDecoration(
-                            border:
-                                Border(bottom: BorderSide(color: Colors.grey))
-                            // new Border(top: BorderSide(
-                            //   color: Colors.grey
-                            // ))
-                            ),
-                        child: Padding(
-                            padding: EdgeInsets.all(15),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                headerText(
-                                    string: "Delivery  Period".toUpperCase()),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                          )
+                        ],
+                      ))),
+                  Padding(
+                    padding: EdgeInsets.only(top: 5),
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                              padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                              child: Text.rich(TextSpan(children: [
+                                TextSpan(text: "Have a coupon code?"),
+                                TextSpan(
+                                    text: " Enter here",
+                                    style: TextStyle(color: Colors.blue)),
+                              ]))),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 10, top: 5, bottom: 5),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: 1, color: Colors.black26))),
+                              )),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  headerText(string: "Subtotal"),
+                                  normalText("RM45")
+                                ]),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  headerText(string: "Delivery fee"),
+                                  normalText("RM5")
+                                ]),
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: 5, bottom: 10, left: 10, right: 10),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: 2, color: Colors.blueAccent))),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Text("Date"),
-                                    Text("31st March ....",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold))
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("Time Frame"),
-                                    Text("2 - 5 pm",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold))
-                                  ],
-                                )
-                              ],
-                            )),
-                      )
-                    ],
-                  ))),
-              Padding(
-                padding: EdgeInsets.only(top: 5),
-                child: Card(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 10),
-                          child: Text.rich(TextSpan(children: [
-                            TextSpan(text: "Have a coupon code?"),
-                            TextSpan(
-                                text: " Enter here",
-                                style: TextStyle(color: Colors.blue)),
-                          ]))),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 10, right: 10, top: 5, bottom: 5),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 1, color: Colors.black26))),
-                            // child: Row(
-                            //   children: <Widget>[
-                            //     Expanded(
-                            //       child: Text(""),
-                            //     )
-                            //   ],
-                            // )
-                          )),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              headerText(string: "Subtotal"),
-                              normalText("RM45")
-                            ]),
+                                    headerText(string: "Total amount"),
+                                    normalText("RM50")
+                                  ])),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: 4, bottom: 10, left: 15, right: 15),
+                              child: smallText(
+                                  "Please pay by cash upon delivery. We are working on online payments."))
+                        ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              headerText(string: "Delivery fee"),
-                              normalText("RM5")
-                            ]),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 5, bottom: 10, left: 10, right: 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 2, color: Colors.blueAccent))),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                headerText(string: "Total amount"),
-                                normalText("RM50")
-                              ])),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 4, bottom: 10, left: 15, right: 15),
-                          child: smallText(
-                              "Please pay by cash upon delivery. We are working on online payments."))
-                    ],
+                    ),
                   ),
+                ],
+              )),
+              
+             Container(
+                width: 300.0,
+                child: new RaisedButton(
+                  child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
+                  color: Theme.of(context).accentColor,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  elevation: 50,
+                  onPressed: () {
+                    // Perform some action
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CustomerOrderComplete()));
+                  },
                 ),
-              ),
-            ],
-          )),
-          new RaisedButton(
-            child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
-            color: Theme.of(context).accentColor,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0)),
-            elevation: 50,
-            onPressed: () {
-              // Perform some action
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CustomerOrderComplete()));
-            },
-          )
-        ]));
+              ) 
+            ]),
+        ),
+        
+        );
   }
 }
 
@@ -847,12 +865,15 @@ class CustomerOrderComplete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      padding: EdgeInsets.all(45.4),
-      decoration: BoxDecoration(color: Colors.black),
+      height: 400.0,
+      width: 300.0,
+      decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
       child: new Column(
         children: <Widget>[
-          Expanded(
-            child: new Container(
+          new Container(
+            height: 550.0,
+            width: 300.0,
+              padding: EdgeInsets.all(50.0),
               child: new Column(children: <Widget>[
                 new Text(
                   "Order Completed",
@@ -873,22 +894,24 @@ class CustomerOrderComplete extends StatelessWidget {
                 ),
               ]), //to be made a var
             ),
-          ),
           //new Image(image: null,), //to add image
 
-          new RaisedButton(
-            child: Text("Home", style: TextStyle(color: Colors.white)),
-            color: Theme.of(context).accentColor,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0)),
-            elevation: 50,
-            onPressed: () {
-              // Perform some action
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => HomeNav()));
-            },
+          Container(
+            width: 300.0,
+            child: new RaisedButton(
+              child: Text("Home", style: TextStyle(color: Colors.white)),
+              color: Theme.of(context).accentColor,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              elevation: 50,
+              onPressed: () {
+                // Perform some action
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomeNav()));
+              },
+            ),
           )
         ],
       ),
