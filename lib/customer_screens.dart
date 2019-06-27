@@ -9,13 +9,12 @@ class HomeNav extends StatelessWidget {
     return MaterialApp(
       title: 'EZGas',
       theme: ThemeData(
-        brightness: Brightness.dark,        
-        backgroundColor: Color(0xff45569B),
-        primaryColor: Color(0xff45569B),
-        accentColor: Color(0xff2892D7),
-        cardColor: Color(0xff3D4C8A),
-        bottomAppBarColor: Color(0xff3D4C8A)
-      ),
+          brightness: Brightness.dark,
+          backgroundColor: Color(0xff45569B),
+          primaryColor: Color(0xff45569B),
+          accentColor: Color(0xff2892D7),
+          cardColor: Color(0xff3D4C8A),
+          bottomAppBarColor: Color(0xff3D4C8A)),
       home: CustomerAppEntry(),
     );
   }
@@ -147,7 +146,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        title: new Text('EZ Gas'), centerTitle: true,
+        title: new Text('EZ Gas'),
+        centerTitle: true,
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: new ListView(
@@ -155,216 +155,256 @@ class CustomerHomePageState extends State<CustomerHomePage>
           new Container(
             color: Theme.of(context).backgroundColor,
             child: new ListTile(
-              title: new Text('Select your LPG',
-              style: new TextStyle(color: Colors.white),),
+              title: new Text(
+                'Select your LPG',
+                style: new TextStyle(color: Colors.white),
+              ),
             ),
           ),
           new Container(
-            decoration:
-                new BoxDecoration(color: Theme.of(context).cardColor),
-            child: new Column(
-              children: <Widget>[
-                new TabBar(
-              controller: _tabController,
-              indicatorColor: Theme.of(context).accentColor,
-              tabs: [
-                new Tab(
-                  // icon: const Icon(Icons.home),
-                  text: 'New',
-                ),
-                new Tab(
-                    // icon: const Icon(Icons.my_location),
-                    text: 'Refill'),
-              ],
-            ),
-
-            new Container(
-            height: 200.0,
-            alignment: Alignment.center,
-            child: new TabBarView(
-              controller: _tabController,
-              children: <Widget>[
-                new Card(
-                  color: Theme.of(context).cardColor,
-                  child: new Column(
-                    children: <Widget>[
-                      new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          new RaisedButton(
-                            child: new Text('LPG 14 kg',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            splashColor: Colors.blueGrey,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(30.0)),
-                            onPressed: () {
-                              // Perform some action
-                            },
-                          ),
-                          new RaisedButton(
-                            child: new Text('LPG 12 kg',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(30.0)),
-                            splashColor: Colors.amber,
-                            onPressed: () {
-                              // Perform some action
-                            },
-                          ),
-                        ],
+              decoration: new BoxDecoration(color: Theme.of(context).cardColor),
+              child: new Column(
+                children: <Widget>[
+                  new TabBar(
+                    controller: _tabController,
+                    indicatorColor: Theme.of(context).accentColor,
+                    tabs: [
+                      new Tab(
+                        // icon: const Icon(Icons.home),
+                        text: 'New',
                       ),
-                      new Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          new RaisedButton(
-                            child: new Text('-',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            shape: new CircleBorder(
-                                side: BorderSide(
-                                    width: 0,
-                                    color: Theme.of(context).accentColor)),
-                            splashColor: Colors.amber,
-                            onPressed: () {
-                              // Perform some action
-                            },
-                          ),
-                          Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 0),
-                              child:
-                                  Text("1", style: new TextStyle(color: Colors.white)),), //TODO: to replace with variable
-                          new RaisedButton(
-                            child: new Text('+',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            shape: new CircleBorder(
-                                side: BorderSide(
-                                    width: 0,
-                                    color: Theme.of(context).accentColor)),
-                            splashColor: Colors.amber,
-                            onPressed: () {
-                              // Perform some action
-                            },
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(15.0),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text("Total Amount",
-                          style: new TextStyle(color: Colors.white70),),
-                          Text("RM115.00",
-                          style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)
-                        ],
-                      ),
+                      new Tab(
+                          // icon: const Icon(Icons.my_location),
+                          text: 'Refill'),
                     ],
                   ),
-                ),
-                new Card(
-                  color: Theme.of(context).cardColor,
-                  child: new Column(
-                    children: <Widget>[
-                      new Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          new RaisedButton(
-                            child: new Text('LPG 14 kg',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            splashColor: Colors.amber,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(30.0)),
-                            onPressed: () {
-                              // Perform some action
-                            },
+                  new Container(
+                    height: 200.0,
+                    alignment: Alignment.center,
+                    child: new TabBarView(
+                      controller: _tabController,
+                      children: <Widget>[
+                        new Card(
+                          color: Theme.of(context).cardColor,
+                          child: new Column(
+                            children: <Widget>[
+                              new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  new RaisedButton(
+                                    child: new Text(
+                                      'LPG 14 kg',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    splashColor: Colors.blueGrey,
+                                    shape: new RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(30.0)),
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  ),
+                                  new RaisedButton(
+                                    child: new Text(
+                                      'LPG 12 kg',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    shape: new RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(30.0)),
+                                    splashColor: Colors.amber,
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  ),
+                                ],
+                              ),
+                              new Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new RaisedButton(
+                                    child: new Text(
+                                      '-',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    shape: new CircleBorder(
+                                        side: BorderSide(
+                                            width: 0,
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    splashColor: Colors.amber,
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 0),
+                                    child: Text("1",
+                                        style:
+                                            new TextStyle(color: Colors.white)),
+                                  ), //TODO: to replace with variable
+                                  new RaisedButton(
+                                    child: new Text(
+                                      '+',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    shape: new CircleBorder(
+                                        side: BorderSide(
+                                            width: 0,
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    splashColor: Colors.amber,
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(15.0),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Text(
+                                    "Total Amount",
+                                    style: new TextStyle(color: Colors.white70),
+                                  ),
+                                  Text(
+                                    "RM115.00",
+                                    style: new TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          new RaisedButton(
-                            child: new Text('LPG 12 kg',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(30.0)),
-                            splashColor: Colors.amber,
-                            onPressed: () {
-                              // Perform some action
-                            },
+                        ),
+                        new Card(
+                          color: Theme.of(context).cardColor,
+                          child: new Column(
+                            children: <Widget>[
+                              new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  new RaisedButton(
+                                    child: new Text(
+                                      'LPG 14 kg',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    splashColor: Colors.amber,
+                                    shape: new RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(30.0)),
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  ),
+                                  new RaisedButton(
+                                    child: new Text(
+                                      'LPG 12 kg',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    shape: new RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(30.0)),
+                                    splashColor: Colors.amber,
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  ),
+                                ],
+                              ),
+                              new Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new RaisedButton(
+                                    child: new Text(
+                                      '-',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    shape: new CircleBorder(
+                                        side: BorderSide(
+                                            width: 0,
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    splashColor: Colors.amber,
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  ),
+                                  Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 0),
+                                      child: Text(
+                                          "1")), //TODO: to replace with variable
+                                  new RaisedButton(
+                                    child: new Text(
+                                      '+',
+                                      style: new TextStyle(color: Colors.white),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    elevation: 4.0,
+                                    shape: new CircleBorder(
+                                        side: BorderSide(
+                                            width: 0,
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    splashColor: Colors.amber,
+                                    onPressed: () {
+                                      // Perform some action
+                                    },
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(15.0),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Text(
+                                    "Total Amount",
+                                    style: new TextStyle(color: Colors.white70),
+                                  ),
+                                  Text(
+                                    "RM37.00",
+                                    style: new TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      new Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          new RaisedButton(
-                            child: new Text('-',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            shape: new CircleBorder(
-                                side: BorderSide(
-                                    width: 0,
-                                    color: Theme.of(context).accentColor)),
-                            splashColor: Colors.amber,
-                            onPressed: () {
-                              // Perform some action
-                            },
-                          ),
-                          Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 0),
-                              child:
-                                  Text("1")), //TODO: to replace with variable
-                          new RaisedButton(
-                            child: new Text('+',
-                            style: new TextStyle(color: Colors.white),),
-                            color: Theme.of(context).accentColor,
-                            elevation: 4.0,
-                            shape: new CircleBorder(
-                                side: BorderSide(
-                                    width: 0,
-                                    color: Theme.of(context).accentColor)),
-                            splashColor: Colors.amber,
-                            onPressed: () {
-                              // Perform some action
-                            },
-                          )
-                        ],
-                      ),
-
-                      Padding(
-                        padding: EdgeInsets.all(15.0),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          Text("Total Amount",
-                          style: new TextStyle(color: Colors.white70),),
-                          Text("RM37.00",
-                          style: new TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-
-              ],
-            ) 
-          ),
-          
+                ],
+              )),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -387,7 +427,8 @@ class ConfirmOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(centerTitle: true,
+      appBar: new AppBar(
+        centerTitle: true,
         backgroundColor: Theme.of(context).backgroundColor,
         leading: IconButton(
           tooltip: "Previous Screen",
@@ -404,71 +445,72 @@ class ConfirmOrder extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
         padding: EdgeInsets.all(20.0),
-        child: new Column(
-          children: <Widget>[
-            Container(
-              width: 350.0,
-              height: 450.0,
-          child: new Column(
-          children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                  children: <Widget>[
-                    new Icon(
-                      Icons.location_on,
-                      color: Colors.grey,
-                    ),
-                    new Text("Delivery Address", style: new TextStyle(color: Colors.white),),
-                  ],
-                ),
-              ),
-              new Container(
-                child: new Container(
-                  child: Column(
+        child: new Column(children: <Widget>[
+          Container(
+            width: 350.0,
+            height: 450.0,
+            child: new Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: new Text(
-                                "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor", 
-                                style: new TextStyle(color: Colors.white),),
-                          ),
-                        ],
-                      )
+                      new Icon(
+                        Icons.location_on,
+                        color: Colors.grey,
+                      ),
+                      new Text(
+                        "Delivery Address",
+                        style: new TextStyle(color: Colors.white),
+                      ),
                     ],
                   ),
                 ),
-              ),
-              new Container(
-                child: new SelectDifferentAddress(),
-              ),    
-                   ],
-        ),    
-            ), 
-        new Container(
-          width: 300.0,
-          child: new RaisedButton(
-            child: Text("Confirm Address", style: TextStyle(color: Colors.white)),
-            color: Theme.of(context).accentColor,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0)),
-            elevation: 50,
-            onPressed: () {
-              // Perform some action
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DeliveryWindow()));
-            },
+                new Container(
+                  child: new Container(
+                    child: Column(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: new Text(
+                                "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor",
+                                style: new TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                new Container(
+                  child: new SelectDifferentAddress(),
+                ),
+              ],
+            ),
           ),
-        ),
-        ]
-    ),
-    ),
+          new Container(
+            width: 300.0,
+            child: new RaisedButton(
+              child: Text("Confirm Address",
+                  style: TextStyle(color: Colors.white)),
+              color: Theme.of(context).accentColor,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              elevation: 50,
+              onPressed: () {
+                // Perform some action
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DeliveryWindow()));
+              },
+            ),
+          ),
+        ]),
+      ),
     );
-    }
+  }
 }
 
 class SelectDifferentAddress extends StatelessWidget {
@@ -497,7 +539,8 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(centerTitle: true,
+        appBar: new AppBar(
+          centerTitle: true,
           leading: IconButton(
             tooltip: "Previous Screen",
             icon: new Icon(
@@ -505,8 +548,8 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
               color: Colors.white,
             ),
             onPressed: () {
-            Navigator.pop(context);
-          },
+              Navigator.pop(context);
+            },
           ),
           title: new Text(
             "Enter New Address",
@@ -579,7 +622,8 @@ class DeliveryWindowState extends State<DeliveryWindow> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(centerTitle: true,
+      appBar: new AppBar(
+        centerTitle: true,
         backgroundColor: Theme.of(context).backgroundColor,
         leading: IconButton(
           tooltip: "Previous Screen",
@@ -595,43 +639,50 @@ class DeliveryWindowState extends State<DeliveryWindow> {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
-          padding: new EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 450.0,
-                width: 350.0,
-                child: ListView(
-                  children: <Widget>[
-                    RadioListTile(
-                      title: Text("Deliver as soon as possible", style: new TextStyle(color: Colors.white),),
-                      subtitle: Text(
-                          "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
-                          style: new TextStyle(color: Colors.white24),),
-                      value: "deliver-asap",
-                      groupValue: "deliver-asap",
-                      onChanged: (String value) {
-                        setState(() {
-                          
-                        });
-                      },
+        padding: new EdgeInsets.all(20.0),
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 450.0,
+              width: 350.0,
+              child: ListView(
+                children: <Widget>[
+                  RadioListTile(
+                    title: Text(
+                      "Deliver as soon as possible",
+                      style: new TextStyle(color: Colors.white),
                     ),
-                    RadioListTile(
-                      title: Text("Deliver later",style: new TextStyle(color: Colors.white),),
-                      subtitle: Text(
-                          "Typically customers will receive their orders within 2 days",style: new TextStyle(color: Colors.white24),),
-                      value: "deliver-later",
-                      groupValue: "deliver-asap",
-                      onChanged: (String value) {},
+                    subtitle: Text(
+                      "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
+                      style: new TextStyle(color: Colors.white24),
                     ),
-                  ],
-                ),
+                    value: "deliver-asap",
+                    groupValue: "deliver-asap",
+                    onChanged: (String value) {
+                      setState(() {});
+                    },
+                  ),
+                  RadioListTile(
+                    title: Text(
+                      "Deliver later",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                    subtitle: Text(
+                      "Typically customers will receive their orders within 2 days",
+                      style: new TextStyle(color: Colors.white24),
+                    ),
+                    value: "deliver-later",
+                    groupValue: "deliver-asap",
+                    onChanged: (String value) {},
+                  ),
+                ],
               ),
-              
-              Container(
-                width: 300.0,
-                child: new RaisedButton(
-                child: Text("Confirm Delivery Period", style: TextStyle(color: Colors.white)),
+            ),
+            Container(
+              width: 300.0,
+              child: new RaisedButton(
+                child: Text("Confirm Delivery Period",
+                    style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).accentColor,
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
@@ -643,11 +694,11 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                       MaterialPageRoute(
                           builder: (context) => CustomerOrderPage()));
                 },
-            ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
+      ),
     );
   }
 }
@@ -663,17 +714,19 @@ class CustomerOrderState extends State<CustomerOrderPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: AppBar(centerTitle: true,
-          title: new Text('Order Details'), 
-          backgroundColor: Theme.of(context).backgroundColor,),
+      appBar: AppBar(
+        centerTitle: true,
+        title: new Text('Order Details'),
         backgroundColor: Theme.of(context).backgroundColor,
-        body: Container(
-          padding: EdgeInsets.all(20.0),
-            child: new Column(children: <Widget>[
-              Container(
-                height: 450.0,
-                width: 350.0,
-                  child: new ListView(
+      ),
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: new Column(children: <Widget>[
+          Container(
+              height: 450.0,
+              width: 350.0,
+              child: new ListView(
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
@@ -692,8 +745,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                         children: <Widget>[
                           Container(
                             decoration: new BoxDecoration(
-                                border:
-                                    Border(bottom: BorderSide(color: Colors.grey))
+                                border: Border(
+                                    bottom: BorderSide(color: Colors.grey))
                                 // new Border(top: BorderSide(
                                 //   color: Colors.grey
                                 // ))
@@ -703,11 +756,12 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                 Padding(
                                     padding: EdgeInsets.all(15),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: <Widget>[
                                         headerText(
-                                            string:
-                                                "Delivery Address".toUpperCase()),
+                                            string: "Delivery Address"
+                                                .toUpperCase()),
                                         Text(
                                           "Ahmad Saiful",
                                           style: TextStyle(
@@ -726,8 +780,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                           ),
                           Container(
                             decoration: new BoxDecoration(
-                                border:
-                                    Border(bottom: BorderSide(color: Colors.grey))
+                                border: Border(
+                                    bottom: BorderSide(color: Colors.grey))
                                 // new Border(top: BorderSide(
                                 //   color: Colors.grey
                                 // ))
@@ -738,7 +792,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     headerText(
-                                        string: "Delivery  Period".toUpperCase()),
+                                        string:
+                                            "Delivery  Period".toUpperCase()),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -791,7 +846,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   headerText(string: "Subtotal"),
                                   normalText("RM45")
@@ -800,7 +856,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   headerText(string: "Delivery fee"),
                                   normalText("RM5")
@@ -813,12 +870,14 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: 2, color: Colors.blueAccent))),
+                                            width: 2,
+                                            color: Colors.blueAccent))),
                               )),
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     headerText(string: "Total amount"),
                                     normalText("RM50")
@@ -834,28 +893,27 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                   ),
                 ],
               )),
-              
-             Container(
-                width: 300.0,
-                child: new RaisedButton(
-                  child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
-                  color: Theme.of(context).accentColor,
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0)),
-                  elevation: 50,
-                  onPressed: () {
-                    // Perform some action
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CustomerOrderComplete()));
-                  },
-                ),
-              ) 
-            ]),
-        ),
-        
-        );
+          Container(
+            width: 300.0,
+            child: new RaisedButton(
+              child:
+                  Text("Confirm Order", style: TextStyle(color: Colors.white)),
+              color: Theme.of(context).accentColor,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              elevation: 50,
+              onPressed: () {
+                // Perform some action
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CustomerOrderComplete()));
+              },
+            ),
+          )
+        ]),
+      ),
+    );
   }
 }
 
@@ -873,27 +931,27 @@ class CustomerOrderComplete extends StatelessWidget {
           new Container(
             height: 550.0,
             width: 300.0,
-              padding: EdgeInsets.all(50.0),
-              child: new Column(children: <Widget>[
-                new Text(
-                  "Order Completed",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(fontSize: 12.3, color: Colors.white),
+            padding: EdgeInsets.all(50.0),
+            child: new Column(children: <Widget>[
+              new Text(
+                "Order Completed",
+                textAlign: TextAlign.center,
+                style: new TextStyle(fontSize: 12.3, color: Colors.white),
+              ),
+              new Text(
+                "You will receive notification updates as your order progresses",
+                textAlign: TextAlign.center,
+                style: new TextStyle(fontSize: 12.1, color: Colors.white),
+              ),
+              new Text(
+                "Order #292374",
+                textAlign: TextAlign.center,
+                style: new TextStyle(
+                  fontSize: 20.2,
                 ),
-                new Text(
-                  "You will receive notification updates as your order progresses",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(fontSize: 12.1, color: Colors.white),
-                ),
-                new Text(
-                  "Order #292374",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(
-                    fontSize: 20.2,
-                  ),
-                ),
-              ]), //to be made a var
-            ),
+              ),
+            ]), //to be made a var
+          ),
           //new Image(image: null,), //to add image
 
           Container(
@@ -906,10 +964,8 @@ class CustomerOrderComplete extends StatelessWidget {
               elevation: 50,
               onPressed: () {
                 // Perform some action
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => HomeNav()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeNav()));
               },
             ),
           )
@@ -934,7 +990,8 @@ class _TransactionHistoryState extends State<TransactionHistory> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(centerTitle: true,
+      appBar: AppBar(
+          centerTitle: true,
           title: Text(
             "Transaction History",
             style: new TextStyle(
@@ -1318,182 +1375,201 @@ class ProfileTabSettings extends StatelessWidget {
 
 // Profile tab - screen 23
 
-class ProfileTabAboutUs extends StatelessWidget{
+class ProfileTabAboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: new AppBar(        
+      appBar: new AppBar(
         leading: IconButton(
-          icon: new Icon (Icons.arrow_back, color: Colors.white,),
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
           onPressed: () {
-              Navigator.pop(context);
-            },
+            Navigator.pop(context);
+          },
         ),
-        title: new Text("About",
+        title: new Text(
+          "About",
           style: new TextStyle(
             color: Colors.white,
-          ),),
+          ),
+        ),
         backgroundColor: Theme.of(context).backgroundColor,
       ),
-
       body: new Container(
         padding: const EdgeInsets.all(10),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Row(
-                children: <Widget>[
-                  Expanded(
-                    child: new Text("About us",
-                      style: new TextStyle(
-                        color: Colors.white,
-                      ),),
+              children: <Widget>[
+                Expanded(
+                  child: new Text(
+                    "About us",
+                    style: new TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
-
-                  new IconButton(
-                    iconSize: 12,
-                    alignment: Alignment.center,
-                    icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
-                    onPressed: () {
-        showDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('About Gas2Go'),
-              content: const Text('LoremIpsum Bla bla blablalbla'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
                 ),
-              ],
-            );
-          },
-        );},
-                  )
-                ],
-              ),
-
-            new Row(
-              children: <Widget>[
-                Expanded (
-                  child: new Text("Visit our website",
-                    style: new TextStyle(
-                        color: Colors.white
-                    ),),
-                ),
-
                 new IconButton(
                   iconSize: 12,
                   alignment: Alignment.center,
-                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
                   onPressed: () {
-        showDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Please click on the link below'),
-              content: const Text('LoremIpsum Bla bla blablalbla'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('About Gas2Go'),
+                          content: const Text('LoremIpsum Bla bla blablalbla'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
-                ),
-              ],
-            );
-          },
-        );},
                 )
               ],
             ),
-
             new Row(
               children: <Widget>[
                 Expanded(
-                  child: new Text("Privacy Policy",
-                    style: new TextStyle(
-                        color: Colors.white
-                    ),),
+                  child: new Text(
+                    "Visit our website",
+                    style: new TextStyle(color: Colors.white),
+                  ),
                 ),
-
                 new IconButton(
                   iconSize: 12,
                   alignment: Alignment.center,
-                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
                   onPressed: () {
-        showDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Our Privacy Policy'),
-              content: const Text('LoremIpsum Bla bla blablalbla'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Please click on the link below'),
+                          content: const Text('LoremIpsum Bla bla blablalbla'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
-                ),
-              ],
-            );
-          },
-        );},
                 )
               ],
             ),
-
             new Row(
               children: <Widget>[
                 Expanded(
-                  child: new Text("Terms & Conditions",
-                    style: new TextStyle(
-                        color: Colors.white
-                    ),),
+                  child: new Text(
+                    "Privacy Policy",
+                    style: new TextStyle(color: Colors.white),
+                  ),
                 ),
-
                 new IconButton(
                   iconSize: 12,
                   alignment: Alignment.center,
-                  icon: new Icon (Icons.arrow_forward_ios, color: Colors.white,),
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
                   onPressed: () {
-        showDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Terms and Conditions'),
-              content: const Text('LoremIpsum Bla bla blablalbla'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Our Privacy Policy'),
+                          content: const Text('LoremIpsum Bla bla blablalbla'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
-                ),
-              ],
-            );
-          },
-        );},
                 )
               ],
             ),
-
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text(
+                    "Terms & Conditions",
+                    style: new TextStyle(color: Colors.white),
+                  ),
+                ),
+                new IconButton(
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Terms and Conditions'),
+                          content: const Text('LoremIpsum Bla bla blablalbla'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                )
+              ],
+            ),
             new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Text("Follow us",
-                  style: new TextStyle(
-                      color: Colors.white
-                  ),),
-
+                new Text(
+                  "Follow us",
+                  style: new TextStyle(color: Colors.white),
+                ),
                 new Row(
                   children: <Widget>[
-                    new Icon(Icons.battery_alert, color: Colors.white,),
-                    new Icon(Icons.battery_full, color: Colors.white,),
+                    new Icon(
+                      Icons.battery_alert,
+                      color: Colors.white,
+                    ),
+                    new Icon(
+                      Icons.battery_full,
+                      color: Colors.white,
+                    ),
                   ],
                 )
               ],
@@ -1503,90 +1579,71 @@ class ProfileTabAboutUs extends StatelessWidget{
       ),
     );
   }
-
 }
 
 //screen 24/25
-class InviteFriend extends StatelessWidget{
+class InviteFriend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: new AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        leading: IconButton(
-          tooltip: "Previous page",
-          icon: new Icon (Icons.arrow_back, color: Colors.white),
-          onPressed: () {
+        appBar: new AppBar(
+          backgroundColor: Theme.of(context).backgroundColor,
+          leading: IconButton(
+            tooltip: "Previous page",
+            icon: new Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
               Navigator.pop(context);
             },
+          ),
         ),
-      ),
-
-      body: new Container (
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new Container(
-             child: new Image.asset("assets/InviteFriends.jpg")
+        body: new Container(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              new Container(child: new Image.asset("assets/InviteFriends.jpg")),
+              new Container(
+                child: new Text(
+                  "Enjoy Cashback & Perks",
+                  style: new TextStyle(color: Colors.white, fontSize: 15.1),
+                ),
               ),
-
-            new Container (
-              child: new Text("Enjoy Cashback & Perks", style: new TextStyle(
-                  color: Colors.white, fontSize: 15.1
-              ),),
-            ),
-
-            new Container (
-              child:new Text("Share your invite code an discover how you and your friends can get cashback",
-                textAlign: TextAlign.center,
-                style: new TextStyle(
-                    color: Colors.white, fontSize: 12.1
-                ),),
-            ),
-
-            new Container (
-              child: new Center(
-              child: new HowDoInvitesWork(),
-            ),
-            ),
-
-            new Container (
-              child: new Center (
-                child: new InviteCode ()
+              new Container(
+                child: new Text(
+                  "Share your invite code an discover how you and your friends can get cashback",
+                  textAlign: TextAlign.center,
+                  style: new TextStyle(color: Colors.white, fontSize: 12.1),
+                ),
               ),
-            ),
-          ],
-        ),
-      )
-
-
-
-    );
+              new Container(
+                child: new Center(
+                  child: new HowDoInvitesWork(),
+                ),
+              ),
+              new Container(
+                child: new Center(child: new InviteCode()),
+              ),
+            ],
+          ),
+        ));
   }
-
 }
 
 class InviteCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector (
-      onTap: null ,
-
-      child: new Container(
-        padding: const EdgeInsets.all(6) ,
-        decoration: BoxDecoration(
-          color: Colors.white30
-        ),
-        child: new Text ("saiful0145454",
-            style: new TextStyle (color: Colors.blueAccent, fontSize: 12.1)),
-      )
-    );
+    return GestureDetector(
+        onTap: null,
+        child: new Container(
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(color: Colors.white30),
+          child: new Text("saiful0145454",
+              style: new TextStyle(color: Colors.blueAccent, fontSize: 12.1)),
+        ));
   }
-
 }
 
-class HowDoInvitesWork extends StatelessWidget{
+class HowDoInvitesWork extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -1607,12 +1664,15 @@ class HowDoInvitesWork extends StatelessWidget{
               ],
             );
           },
-        );},
-
-      child: new Text("How do invites work?",
+        );
+      },
+      child: new Text(
+        "How do invites work?",
         style: new TextStyle(
-            color: Colors.white, fontSize: 12.1,
-        decoration: TextDecoration.underline),),
+            color: Colors.white,
+            fontSize: 12.1,
+            decoration: TextDecoration.underline),
+      ),
     );
   }
 }
