@@ -7,9 +7,14 @@ class HomeNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'EZGas',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,        
+        backgroundColor: Color(0xff45569B),
+        primaryColor: Color(0xff45569B),
+        accentColor: Color(0xff2892D7),
+        cardColor: Color(0xff3D4C8A),
+        bottomAppBarColor: Color(0xff3D4C8A)
       ),
       home: CustomerAppEntry(),
     );
@@ -58,7 +63,7 @@ class _CustomerAppEntryState extends State<CustomerAppEntry> {
       body: currentPage,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab,
-        backgroundColor: Color(0xff333333),
+        backgroundColor: Theme.of(context).bottomAppBarColor,
         unselectedItemColor: Color(0xff808080),
         selectedItemColor: Color(0xff00B3EF),
         onTap: (int index) {
@@ -141,14 +146,14 @@ class CustomerHomePageState extends State<CustomerHomePage>
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Color(0xff222222),
+        backgroundColor: Theme.of(context).backgroundColor,
         title: new Text('EZ Gas'), centerTitle: true,
       ),
-      backgroundColor: Color(0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: new ListView(
         children: <Widget>[
           new Container(
-            color: Color(0xff222222),
+            color: Theme.of(context).backgroundColor,
             child: new ListTile(
               title: new Text('Select your LPG',
               style: new TextStyle(color: Colors.white),),
@@ -156,12 +161,12 @@ class CustomerHomePageState extends State<CustomerHomePage>
           ),
           new Container(
             decoration:
-                new BoxDecoration(color: Color(0xff404040)),
+                new BoxDecoration(color: Theme.of(context).cardColor),
             child: new Column(
               children: <Widget>[
                 new TabBar(
               controller: _tabController,
-              indicatorColor: Color(0xff48beff),
+              indicatorColor: Theme.of(context).accentColor,
               tabs: [
                 new Tab(
                   // icon: const Icon(Icons.home),
@@ -180,7 +185,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
               controller: _tabController,
               children: <Widget>[
                 new Card(
-                  color: Color(0xff404040),
+                  color: Theme.of(context).cardColor,
                   child: new Column(
                     children: <Widget>[
                       new Row(
@@ -266,7 +271,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                   ),
                 ),
                 new Card(
-                  color: Color(0xff404040),
+                  color: Theme.of(context).cardColor,
                   child: new Column(
                     children: <Widget>[
                       new Row(
@@ -383,7 +388,7 @@ class ConfirmOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(centerTitle: true,
-        backgroundColor: Color(0xff222222),
+        backgroundColor: Theme.of(context).backgroundColor,
         leading: IconButton(
           tooltip: "Previous Screen",
           icon: new Icon(
@@ -396,12 +401,12 @@ class ConfirmOrder extends StatelessWidget {
         ),
         title: new Text("Select Address"),
       ),
-      backgroundColor: Color(0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
         child: new Column(
           children: <Widget>[
             new Card(
-          color: Color(0xff404040),
+          color: Theme.of(context).cardColor,
           child: new Column(
           children: <Widget>[
             Padding(
@@ -436,16 +441,15 @@ class ConfirmOrder extends StatelessWidget {
             ),
             new Container(
               child: new SelectDifferentAddress(),
-            ),
-          
-         
-        ],
+            ),    
+                 ],
         ),    
         ), 
         new Container(
+          alignment: Alignment.bottomCenter,
           child: new RaisedButton(
             child: Text("Confirm Address", style: TextStyle(color: Colors.white)),
-            color: Color(0xff2892D7),
+            color: Theme.of(context).accentColor,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
@@ -574,7 +578,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(centerTitle: true,
-        backgroundColor: Color(0xff222222),
+        backgroundColor: Theme.of(context).backgroundColor,
         leading: IconButton(
           tooltip: "Previous Screen",
           icon: new Icon(
@@ -587,7 +591,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
         ),
         title: new Text("Select delivery period"),
       ),
-      backgroundColor: Color(0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
           padding: new EdgeInsets.all(20.0),
           child: ListView(
@@ -616,7 +620,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                
                new RaisedButton(
             child: Text("Confirm Delivery Period", style: TextStyle(color: Colors.white)),
-            color: Color(0xff2892D7),
+            color: Theme.of(context).accentColor,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
@@ -646,8 +650,9 @@ class CustomerOrderState extends State<CustomerOrderPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(centerTitle: true,
-          title: new Text('Order Details'), backgroundColor: Color(0xff222222),),
-        backgroundColor: Color(0xff222222),
+          title: new Text('Order Details'), 
+          backgroundColor: Theme.of(context).backgroundColor,),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: new Column(children: <Widget>[
           Expanded(
               child: new ListView(
@@ -820,7 +825,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
           )),
           new RaisedButton(
             child: Text("Confirm Order", style: TextStyle(color: Colors.white)),
-            color: Color(0xff2892D7),
+            color: Theme.of(context).accentColor,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
@@ -873,7 +878,7 @@ class CustomerOrderComplete extends StatelessWidget {
 
           new RaisedButton(
             child: Text("Home", style: TextStyle(color: Colors.white)),
-            color: Color(0xff2892D7),
+            color: Theme.of(context).accentColor,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0)),
             elevation: 50,
@@ -913,10 +918,10 @@ class _TransactionHistoryState extends State<TransactionHistory> {
               color: Colors.white,
             ),
           ),
-          backgroundColor: Color(0xff222222)),
+          backgroundColor: Theme.of(context).backgroundColor),
       body: new Container(
         decoration: BoxDecoration(
-          color: Color(0xff222222),
+          color: Theme.of(context).cardColor,
         ),
         child: ListView(
           children: <Widget>[
@@ -974,7 +979,7 @@ class OrderDetailsState extends State<OrderDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff222222),
+          backgroundColor: Theme.of(context).backgroundColor,
           centerTitle: true,
           title: Text('Order Details'),
           leading: IconButton(
@@ -1069,7 +1074,7 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Color(0xff222222),
+        backgroundColor: Theme.of(context).backgroundColor,
         title: new Text(
             "Ahmad Saiful"), //this should be pulled from server. need a var
         actions: <Widget>[
@@ -1084,7 +1089,7 @@ class ProfileTab extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: Color(0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
         padding: const EdgeInsets.all(10),
         child: new Column(
@@ -1173,7 +1178,7 @@ class ProfileTabSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         leading: IconButton(
           icon: new Icon(
@@ -1190,7 +1195,7 @@ class ProfileTabSettings extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Color(0xff404040),
+        backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: new Container(
         padding: const EdgeInsets.all(10),
@@ -1294,7 +1299,7 @@ class ProfileTabAboutUs extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Color(0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(        
         leading: IconButton(
           icon: new Icon (Icons.arrow_back, color: Colors.white,),
@@ -1306,7 +1311,7 @@ class ProfileTabAboutUs extends StatelessWidget{
           style: new TextStyle(
             color: Colors.white,
           ),),
-        backgroundColor: Color(0xff222222),
+        backgroundColor: Theme.of(context).backgroundColor,
       ),
 
       body: new Container(
@@ -1483,9 +1488,9 @@ class InviteFriend extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Color (0xff222222),
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
-        backgroundColor: Color (0xff222222),
+        backgroundColor: Theme.of(context).backgroundColor,
         leading: IconButton(
           tooltip: "Previous page",
           icon: new Icon (Icons.arrow_back, color: Colors.white),
