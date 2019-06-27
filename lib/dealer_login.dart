@@ -5,8 +5,6 @@ import 'texts.dart';
 
 // screen 1: logo not ready //
 
-
-
 // screen 5b: dealer sign in //
 
 class DealerSignInPage extends StatefulWidget {
@@ -135,7 +133,7 @@ class ForgotPasswordState extends State<ForgotPasswordPage> {
         child: Icon(Icons.arrow_forward),
         // onPressed: _changeText,
         backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.white, onPressed: () {},
       ),
     );
   }
