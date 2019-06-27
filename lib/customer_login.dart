@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gas2go/commonelements.dart';
+import 'package:gas2go/texts.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
@@ -294,7 +296,7 @@ class ForgotPasswordState extends State<ForgotPasswordPage> {
         child: Icon(Icons.arrow_forward),
         // onPressed: _changeText,
         backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.white, onPressed: () {},
       ),
     );
   }
