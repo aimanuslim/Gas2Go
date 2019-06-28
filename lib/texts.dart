@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-Text headerText({string, double headerSize = 12}) {
+Text headerText({string, double headerSize = 13}) {
   return Text(string,
-      style: TextStyle(color: Colors.grey, fontSize: headerSize));
+      style: TextStyle(color: Color(0xffCCCCCC), fontSize: headerSize));
 }
 
 GestureDetector linkText(string, pressAction) {
@@ -12,10 +12,10 @@ GestureDetector linkText(string, pressAction) {
       style: TextStyle(color: Colors.blue),
     ),
     onTap: () {
-      if(pressAction != null) {
+      if (pressAction != null) {
         pressAction();
       }
-    },        
+    },
   );
 }
 
@@ -36,7 +36,8 @@ Text smallText(string) {
 Text normalText(string) {
   return Text(string,
       style: TextStyle(
-          color: Colors.black //TODO: change this to white with black backgroud
+          color: Color(
+              0xffCCCCCC) //TODO: change this to white with black backgroud
           ));
 }
 

@@ -824,7 +824,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
                                         Text("Date"),
-                                        Text("31st March ....",
+                                        Text("Tuesday, 31st March 2019",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold))
                                       ],
