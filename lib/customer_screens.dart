@@ -1560,17 +1560,19 @@ class ProfileTabAboutUs extends StatelessWidget {
                   "Follow us",
                   style: new TextStyle(color: Colors.white),
                 ),
-                new Row(
-                  children: <Widget>[
-                    new Icon(
-                      Icons.battery_alert,
-                      color: Colors.white,
-                    ),
-                    new Icon(
-                      Icons.battery_full,
-                      color: Colors.white,
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: new Row(
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.facebook),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Icon(
+                          FontAwesomeIcons.instagram,
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             )
