@@ -30,7 +30,7 @@ class OnboardingState extends State<Onboarding> {
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         pathImage: "assets/onboarding_1_order.png",
-        backgroundColor: Color(0xff45569B),
+        backgroundColor: Color(0xff323E6E),
       ),
     );
     slides.add(
@@ -42,7 +42,7 @@ class OnboardingState extends State<Onboarding> {
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         pathImage: "assets/onboarding_2_delivery.png",
-        backgroundColor: Color(0xff45569B),
+        backgroundColor: Color(0xff323E6E),
       ),
     );
     slides.add(
@@ -54,7 +54,7 @@ class OnboardingState extends State<Onboarding> {
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. - (this feature is coming soon)",
         pathImage: "assets/onboarding_3_cashbacks.png",
-        backgroundColor: Color(0xff45569B),
+        backgroundColor: Color(0xff323E6E),
       ),
     );
   }
