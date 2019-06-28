@@ -256,6 +256,8 @@ class CustomerRegisterState extends State<CustomerRegisterPage> {
   }
 }
 
+//need screen 7a and 7b
+
 // screen 8
 class ForgotPasswordPage extends StatefulWidget {
   @override

@@ -10,11 +10,14 @@ class HomeNav extends StatelessWidget {
       title: 'EZGas',
       theme: ThemeData(
           brightness: Brightness.dark,
-          backgroundColor: Color(0xFF323E6E),
+          backgroundColor: Color(0xff323E6E),
           primaryColor: Color(0xff45569B),
-          accentColor: Color(0xFFFFA630),
+          accentColor: Color(0xffFFA630),
           cardColor: Color(0xff3D4C8A),
-          bottomAppBarColor: Color(0xff3D4C8A)),
+          bottomAppBarColor: Color(0xff3D4C8A),
+          buttonColor: Color(0xffFFA630),
+          textSelectionColor: Color(0xff222222),
+          ),
       home: CustomerAppEntry(),
     );
   }
@@ -171,11 +174,11 @@ class CustomerHomePageState extends State<CustomerHomePage>
                     tabs: [
                       new Tab(
                         // icon: const Icon(Icons.home),
-                        text: 'New',
+                        text: 'NEW',
                       ),
                       new Tab(
                           // icon: const Icon(Icons.my_location),
-                          text: 'Refill'),
+                          text: 'REFILL'),
                     ],
                   ),
                   new Container(
@@ -196,7 +199,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 14 kg',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -211,7 +214,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 12 kg',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -231,7 +234,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '-',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -255,7 +258,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '+',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -305,7 +308,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 14 kg',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -320,7 +323,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 12 kg',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -340,7 +343,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '-',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -362,7 +365,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '+',
-                                      style: new TextStyle(color: Colors.white),
+                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -410,8 +413,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_forward),
         // onPressed: _changeText,
-        backgroundColor: Color(0xFFFFA630),
-        foregroundColor: Color(0xFF222222),
+        backgroundColor: Theme.of(context).accentColor,
+        foregroundColor: Theme.of(context).textSelectionColor,
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ConfirmOrder()));
@@ -434,7 +437,7 @@ class ConfirmOrder extends StatelessWidget {
           tooltip: "Previous Screen",
           icon: new Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -495,7 +498,7 @@ class ConfirmOrder extends StatelessWidget {
             width: 300.0,
             child: new RaisedButton(
               child: Text("Confirm Address",
-                  style: TextStyle(color: Colors.white)),
+                  style: TextStyle(color: Theme.of(context).textSelectionColor)),
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -520,9 +523,8 @@ class SelectDifferentAddress extends StatelessWidget {
         onTap: null, //<-to be connected to Register Alternate Address
         child: new Container(
           padding: const EdgeInsets.all(15),
-          decoration: BoxDecoration(color: Colors.white30),
           child: new Text("Select a different address",
-              style: new TextStyle(color: Colors.blueAccent, fontSize: 12.1)),
+              style: new TextStyle(color: Theme.of(context).accentColor, fontSize: 12.1)),
         ));
   }
 }
@@ -545,7 +547,7 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
             tooltip: "Previous Screen",
             icon: new Icon(
               Icons.arrow_back,
-              color: Colors.white,
+              color: Theme.of(context).buttonColor,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -629,7 +631,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
           tooltip: "Previous Screen",
           icon: new Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -682,7 +684,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
               width: 300.0,
               child: new RaisedButton(
                 child: Text("Confirm Delivery Period",
-                    style: TextStyle(color: Colors.white)),
+                    style: TextStyle(color: Theme.of(context).textSelectionColor)),
                 color: Theme.of(context).accentColor,
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
@@ -716,7 +718,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
     return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: new Text('Order Details'),
+        title: new Text('Checkout'),
         backgroundColor: Theme.of(context).backgroundColor,
       ),
       backgroundColor: Theme.of(context).backgroundColor,
@@ -769,9 +771,9 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                         ),
                                         Text("The Very Long Address"),
                                         Text(
-                                          "Change address",
+                                          "Change address?",
                                           style: TextStyle(
-                                              color: Colors.blue, fontSize: 10),
+                                              color: Theme.of(context).accentColor, fontSize: 10),
                                         ),
                                       ],
                                     )),
@@ -832,7 +834,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                 TextSpan(text: "Have a coupon code?"),
                                 TextSpan(
                                     text: " Enter here",
-                                    style: TextStyle(color: Colors.blue)),
+                                    style: TextStyle(color: Theme.of(context).accentColor)),
                               ]))),
                           Padding(
                               padding: EdgeInsets.only(
@@ -881,6 +883,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                   children: <Widget>[
                                     headerText(string: "Total amount"),
                                     normalText("RM50")
+                              
                                   ])),
                           Padding(
                               padding: EdgeInsets.only(
@@ -897,7 +900,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
             width: 300.0,
             child: new RaisedButton(
               child:
-                  Text("Confirm Order", style: TextStyle(color: Colors.white)),
+                  Text("Confirm Order", style: TextStyle(color: Theme.of(context).textSelectionColor)),
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -957,7 +960,7 @@ class CustomerOrderComplete extends StatelessWidget {
           Container(
             width: 300.0,
             child: new RaisedButton(
-              child: Text("Home", style: TextStyle(color: Colors.white)),
+              child: Text("Home", style: TextStyle(color: Theme.of(context).textSelectionColor)),
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -1035,7 +1038,7 @@ class _TransactionHistoryState extends State<TransactionHistory> {
 ListTile _order(String title, String subtitle) => ListTile(
       title: Text(title,
           style: TextStyle(
-            color: Colors.blue,
+            color: Color(0xffFFA630),
             fontWeight: FontWeight.w500,
             fontSize: 20,
           )),
@@ -1043,6 +1046,12 @@ ListTile _order(String title, String subtitle) => ListTile(
         subtitle,
         style: TextStyle(color: Colors.grey),
       ),
+      onTap: () {
+                // Perform some action
+                BuildContext context;
+                                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OrderDetailsPage()));
+              },
     );
 
 // Transaction Tab - Screen 20 //
@@ -1064,6 +1073,7 @@ class OrderDetailsState extends State<OrderDetailsPage> {
           title: Text('Order Details'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
+            color: Theme.of(context).buttonColor,
             onPressed: () => Navigator.pop(context, false),
           ),
         ),
@@ -1160,6 +1170,7 @@ class ProfileTab extends StatelessWidget {
         actions: <Widget>[
           new IconButton(
             icon: Icon(Icons.settings),
+            color: Theme.of(context).buttonColor,
             onPressed: () {
               Navigator.push(
                 context,
@@ -1190,7 +1201,7 @@ class ProfileTab extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -1214,7 +1225,7 @@ class ProfileTab extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: null,
                 )
@@ -1233,7 +1244,7 @@ class ProfileTab extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -1263,7 +1274,7 @@ class ProfileTabSettings extends StatelessWidget {
         leading: IconButton(
           icon: new Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -1305,7 +1316,7 @@ class ProfileTabSettings extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.edit,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: null,
                 )
@@ -1324,7 +1335,7 @@ class ProfileTabSettings extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.edit,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: null,
                 )
@@ -1343,7 +1354,7 @@ class ProfileTabSettings extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.edit,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: null,
                 )
@@ -1356,13 +1367,13 @@ class ProfileTabSettings extends StatelessWidget {
                   children: <Widget>[
                     Icon(
                       Icons.exit_to_app,
-                      color: Colors.white,
+                      color: Theme.of(context).buttonColor,
                     ),
                   ],
                 ),
                 Text(
                   "Sign out",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Theme.of(context).accentColor),
                 ),
               ],
             )
@@ -1384,14 +1395,14 @@ class ProfileTabAboutUs extends StatelessWidget {
         leading: IconButton(
           icon: new Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: new Text(
-          "About",
+          "About EZGas",
           style: new TextStyle(
             color: Colors.white,
           ),
@@ -1418,7 +1429,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: () {
                     showDialog<void>(
@@ -1455,7 +1466,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: () {
                     showDialog<void>(
@@ -1492,7 +1503,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: () {
                     showDialog<void>(
@@ -1529,7 +1540,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                   alignment: Alignment.center,
                   icon: new Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Theme.of(context).buttonColor,
                   ),
                   onPressed: () {
                     showDialog<void>(
@@ -1566,13 +1577,13 @@ class ProfileTabAboutUs extends StatelessWidget {
                     children: <Widget>[
                       Icon(
                         FontAwesomeIcons.facebookF,
-                        color: Color(0xFFFFA630),
+                        color: Theme.of(context).buttonColor,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Icon(
                           FontAwesomeIcons.instagram,
-                          color: Color(0xFFFFA630),
+                          color: Theme.of(context).buttonColor,
                         ),
                       ),
                     ],
@@ -1597,7 +1608,8 @@ class InviteFriend extends StatelessWidget {
           backgroundColor: Theme.of(context).backgroundColor,
           leading: IconButton(
             tooltip: "Previous page",
-            icon: new Icon(Icons.arrow_back, color: Colors.white),
+            icon: new Icon(Icons.arrow_back, 
+            color: Theme.of(context).buttonColor),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -1628,11 +1640,20 @@ class InviteFriend extends StatelessWidget {
                 ),
               ),
               new Container(
-                child: new Center(child: new InviteCode()),
+                child: new Center(
+                  child: new InviteCode()),
               ),
             ],
-          ),
-        ));
+          ),          
+        ),
+        floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.share),
+        // onPressed: _changeText,
+        backgroundColor: Theme.of(context).accentColor,
+        foregroundColor: Theme.of(context).textSelectionColor,
+        onPressed: null,
+      ),
+        );
   }
 }
 
@@ -1645,7 +1666,7 @@ class InviteCode extends StatelessWidget {
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(color: Colors.white30),
           child: new Text("saiful0145454",
-              style: new TextStyle(color: Colors.blueAccent, fontSize: 12.1)),
+              style: new TextStyle(color: Theme.of(context).accentColor, fontSize: 12.1)),
         ));
   }
 }
@@ -1663,7 +1684,7 @@ class HowDoInvitesWork extends StatelessWidget {
               content: const Text('LoremIpsum Bla bla blablalbla'),
               actions: <Widget>[
                 FlatButton(
-                  child: Text('Ok'),
+                  child: Text('OK'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
