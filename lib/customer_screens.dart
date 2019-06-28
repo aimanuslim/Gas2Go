@@ -63,8 +63,8 @@ class _CustomerAppEntryState extends State<CustomerAppEntry> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab,
         backgroundColor: Theme.of(context).bottomAppBarColor,
-        unselectedItemColor: Color(0xff808080),
-        selectedItemColor: Color(0xff00B3EF),
+        unselectedItemColor: Color(0xFF808080),
+        selectedItemColor: Color(0xFFFFA630),
         onTap: (int index) {
           setState(() {
             currentTab = index;
