@@ -1564,11 +1564,15 @@ class ProfileTabAboutUs extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10.0),
                   child: new Row(
                     children: <Widget>[
-                      Icon(FontAwesomeIcons.facebook),
+                      Icon(
+                        FontAwesomeIcons.facebookF,
+                        color: Color(0xFFFFA630),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Icon(
                           FontAwesomeIcons.instagram,
+                          color: Color(0xFFFFA630),
                         ),
                       ),
                     ],
