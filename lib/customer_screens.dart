@@ -410,8 +410,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_forward),
         // onPressed: _changeText,
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
+        backgroundColor: Color(0xFFFFA630),
+        foregroundColor: Color(0xFF222222),
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ConfirmOrder()));
