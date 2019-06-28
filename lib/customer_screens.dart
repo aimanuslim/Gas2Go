@@ -145,25 +145,24 @@ class CustomerHomePageState extends State<CustomerHomePage>
   }
 
   double quantity = 0.0;
-  double newprice = 0.0;
-  double refillprice = 0.0;
-  
-  void subtractOrders(){
+  double newPrice = 0.0;
+  double refillPrice = 0.0;
+
+  void subtractOrders() {
     setState(() {
-     quantity = quantity - 1; 
-     newprice = 115 * quantity;
-     refillprice = 37 * quantity;
+      quantity = quantity - 1;
+      newPrice = 115 * quantity;
+      refillPrice = 37 * quantity;
     });
   }
 
-  void addOrders(){
+  void addOrders() {
     setState(() {
-     quantity = quantity + 1; 
-     newprice = 115 * quantity;
-     refillprice = 37 * quantity;
+      quantity = quantity + 1;
+      newPrice = 115 * quantity;
+      refillPrice = 37 * quantity;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -221,8 +220,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 14 kg',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -238,8 +237,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 12 kg',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -260,8 +259,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       '-',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -284,8 +283,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       '+',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -311,7 +310,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     style: new TextStyle(color: Colors.white70),
                                   ),
                                   Text(
-                                    "RM $newprice",
+                                    "RM $newPrice",
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
@@ -334,8 +333,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 14 kg',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -351,8 +350,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 12 kg',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -373,8 +372,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       '-',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -389,14 +388,13 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   Padding(
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 0),
-                                      child: Text(
-                                          "$quantity")),
+                                      child: Text("$quantity")),
                                   new RaisedButton(
                                     child: new Text(
                                       '+',
                                       style: new TextStyle(
-                                        color: Theme.of(context)
-                                        .textSelectionColor),
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -422,7 +420,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     style: new TextStyle(color: Colors.white70),
                                   ),
                                   Text(
-                                    "RM $refillprice",
+                                    "RM $refillPrice",
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
@@ -654,14 +652,13 @@ class DeliveryWindow extends StatefulWidget {
 }
 
 class DeliveryWindowState extends State<DeliveryWindow> {
+  int deliveryPeriod = 0;
 
-int deliveryPeriod = 0;
-
-void handleRadioValueChanged(int value){
-  setState(() {
-   deliveryPeriod = value;
-  });
-}
+  void handleRadioValueChanged(int value) {
+    setState(() {
+      deliveryPeriod = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -692,19 +689,18 @@ void handleRadioValueChanged(int value){
               child: ListView(
                 children: <Widget>[
                   RadioListTile(
-                    activeColor: Theme.of(context).accentColor,
-                    title: Text(
-                      "Deliver as soon as possible",
-                      style: new TextStyle(color: Colors.white),
-                    ),
-                    subtitle: Text(
-                      "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
-                      style: new TextStyle(color: Colors.white24),
-                    ),
-                    value: 1,
-                    groupValue: deliveryPeriod,
-                    onChanged: handleRadioValueChanged
-                  ),
+                      activeColor: Theme.of(context).accentColor,
+                      title: Text(
+                        "Deliver as soon as possible",
+                        style: new TextStyle(color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
+                        style: new TextStyle(color: Colors.white24),
+                      ),
+                      value: 1,
+                      groupValue: deliveryPeriod,
+                      onChanged: handleRadioValueChanged),
                   RadioListTile(
                     activeColor: Theme.of(context).accentColor,
                     title: Text(
