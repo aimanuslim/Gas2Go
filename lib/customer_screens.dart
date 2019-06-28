@@ -9,15 +9,15 @@ class HomeNav extends StatelessWidget {
     return MaterialApp(
       title: 'EZGas',
       theme: ThemeData(
-          brightness: Brightness.dark,
-          backgroundColor: Color(0xff323E6E),
-          primaryColor: Color(0xff45569B),
-          accentColor: Color(0xffFFA630),
-          cardColor: Color(0xff3D4C8A),
-          bottomAppBarColor: Color(0xff3D4C8A),
-          buttonColor: Color(0xffFFA630),
-          textSelectionColor: Color(0xff222222),
-          ),
+        brightness: Brightness.dark,
+        backgroundColor: Color(0xff323E6E),
+        primaryColor: Color(0xff45569B),
+        accentColor: Color(0xffFFA630),
+        cardColor: Color(0xff3D4C8A),
+        bottomAppBarColor: Color(0xff3D4C8A),
+        buttonColor: Color(0xffFFA630),
+        textSelectionColor: Color(0xff222222),
+      ),
       home: CustomerAppEntry(),
     );
   }
@@ -199,7 +199,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 14 kg',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -214,7 +216,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 12 kg',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -234,7 +238,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '-',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -258,7 +264,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '+',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -308,7 +316,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 14 kg',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -323,7 +333,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       'LPG 12 kg',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -343,7 +355,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '-',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -365,7 +379,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                   new RaisedButton(
                                     child: new Text(
                                       '+',
-                                      style: new TextStyle(color: Theme.of(context).textSelectionColor),
+                                      style: new TextStyle(
+                                          color: Theme.of(context)
+                                              .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -498,7 +514,8 @@ class ConfirmOrder extends StatelessWidget {
             width: 300.0,
             child: new RaisedButton(
               child: Text("Confirm Address",
-                  style: TextStyle(color: Theme.of(context).textSelectionColor)),
+                  style:
+                      TextStyle(color: Theme.of(context).textSelectionColor)),
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -524,7 +541,8 @@ class SelectDifferentAddress extends StatelessWidget {
         child: new Container(
           padding: const EdgeInsets.all(15),
           child: new Text("Select a different address",
-              style: new TextStyle(color: Theme.of(context).accentColor, fontSize: 12.1)),
+              style: new TextStyle(
+                  color: Theme.of(context).accentColor, fontSize: 12.1)),
         ));
   }
 }
@@ -684,7 +702,8 @@ class DeliveryWindowState extends State<DeliveryWindow> {
               width: 300.0,
               child: new RaisedButton(
                 child: Text("Confirm Delivery Period",
-                    style: TextStyle(color: Theme.of(context).textSelectionColor)),
+                    style:
+                        TextStyle(color: Theme.of(context).textSelectionColor)),
                 color: Theme.of(context).accentColor,
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
@@ -773,7 +792,9 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                         Text(
                                           "Change address?",
                                           style: TextStyle(
-                                              color: Theme.of(context).accentColor, fontSize: 10),
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              fontSize: 10),
                                         ),
                                       ],
                                     )),
@@ -834,7 +855,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                 TextSpan(text: "Have a coupon code?"),
                                 TextSpan(
                                     text: " Enter here",
-                                    style: TextStyle(color: Theme.of(context).accentColor)),
+                                    style: TextStyle(
+                                        color: Theme.of(context).accentColor)),
                               ]))),
                           Padding(
                               padding: EdgeInsets.only(
@@ -883,7 +905,6 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                   children: <Widget>[
                                     headerText(string: "Total amount"),
                                     normalText("RM50")
-                              
                                   ])),
                           Padding(
                               padding: EdgeInsets.only(
@@ -899,8 +920,9 @@ class CustomerOrderState extends State<CustomerOrderPage> {
           Container(
             width: 300.0,
             child: new RaisedButton(
-              child:
-                  Text("Confirm Order", style: TextStyle(color: Theme.of(context).textSelectionColor)),
+              child: Text("Confirm Order",
+                  style:
+                      TextStyle(color: Theme.of(context).textSelectionColor)),
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -960,7 +982,9 @@ class CustomerOrderComplete extends StatelessWidget {
           Container(
             width: 300.0,
             child: new RaisedButton(
-              child: Text("Home", style: TextStyle(color: Theme.of(context).textSelectionColor)),
+              child: Text("Home",
+                  style:
+                      TextStyle(color: Theme.of(context).textSelectionColor)),
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -1047,11 +1071,11 @@ ListTile _order(String title, String subtitle) => ListTile(
         style: TextStyle(color: Colors.grey),
       ),
       onTap: () {
-                // Perform some action
-                BuildContext context;
-                                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => OrderDetailsPage()));
-              },
+        // Perform some action
+        BuildContext context;
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => OrderDetailsPage()));
+      },
     );
 
 // Transaction Tab - Screen 20 //
@@ -1603,57 +1627,62 @@ class InviteFriend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        appBar: new AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
-          leading: IconButton(
-            tooltip: "Previous page",
-            icon: new Icon(Icons.arrow_back, 
-            color: Theme.of(context).buttonColor),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon:
+              new Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        body: new Container(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              new Container(
-                  child: new Image.asset("assets/invite_friends.png")),
-              new Container(
-                child: new Text(
-                  "Enjoy Cashback & Perks",
-                  style: new TextStyle(color: Colors.white, fontSize: 15.1),
-                ),
+      ),
+      body: new Container(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            new Container(
+                child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: new Image.asset("assets/invite_friends.png"),
+            )),
+            new Container(
+              child: new Text(
+                "Enjoy Cashback & Perks",
+                style: new TextStyle(color: Colors.white, fontSize: 20.0),
               ),
-              new Container(
+            ),
+            new Container(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: new Text(
                   "Share your invite code an discover how you and your friends can get cashback",
                   textAlign: TextAlign.center,
-                  style: new TextStyle(color: Colors.white, fontSize: 12.1),
+                  style: new TextStyle(color: Colors.white, fontSize: 15.0),
                 ),
               ),
-              new Container(
-                child: new Center(
-                  child: new HowDoInvitesWork(),
-                ),
+            ),
+            new Container(
+              child: new Center(
+                child: new HowDoInvitesWork(),
               ),
-              new Container(
-                child: new Center(
-                  child: new InviteCode()),
-              ),
-            ],
-          ),          
+            ),
+            new Container(
+              child: new Center(child: new InviteCode()),
+            ),
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
+      ),
+      floatingActionButton: FloatingActionButton(
         child: Icon(Icons.share),
         // onPressed: _changeText,
         backgroundColor: Theme.of(context).accentColor,
         foregroundColor: Theme.of(context).textSelectionColor,
         onPressed: null,
       ),
-        );
+    );
   }
 }
 
@@ -1666,7 +1695,8 @@ class InviteCode extends StatelessWidget {
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(color: Colors.white30),
           child: new Text("saiful0145454",
-              style: new TextStyle(color: Theme.of(context).accentColor, fontSize: 12.1)),
+              style: new TextStyle(
+                  color: Theme.of(context).accentColor, fontSize: 12.1)),
         ));
   }
 }
