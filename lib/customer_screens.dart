@@ -480,7 +480,8 @@ class ConfirmOrder extends StatelessWidget {
                       ),
                       new Text(
                         "Delivery Address",
-                        style: new TextStyle(color: Colors.white),
+                        style:
+                            new TextStyle(color: Colors.white, fontSize: 14.0),
                       ),
                     ],
                   ),
@@ -495,7 +496,8 @@ class ConfirmOrder extends StatelessWidget {
                               padding: const EdgeInsets.all(15.0),
                               child: new Text(
                                 "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor",
-                                style: new TextStyle(color: Colors.white),
+                                style: new TextStyle(
+                                    color: Colors.white, fontSize: 14.0),
                               ),
                             ),
                           ],
@@ -540,9 +542,9 @@ class SelectDifferentAddress extends StatelessWidget {
         onTap: null, //<-to be connected to Register Alternate Address
         child: new Container(
           padding: const EdgeInsets.all(15),
-          child: new Text("Select a different address",
+          child: new Text("Select a different address?",
               style: new TextStyle(
-                  color: Theme.of(context).accentColor, fontSize: 12.1)),
+                  color: Theme.of(context).accentColor, fontSize: 14.0)),
         ));
   }
 }
@@ -794,7 +796,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                           style: TextStyle(
                                               color:
                                                   Theme.of(context).accentColor,
-                                              fontSize: 10),
+                                              fontSize: 14.0),
                                         ),
                                       ],
                                     )),
@@ -961,18 +963,19 @@ class CustomerOrderComplete extends StatelessWidget {
               new Text(
                 "Order Completed",
                 textAlign: TextAlign.center,
-                style: new TextStyle(fontSize: 12.3, color: Colors.white),
+                style: new TextStyle(fontSize: 20.0, color: Colors.white),
               ),
               new Text(
                 "You will receive notification updates as your order progresses",
                 textAlign: TextAlign.center,
-                style: new TextStyle(fontSize: 12.1, color: Colors.white),
+                style: new TextStyle(fontSize: 15.0, color: Colors.white),
               ),
               new Text(
                 "Order #292374",
                 textAlign: TextAlign.center,
                 style: new TextStyle(
-                  fontSize: 20.2,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ]), //to be made a var
@@ -1322,7 +1325,7 @@ class ProfileTabSettings extends StatelessWidget {
                 Expanded(
                   child: new Text(
                     "Personal details",
-                    style: new TextStyle(color: Colors.grey, fontSize: 16.5),
+                    style: new TextStyle(color: Colors.grey, fontSize: 16.0),
                   ),
                 ),
               ],
@@ -1332,7 +1335,7 @@ class ProfileTabSettings extends StatelessWidget {
                 Expanded(
                   child: new Text(
                     "Ahmad Saiful",
-                    style: new TextStyle(color: Colors.white, fontSize: 14.5),
+                    style: new TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
                 new IconButton(
@@ -1351,7 +1354,7 @@ class ProfileTabSettings extends StatelessWidget {
                 Expanded(
                   child: new Text(
                     "ahmadsaiful@gmail.com",
-                    style: new TextStyle(color: Colors.white, fontSize: 14.5),
+                    style: new TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
                 new IconButton(
@@ -1370,7 +1373,7 @@ class ProfileTabSettings extends StatelessWidget {
                 Expanded(
                   child: Text(
                     "+60172839056",
-                    style: TextStyle(color: Colors.white, fontSize: 14.5),
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
                 IconButton(
@@ -1651,7 +1654,7 @@ class InviteFriend extends StatelessWidget {
             new Container(
               child: new Text(
                 "Enjoy Cashback & Perks",
-                style: new TextStyle(color: Colors.white, fontSize: 20.0),
+                style: new TextStyle(color: Colors.white, fontSize: 18.0),
               ),
             ),
             new Container(
@@ -1696,7 +1699,7 @@ class InviteCode extends StatelessWidget {
           decoration: BoxDecoration(color: Colors.white30),
           child: new Text("saiful0145454",
               style: new TextStyle(
-                  color: Theme.of(context).accentColor, fontSize: 12.1)),
+                  color: Theme.of(context).accentColor, fontSize: 13.0)),
         ));
   }
 }
@@ -1728,7 +1731,7 @@ class HowDoInvitesWork extends StatelessWidget {
         "How do invites work?",
         style: new TextStyle(
             color: Colors.white,
-            fontSize: 12.1,
+            fontSize: 13.0,
             decoration: TextDecoration.underline),
       ),
     );
