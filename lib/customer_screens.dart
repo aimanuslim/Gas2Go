@@ -769,7 +769,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                           Container(
                             decoration: new BoxDecoration(
                                 border: Border(
-                                    bottom: BorderSide(color: Colors.grey))
+                                    bottom:
+                                        BorderSide(color: Color(0xff667FE6)))
                                 // new Border(top: BorderSide(
                                 //   color: Colors.grey
                                 // ))
@@ -804,13 +805,6 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                             ),
                           ),
                           Container(
-                            decoration: new BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(color: Colors.grey))
-                                // new Border(top: BorderSide(
-                                //   color: Colors.grey
-                                // ))
-                                ),
                             child: Padding(
                                 padding: EdgeInsets.all(15),
                                 child: Column(
@@ -867,7 +861,8 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            width: 1, color: Colors.black26))),
+                                            width: 1,
+                                            color: Color(0xff667FE6)))),
                               )),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 15),
@@ -897,7 +892,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                                     border: Border(
                                         bottom: BorderSide(
                                             width: 2,
-                                            color: Colors.blueAccent))),
+                                            color: Color(0xff667FE6)))),
                               )),
                           Padding(
                               padding: EdgeInsets.symmetric(horizontal: 15),
