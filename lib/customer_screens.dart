@@ -144,6 +144,27 @@ class CustomerHomePageState extends State<CustomerHomePage>
     _tabController = TabController(length: 2, vsync: this);
   }
 
+  double quantity = 0.0;
+  double newprice = 0.0;
+  double refillprice = 0.0;
+  
+  void subtractOrders(){
+    setState(() {
+     quantity = quantity - 1; 
+     newprice = 115 * quantity;
+     refillprice = 37 * quantity;
+    });
+  }
+
+  void addOrders(){
+    setState(() {
+     quantity = quantity + 1; 
+     newprice = 115 * quantity;
+     refillprice = 37 * quantity;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -200,8 +221,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 14 kg',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -217,8 +238,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 12 kg',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -239,8 +260,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       '-',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -250,14 +271,12 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                             color:
                                                 Theme.of(context).accentColor)),
                                     splashColor: Colors.amber,
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
+                                    onPressed: subtractOrders,
                                   ),
                                   Padding(
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 0),
-                                    child: Text("1",
+                                    child: Text("$quantity",
                                         style:
                                             new TextStyle(color: Colors.white)),
                                   ), //TODO: to replace with variable
@@ -265,8 +284,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       '+',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -276,9 +295,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                             color:
                                                 Theme.of(context).accentColor)),
                                     splashColor: Colors.amber,
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
+                                    onPressed: addOrders,
                                   )
                                 ],
                               ),
@@ -294,7 +311,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     style: new TextStyle(color: Colors.white70),
                                   ),
                                   Text(
-                                    "RM115.00",
+                                    "RM $newprice",
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
@@ -317,8 +334,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 14 kg',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -334,8 +351,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       'LPG 12 kg',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -356,8 +373,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     child: new Text(
                                       '-',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -367,21 +384,19 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                             color:
                                                 Theme.of(context).accentColor)),
                                     splashColor: Colors.amber,
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
+                                    onPressed: subtractOrders,
                                   ),
                                   Padding(
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 0),
                                       child: Text(
-                                          "1")), //TODO: to replace with variable
+                                          "$quantity")),
                                   new RaisedButton(
                                     child: new Text(
                                       '+',
                                       style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                        color: Theme.of(context)
+                                        .textSelectionColor),
                                     ),
                                     color: Theme.of(context).accentColor,
                                     elevation: 4.0,
@@ -391,9 +406,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                             color:
                                                 Theme.of(context).accentColor)),
                                     splashColor: Colors.amber,
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
+                                    onPressed: addOrders,
                                   )
                                 ],
                               ),
@@ -409,7 +422,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                     style: new TextStyle(color: Colors.white70),
                                   ),
                                   Text(
-                                    "RM37.00",
+                                    "RM $refillprice",
                                     style: new TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
