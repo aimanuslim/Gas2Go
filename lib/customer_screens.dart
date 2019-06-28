@@ -654,6 +654,15 @@ class DeliveryWindow extends StatefulWidget {
 }
 
 class DeliveryWindowState extends State<DeliveryWindow> {
+
+int deliveryPeriod = 0;
+
+void handleRadioValueChanged(int value){
+  setState(() {
+   deliveryPeriod = value;
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -683,6 +692,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
               child: ListView(
                 children: <Widget>[
                   RadioListTile(
+                    activeColor: Theme.of(context).accentColor,
                     title: Text(
                       "Deliver as soon as possible",
                       style: new TextStyle(color: Colors.white),
@@ -691,13 +701,12 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                       "Same-day deliveries are only applicable for orders made by 12pm. Orders made after 12pm will be delivered the following day.",
                       style: new TextStyle(color: Colors.white24),
                     ),
-                    value: "deliver-asap",
-                    groupValue: "deliver-asap",
-                    onChanged: (String value) {
-                      setState(() {});
-                    },
+                    value: 1,
+                    groupValue: deliveryPeriod,
+                    onChanged: handleRadioValueChanged
                   ),
                   RadioListTile(
+                    activeColor: Theme.of(context).accentColor,
                     title: Text(
                       "Deliver later",
                       style: new TextStyle(color: Colors.white),
@@ -706,9 +715,9 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                       "Typically customers will receive their orders within 2 days",
                       style: new TextStyle(color: Colors.white24),
                     ),
-                    value: "deliver-later",
-                    groupValue: "deliver-asap",
-                    onChanged: (String value) {},
+                    value: 2,
+                    groupValue: deliveryPeriod,
+                    onChanged: handleRadioValueChanged,
                   ),
                 ],
               ),
