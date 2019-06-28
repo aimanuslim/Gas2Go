@@ -10,9 +10,9 @@ class HomeNav extends StatelessWidget {
       title: 'EZGas',
       theme: ThemeData(
           brightness: Brightness.dark,
-          backgroundColor: Color(0xff45569B),
+          backgroundColor: Color(0xFF323E6E),
           primaryColor: Color(0xff45569B),
-          accentColor: Color(0xff2892D7),
+          accentColor: Color(0xFFFFA630),
           cardColor: Color(0xff3D4C8A),
           bottomAppBarColor: Color(0xff3D4C8A)),
       home: CustomerAppEntry(),
