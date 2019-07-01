@@ -150,29 +150,38 @@ class CustomerHomePageState extends State<CustomerHomePage>
     _thirdTabController = TabController(length: 2, vsync: this);
   }
 
-  double quantity = 0.0;
-  double newPrice14 = 0.0;
-  double newPrice12 = 0.0;
-  double refillPrice14 = 0.0;
-  double refillPrice12 = 0.0;
+  num quantity = 0;
+  num newPrice14 = 0.0;
+  num newPrice12 = 0.0;
+  num refillPrice14 = 0.0;
+  num refillPrice12 = 0.0;
 
   void subtractOrders() {
     setState(() {
       quantity = quantity - 1;
-      newPrice14 = 115 * quantity;
-      newPrice12 = 112 * quantity;
-      refillPrice14 = 37 * quantity;
-      refillPrice12 = 32 * quantity;
+      newPrice14 = 115.3 * quantity;
+      newPrice12 = 112.2 * quantity;
+      refillPrice14 = 37.8 * quantity;
+      refillPrice12 = 32.6 * quantity;
+      
+      if (quantity !=0){
+        return quantity -1;
+      }
+      
     });
   }
 
   void addOrders() {
     setState(() {
       quantity = quantity + 1;
-      newPrice14 = 115 * quantity;
-      newPrice12 = 112 * quantity;
-      refillPrice14 = 37 * quantity;
-      refillPrice12 = 32 * quantity;
+      newPrice14 = 115.3 * quantity;
+      newPrice12 = 112.2 * quantity;
+      refillPrice14 = 37.8 * quantity;
+      refillPrice12 = 32.6 * quantity;
+
+      if (quantity !=10){
+        return quantity +1;
+      }
     });
   }
 
