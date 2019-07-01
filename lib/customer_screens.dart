@@ -136,31 +136,43 @@ class CustomerHomePage extends StatefulWidget {
 }
 
 class CustomerHomePageState extends State<CustomerHomePage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   TabController _tabController;
+  TabController _secondTabController;
+  TabController _thirdTabController;
+
+
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _secondTabController = TabController(length: 2, vsync: this);
+    _thirdTabController = TabController(length: 2, vsync: this);
   }
 
   double quantity = 0.0;
-  double newPrice = 0.0;
-  double refillPrice = 0.0;
+  double newPrice14 = 0.0;
+  double newPrice12 = 0.0;
+  double refillPrice14 = 0.0;
+  double refillPrice12 = 0.0;
 
   void subtractOrders() {
     setState(() {
       quantity = quantity - 1;
-      newPrice = 115 * quantity;
-      refillPrice = 37 * quantity;
+      newPrice14 = 115 * quantity;
+      newPrice12 = 112 * quantity;
+      refillPrice14 = 37 * quantity;
+      refillPrice12 = 32 * quantity;
     });
   }
 
   void addOrders() {
     setState(() {
       quantity = quantity + 1;
-      newPrice = 115 * quantity;
-      refillPrice = 37 * quantity;
+      newPrice14 = 115 * quantity;
+      newPrice12 = 112 * quantity;
+      refillPrice14 = 37 * quantity;
+      refillPrice12 = 32 * quantity;
     });
   }
 
@@ -202,235 +214,435 @@ class CustomerHomePageState extends State<CustomerHomePage>
                     ],
                   ),
                   new Container(
-                    height: 200.0,
+                    height: 250.0,
                     alignment: Alignment.center,
                     child: new TabBarView(
                       controller: _tabController,
                       children: <Widget>[
-                        new Card(
-                          color: Theme.of(context).cardColor,
+                        new Container(
+                          //for NEW
+                          padding: EdgeInsets.all(15.0),
                           child: new Column(
                             children: <Widget>[
-                              new Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  new RaisedButton(
-                                    child: new Text(
-                                      'LPG 14 kg',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                              new TabBar(
+                                unselectedLabelColor: Colors.grey,
+                                indicator: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Theme.of(context).accentColor,
+                                ),
+                                controller: _secondTabController,
+                                tabs: <Widget>[
+                                  new Tab(
+                                    child: new Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          border: Border.all(
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              width: 1)),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text("LPG 14 Kg"),
+                                      ),
                                     ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    splashColor: Colors.blueGrey,
-                                    shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(30.0)),
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
                                   ),
-                                  new RaisedButton(
-                                    child: new Text(
-                                      'LPG 12 kg',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                  new Tab(
+                                    child: new Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          border: Border.all(
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              width: 1)),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text("LPG 12 Kg"),
+                                      ),
                                     ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(30.0)),
-                                    splashColor: Colors.amber,
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
                                   ),
                                 ],
                               ),
-                              new Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  new RaisedButton(
-                                    child: new Text(
-                                      '-',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                              new Container(
+                                height: 150.0,
+                                color: Theme.of(context).cardColor,
+                                child: new TabBarView(
+                                  controller: _secondTabController,
+                                  children: <Widget>[
+                                    Column(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: EdgeInsets.all(15.0),
+                                          child: new Row(
+                                            //for 14kg
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '-',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: subtractOrders,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 0),
+                                                child: Text("$quantity",
+                                                    style: new TextStyle(
+                                                        color: Colors.white)),
+                                              ), //TODO: to replace with variable
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '+',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: addOrders,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(15.0),
+                                        ),
+                                        new Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: <Widget>[
+                                            new Text(
+                                              "Total Amount",
+                                              style: new TextStyle(
+                                                  color: Colors.white70),
+                                            ),
+                                            new Text(
+                                              "RM $newPrice14",
+                                              style: new TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    shape: new CircleBorder(
-                                        side: BorderSide(
-                                            width: 0,
-                                            color:
-                                                Theme.of(context).accentColor)),
-                                    splashColor: Colors.amber,
-                                    onPressed: subtractOrders,
+                                    Column(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: EdgeInsets.all(15.0),
+                                          child: new Row(
+                                            //for 12kg
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '-',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: subtractOrders,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 0),
+                                                child: Text("$quantity",
+                                                    style: new TextStyle(
+                                                        color: Colors.white)),
+                                              ), //TODO: to replace with variable
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '+',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: addOrders,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(15.0),
+                                        ),
+                                        new Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: <Widget>[
+                                            new Text(
+                                              "Total Amount",
+                                              style: new TextStyle(
+                                                  color: Colors.white70),
+                                            ),
+                                            new Text(
+                                              "RM $newPrice12",
+                                              style: new TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ), //end of container for new
+
+                        new Container(
+                          //for REFILL
+                          padding: EdgeInsets.all(15.0),
+                          child: new Column(
+                            children: <Widget>[
+                              new TabBar(
+                                unselectedLabelColor: Colors.grey,
+                                indicator: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Theme.of(context).accentColor,
+                                ),
+                                controller: _thirdTabController,
+                                tabs: <Widget>[
+                                  new Tab(
+                                    child: new Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          border: Border.all(
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              width: 1)),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text("LPG 14 Kg"),
+                                      ),
+                                    ),
                                   ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 0),
-                                    child: Text("$quantity",
-                                        style:
-                                            new TextStyle(color: Colors.white)),
-                                  ), //TODO: to replace with variable
-                                  new RaisedButton(
-                                    child: new Text(
-                                      '+',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
+                                  new Tab(
+                                    child: new Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          border: Border.all(
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              width: 1)),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text("LPG 12 Kg"),
+                                      ),
                                     ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    shape: new CircleBorder(
-                                        side: BorderSide(
-                                            width: 0,
-                                            color:
-                                                Theme.of(context).accentColor)),
-                                    splashColor: Colors.amber,
-                                    onPressed: addOrders,
-                                  )
+                                  ),
                                 ],
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(15.0),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Text(
-                                    "Total Amount",
-                                    style: new TextStyle(color: Colors.white70),
-                                  ),
-                                  Text(
-                                    "RM $newPrice",
-                                    style: new TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+                              new Container(
+                                height: 150.0,
+                                color: Theme.of(context).cardColor,
+                                child: new TabBarView(
+                                  controller: _thirdTabController,
+                                  children: <Widget>[
+                                    Column(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: EdgeInsets.all(15.0),
+                                          child: new Row(
+                                            //for 14kg
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '-',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: subtractOrders,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 0),
+                                                child: Text("$quantity",
+                                                    style: new TextStyle(
+                                                        color: Colors.white)),
+                                              ), //TODO: to replace with variable
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '+',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: addOrders,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(15.0),
+                                        ),
+                                        new Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: <Widget>[
+                                            new Text(
+                                              "Total Amount",
+                                              style: new TextStyle(
+                                                  color: Colors.white70),
+                                            ),
+                                            new Text(
+                                              "RM $refillPrice14", //14kg
+                                              style: new TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: EdgeInsets.all(15.0),
+                                          child: new Row(
+                                            //for 12kg
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '-',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: subtractOrders,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 0),
+                                                child: Text("$quantity",
+                                                    style: new TextStyle(
+                                                        color: Colors.white)),
+                                              ), //TODO: to replace with variable
+                                              new RaisedButton(
+                                                child: new Text(
+                                                  '+',
+                                                  style: new TextStyle(
+                                                      color: Theme.of(context)
+                                                          .textSelectionColor),
+                                                ),
+                                                color: Theme.of(context)
+                                                    .accentColor,
+                                                elevation: 4.0,
+                                                shape: new CircleBorder(
+                                                    side: BorderSide(
+                                                        width: 0,
+                                                        color: Theme.of(context)
+                                                            .accentColor)),
+                                                splashColor: Colors.amber,
+                                                onPressed: addOrders,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(15.0),
+                                        ),
+                                        new Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: <Widget>[
+                                            new Text(
+                                              "Total Amount",
+                                              style: new TextStyle(
+                                                  color: Colors.white70),
+                                            ),
+                                            new Text(
+                                              "RM $refillPrice12", //12kg
+                                              style: new TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        new Card(
-                          color: Theme.of(context).cardColor,
-                          child: new Column(
-                            children: <Widget>[
-                              new Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  new RaisedButton(
-                                    child: new Text(
-                                      'LPG 14 kg',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
-                                    ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    splashColor: Colors.amber,
-                                    shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(30.0)),
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
-                                  ),
-                                  new RaisedButton(
-                                    child: new Text(
-                                      'LPG 12 kg',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
-                                    ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    shape: new RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(30.0)),
-                                    splashColor: Colors.amber,
-                                    onPressed: () {
-                                      // Perform some action
-                                    },
-                                  ),
-                                ],
-                              ),
-                              new Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  new RaisedButton(
-                                    child: new Text(
-                                      '-',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
-                                    ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    shape: new CircleBorder(
-                                        side: BorderSide(
-                                            width: 0,
-                                            color:
-                                                Theme.of(context).accentColor)),
-                                    splashColor: Colors.amber,
-                                    onPressed: subtractOrders,
-                                  ),
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 0),
-                                      child: Text("$quantity")),
-                                  new RaisedButton(
-                                    child: new Text(
-                                      '+',
-                                      style: new TextStyle(
-                                          color: Theme.of(context)
-                                              .textSelectionColor),
-                                    ),
-                                    color: Theme.of(context).accentColor,
-                                    elevation: 4.0,
-                                    shape: new CircleBorder(
-                                        side: BorderSide(
-                                            width: 0,
-                                            color:
-                                                Theme.of(context).accentColor)),
-                                    splashColor: Colors.amber,
-                                    onPressed: addOrders,
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(15.0),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Text(
-                                    "Total Amount",
-                                    style: new TextStyle(color: Colors.white70),
-                                  ),
-                                  Text(
-                                    "RM $refillPrice",
-                                    style: new TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ], //end of column for refill
                     ),
                   ),
                 ],
