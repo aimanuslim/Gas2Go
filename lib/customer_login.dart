@@ -256,7 +256,79 @@ class CustomerRegisterState extends State<CustomerRegisterPage> {
   }
 }
 
-//need screen 7a and 7b
+// screen 7a (7b is just a prompt)
+class CustomerRegisterAddressPage extends StatefulWidget {
+  @override
+  CustomerRegisterAddressState createState() => CustomerRegisterAddressState();
+}
+
+class CustomerRegisterAddressState extends State<CustomerRegisterAddressPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          title: Text('Register'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context, false),
+          ),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: focusText(
+                      "Please key in your full address for us to deliver the goods to you."),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.room),
+                      linkText("Automatically detect my location", null),
+                    ],
+                  ),
+                ),
+                createFormField("Address 1", null, false, null),
+                createFormField("Address 2", null, false, null),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Infinite width issue if not wrapped with expanded: https://github.com/flutter/flutter/issues/17036
+                    Expanded(
+                      child: createFormField("City", null, false, null),
+                    ),
+                    Expanded(
+                      child: createFormField("Postcode", (value) {
+                        if (!value.isEmpty &&
+                            (!isNumeric(value) || value.length != 10)) {
+                          return "Please enter a valid phone number.";
+                        }
+                      }, false, null),
+                    ),
+                  ],
+                ),
+                createFormField("State", null, false, null),
+                Row(
+                  children: <Widget>[
+                    Checkbox(value: false),
+                    focusText("Save this address")
+                  ],
+                ),
+                createFormField("Home", null, false,
+                    null) // may need just default value instead of a title for form
+              ],
+            ),
+            CommonProceedButton(text: "Complete Registration")
+          ],
+        ));
+  }
+}
+
 
 // screen 8
 class ForgotPasswordPage extends StatefulWidget {
