@@ -154,10 +154,10 @@ class CustomerHomePageState extends State<CustomerHomePage>
   }
 
   num quantity = 1;
-  num newPrice14 = 115.3;
-  num newPrice12 = 112.2;
-  num refillPrice14 = 37.8;
-  num refillPrice12 = 32.6;
+  num newPrice14 = 115.0; //
+  num newPrice12 = 111.2;
+  num refillPrice14 = 35.0;
+  num refillPrice12 = 31.2;
 
   void subtractOrders() {
     setState(() {
@@ -768,7 +768,7 @@ class ConfirmOrder extends StatelessWidget {
                     ),
                   ),
                 ),
-                new Container(
+                new Expanded(
                   child: new SelectDifferentAddress(),
                 ),
               ],
@@ -783,6 +783,7 @@ class ConfirmOrder extends StatelessWidget {
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
+              
               elevation: 50,
               onPressed: () {
                 // Perform some action
