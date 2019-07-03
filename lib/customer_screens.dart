@@ -467,7 +467,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                           child: new Column(
                             children: <Widget>[
                               new TabBar(
-                                unselectedLabelColor: Colors.grey,
+                                unselectedLabelColor: Color(0xff999999),
+                                labelColor: Color(0xff222222),
                                 indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   color: Theme.of(context).accentColor,
