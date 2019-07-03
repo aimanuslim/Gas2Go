@@ -153,7 +153,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
     _maxOrder = false;
   }
 
-  num quantity = 1;
+  num quantity = 2;
   num newPrice14 = 115.3;
   num newPrice12 = 112.2;
   num refillPrice14 = 37.8;
