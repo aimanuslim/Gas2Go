@@ -158,7 +158,6 @@ class CustomerHomePageState extends State<CustomerHomePage>
   num newPrice12 = 112.2;
   num refillPrice14 = 37.8;
   num refillPrice12 = 32.6;
-  
 
   void subtractOrders() {
     setState(() {
@@ -175,6 +174,10 @@ class CustomerHomePageState extends State<CustomerHomePage>
       if (quantity == 9){
         return _maxOrder = false;
       }
+
+      
+
+
     });
   }
 
@@ -193,6 +196,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
       if (quantity == 10){
         return _maxOrder = true;
       }
+
     });
   }
 
@@ -884,7 +888,7 @@ class DeliveryWindow extends StatefulWidget {
 }
 
 class DeliveryWindowState extends State<DeliveryWindow> {
-  int deliveryPeriod = 0;
+  int deliveryPeriod = 1;
 
   void handleRadioValueChanged(int value) {
     setState(() {
