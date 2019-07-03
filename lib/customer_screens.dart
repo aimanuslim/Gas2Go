@@ -265,7 +265,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                               width: 1)),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: Text("LPG 14 Kg"),
+                                        child: Text("LPG 14 kg"),
                                       ),
                                     ),
                                   ),
@@ -280,7 +280,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                               width: 1)),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: Text("LPG 12 Kg"),
+                                        child: Text("LPG 12 kg"),
                                       ),
                                     ),
                                   ),
@@ -485,7 +485,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                               width: 1)),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: Text("LPG 14 Kg"),
+                                        child: Text("LPG 14 kg"),
                                       ),
                                     ),
                                   ),
@@ -500,7 +500,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                               width: 1)),
                                       child: Align(
                                         alignment: Alignment.center,
-                                        child: Text("LPG 12 Kg"),
+                                        child: Text("LPG 12 kg"),
                                       ),
                                     ),
                                   ),
