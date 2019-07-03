@@ -166,18 +166,14 @@ class CustomerHomePageState extends State<CustomerHomePage>
       newPrice12 = 112.2 * quantity;
       refillPrice14 = 37.8 * quantity;
       refillPrice12 = 32.6 * quantity;
-      
-      if (quantity == 1){
+
+      if (quantity == 1) {
         return _minOrder = true;
       }
 
-      if (quantity == 9){
+      if (quantity == 9) {
         return _maxOrder = false;
       }
-
-      
-
-
     });
   }
 
@@ -189,14 +185,13 @@ class CustomerHomePageState extends State<CustomerHomePage>
       refillPrice14 = 37.8 * quantity;
       refillPrice12 = 32.6 * quantity;
 
-      if (quantity == 2){
+      if (quantity == 2) {
         return _minOrder = false;
       }
 
-      if (quantity == 10){
+      if (quantity == 10) {
         return _maxOrder = true;
       }
-
     });
   }
 
@@ -225,6 +220,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
               child: new Column(
                 children: <Widget>[
                   new TabBar(
+                    unselectedLabelColor: Color(0xff999999),
+                    labelColor: Theme.of(context).accentColor,
                     controller: _tabController,
                     indicatorColor: Theme.of(context).accentColor,
                     tabs: [
@@ -249,7 +246,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
                           child: new Column(
                             children: <Widget>[
                               new TabBar(
-                                unselectedLabelColor: Colors.grey,
+                                unselectedLabelColor: Color(0xff999999),
+                                labelColor: Color(0xff222222),
                                 indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   color: Theme.of(context).accentColor,
@@ -319,7 +317,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _minOrder ? null: subtractOrders,
+                                                onPressed: _minOrder
+                                                    ? null
+                                                    : subtractOrders,
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.symmetric(
@@ -344,7 +344,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _maxOrder? null: addOrders,
+                                                onPressed: _maxOrder
+                                                    ? null
+                                                    : addOrders,
                                               ),
                                             ],
                                           ),
@@ -396,7 +398,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _minOrder? null: subtractOrders,
+                                                onPressed: _minOrder
+                                                    ? null
+                                                    : subtractOrders,
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.symmetric(
@@ -421,7 +425,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _maxOrder? null: addOrders,
+                                                onPressed: _maxOrder
+                                                    ? null
+                                                    : addOrders,
                                               ),
                                             ],
                                           ),
@@ -531,7 +537,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _minOrder? null: subtractOrders,
+                                                onPressed: _minOrder
+                                                    ? null
+                                                    : subtractOrders,
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.symmetric(
@@ -556,7 +564,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _maxOrder? null: addOrders,
+                                                onPressed: _maxOrder
+                                                    ? null
+                                                    : addOrders,
                                               ),
                                             ],
                                           ),
@@ -608,7 +618,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _minOrder? null: subtractOrders,
+                                                onPressed: _minOrder
+                                                    ? null
+                                                    : subtractOrders,
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.symmetric(
@@ -633,7 +645,9 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                         color: Theme.of(context)
                                                             .accentColor)),
                                                 splashColor: Colors.amber,
-                                                onPressed: _maxOrder? null: addOrders,
+                                                onPressed: _maxOrder
+                                                    ? null
+                                                    : addOrders,
                                               ),
                                             ],
                                           ),
