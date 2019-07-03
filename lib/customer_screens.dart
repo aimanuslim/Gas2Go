@@ -1007,6 +1007,15 @@ class CustomerOrderState extends State<CustomerOrderPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Theme.of(context).buttonColor,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         centerTitle: true,
         title: new Text('Checkout'),
         backgroundColor: Theme.of(context).backgroundColor,
