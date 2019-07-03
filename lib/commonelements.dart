@@ -12,7 +12,6 @@ class CommonProceedButton extends StatelessWidget {
   const CommonProceedButton({
     Key key,
     this.text,
-
   }) : super(key: key);
 
   final String text;
@@ -22,8 +21,7 @@ class CommonProceedButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: RaisedButton(
-        child: Text(this.text,
-            style: TextStyle(color: Colors.white)),
+        child: Text(this.text, style: TextStyle(color: Colors.white)),
         color: Colors.blue,
         shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0)),
@@ -35,7 +33,6 @@ class CommonProceedButton extends StatelessWidget {
     );
   }
 }
-
 
 Widget getLine(
     {color: Colors.black87,
@@ -53,7 +50,7 @@ Widget getLine(
 }
 
 Widget createFormField(String placeholder, Function validation, bool isPassword,
-      TextEditingController controller) {
+    TextEditingController controller) {
   return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
@@ -70,11 +67,11 @@ Widget getOrderCard(context) {
   return Padding(
       padding: EdgeInsets.all(5),
       child: Container(
-        decoration: new BoxDecoration(border: Border.all(color: Colors.grey)
-            // new Border(top: BorderSide(
-            //   color: Colors.grey
-            // ))
-            ),
+        // decoration: new BoxDecoration(border: Border.all(color: Colors.grey)
+        //     // new Border(top: BorderSide(
+        //     //   color: Colors.grey
+        //     // ))
+        //     ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -89,18 +86,17 @@ Widget getOrderCard(context) {
                 ],
               ),
             ),
-            new FlatButton(
-              child: Icon(
-                Icons.cancel,
-                color: Colors.grey,
-              ),
-              color: Theme.of(context).cardColor,
-              onPressed: () {
-                // Perform some action
-              },
-            )
+            // new FlatButton(
+            //   child: Icon(
+            //     Icons.cancel,
+            //     color: Colors.grey,
+            //   ),
+            //   color: Theme.of(context).cardColor,
+            //   onPressed: () {
+            //     // Perform some action
+            //   },
+            // )
           ],
         ),
       ));
 }
-
