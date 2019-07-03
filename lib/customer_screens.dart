@@ -211,7 +211,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
             child: new ListTile(
               title: new Text(
                 'Select your LPG',
-                style: new TextStyle(color: Colors.white),
+                style: new TextStyle(color: Color(0xffCCCCCC), fontSize: 14.0),
               ),
             ),
           ),
@@ -743,7 +743,7 @@ class ConfirmOrder extends StatelessWidget {
                       new Text(
                         "Delivery Address",
                         style:
-                            new TextStyle(color: Colors.white, fontSize: 14.0),
+                            new TextStyle(color: Colors.white, fontSize: 16.0),
                       ),
                     ],
                   ),
@@ -783,7 +783,6 @@ class ConfirmOrder extends StatelessWidget {
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
-              
               elevation: 50,
               onPressed: () {
                 // Perform some action
