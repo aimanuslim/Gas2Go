@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gas2go/texts.dart';
 import 'commonelements.dart';
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeNav extends StatelessWidget {
   @override
@@ -1828,24 +1828,27 @@ class ProfileTabAboutUs extends StatelessWidget {
                 ],
               ),
             ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Visit our website",
-                    style: new TextStyle(color: Colors.white),
+            GestureDetector(
+              onTap: _launchWebsite,
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "Visit our website",
+                      style: new TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: null,
-                )
-              ],
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: _launchWebsite,
+                  )
+                ],
+              ),
             ),
             GestureDetector(
               // work on the onTap method
@@ -2050,15 +2053,21 @@ class ProfileTabAboutUs extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10.0),
                   child: new Row(
                     children: <Widget>[
-                      Icon(
-                        FontAwesomeIcons.facebookF,
-                        color: Theme.of(context).buttonColor,
+                      GestureDetector(
+                        onTap: _launchFacebook,
+                        child: Icon(
+                          FontAwesomeIcons.facebookF,
+                          color: Theme.of(context).buttonColor,
+                        ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: Icon(
-                          FontAwesomeIcons.instagram,
-                          color: Theme.of(context).buttonColor,
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: GestureDetector(
+                          onTap: _launchInstagram,
+                          child: Icon(
+                            FontAwesomeIcons.instagram,
+                            color: Theme.of(context).buttonColor,
+                          ),
                         ),
                       ),
                     ],
@@ -2070,6 +2079,36 @@ class ProfileTabAboutUs extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+_launchWebsite() async {
+  // edit the proper link once website has been created
+  const websiteURL = 'https://auxci.com/ezgas';
+  if (await canLaunch(websiteURL)) {
+    await launch(websiteURL);
+  } else {
+    throw 'Could not launch $websiteURL';
+  }
+}
+
+_launchFacebook() async {
+  // edit the proper link once IG account has been created
+  const facebookURL = 'https://facebook.com';
+  if (await canLaunch(facebookURL)) {
+    await launch(facebookURL);
+  } else {
+    throw 'Could not launch $facebookURL';
+  }
+}
+
+_launchInstagram() async {
+  // edit the proper link once IG account has been created
+  const instagramURL = 'https://instagram.com';
+  if (await canLaunch(instagramURL)) {
+    await launch(instagramURL);
+  } else {
+    throw 'Could not launch $instagramURL';
   }
 }
 
