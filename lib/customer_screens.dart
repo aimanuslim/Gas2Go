@@ -806,7 +806,10 @@ class SelectDifferentAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: null, //<-to be connected to Register Alternate Address
+        onTap: (){
+          Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => RegisterAlternateAddress()));
+        },
         child: new Container(
           padding: const EdgeInsets.all(15),
           child: new Text("Select a different address?",
@@ -876,7 +879,7 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
                 child: FlatButton(
                   color: Colors.grey,
                   textColor: Colors.white,
-                  onPressed: null,
+                  onPressed: () =>debugPrint("Hello"),
                   child: new Text(
                     "Add new address",
                     style: new TextStyle(fontSize: 12.3),
@@ -895,7 +898,7 @@ Widget createFormField(String placeholder, Function validation) {
       child: TextFormField(
         validator: validation,
         decoration: InputDecoration(labelText: placeholder),
-        maxLines: null,
+        maxLines: 20,
         autovalidate: true,
       ));
 }
@@ -1274,11 +1277,9 @@ class CustomerOrderComplete extends StatelessWidget {
                 child: new Icon(
                   Icons.check,
                   size: 100.0,
-                ),
-                
+                ), 
               ),
               
-              //new Image(image: null,), //to add image
 
               Container(
                 padding: EdgeInsets.all(20.0),
