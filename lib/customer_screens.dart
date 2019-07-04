@@ -806,9 +806,11 @@ class SelectDifferentAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: (){
-          Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => RegisterAlternateAddress()));
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => RegisterAlternateAddress()));
         },
         child: new Container(
           padding: const EdgeInsets.all(15),
@@ -849,46 +851,43 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
               color: Colors.white,
             ),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).backgroundColor,
         ),
+        backgroundColor: Theme.of(context).backgroundColor,
         body: new Container(
+            padding: EdgeInsets.all(20.0),
             child: new Column(children: <Widget>[
-          new Expanded(
-            child: SingleChildScrollView(
-              child: Form(
-                // key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    createFormField(
-                      "Address Line 1",
-                      () {},
+              new Expanded(
+                child: SingleChildScrollView(
+                  child: Form(
+                    //key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        // createFormField("Address Line 1",() {},),
+                        // createFormField("Address Line 2", () {}),
+                        // createFormField("City", () {}),
+                        // createFormField("Postcode", () {}),
+                        // createFormField("State", () {}),
+                      ],
                     ),
-                    createFormField("Address Line 2", () {}),
-                    createFormField("City", () {}),
-                    createFormField("Postcode", () {}),
-                    createFormField("State", () {}),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          new Center(
-            child: new Container(
-              child: new Center(
-                child: FlatButton(
-                  color: Colors.grey,
-                  textColor: Colors.white,
-                  onPressed: () =>debugPrint("Hello"),
-                  child: new Text(
-                    "Add new address",
-                    style: new TextStyle(fontSize: 12.3),
                   ),
                 ),
               ),
-            ),
-          )
-        ])));
+              new Container(
+                width: MediaQuery.of(context).size.width,
+                child: new RaisedButton(
+                  child: Text("Add new address",
+                      style: TextStyle(
+                          color: Theme.of(context).textSelectionColor)),
+                  color: Theme.of(context).accentColor,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  elevation: 50,
+                  onPressed: null,
+                ),
+              ),
+            ])));
   }
 }
 
@@ -1234,72 +1233,68 @@ class CustomerOrderComplete extends StatelessWidget {
       body: Container(
         color: Theme.of(context).backgroundColor,
         child: new Column(
-            children: <Widget>[
-              new Container(
-                height: 250.0,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
-                child: new Column(children: <Widget>[
-                  Container(
-                    //padding: EdgeInsets.all(20.0),
-                    child: new Text(
-                      "Order completed!",
-                      textAlign: TextAlign.center,
-                      style: new TextStyle(fontSize: 20.0, color: Colors.white),
-                    ),
+          children: <Widget>[
+            new Container(
+              height: 250.0,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
+              child: new Column(children: <Widget>[
+                Container(
+                  //padding: EdgeInsets.all(20.0),
+                  child: new Text(
+                    "Order completed!",
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 20.0, color: Colors.white),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(20.0),
-                    child: new Text(
-                      "You will receive notification updates as your order progresses",
-                      textAlign: TextAlign.center,
-                      style: new TextStyle(fontSize: 15.0, color: Colors.white),
-                    ),
-                  ),
-                  
-                  Container(
-                    child: new Text(
-                      "Order #292374",
-                      textAlign: TextAlign.center,
-                      style: new TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ), //to be made a var
-                ]),
-              ),
-                
-                
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 280.0,
-                child: new Icon(
-                  Icons.check,
-                  size: 100.0,
-                ), 
-              ),
-              
-
-              Container(
-                padding: EdgeInsets.all(20.0),
-                width: MediaQuery.of(context).size.width,
-                child: new RaisedButton(
-                  child: Text("Home",
-                      style:
-                          TextStyle(color: Theme.of(context).textSelectionColor)),
-                  color: Theme.of(context).accentColor,
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0)),
-                  elevation: 50,
-                  onPressed: () {
-                    // Perform some action
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeNav()));
-                  },
                 ),
-              )
-            ],
+                Container(
+                  padding: EdgeInsets.all(20.0),
+                  child: new Text(
+                    "You will receive notification updates as your order progresses",
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 15.0, color: Colors.white),
+                  ),
+                ),
+
+                Container(
+                  child: new Text(
+                    "Order #292374",
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ), //to be made a var
+              ]),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 280.0,
+              child: new Icon(
+                Icons.check,
+                size: 100.0,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(20.0),
+              width: MediaQuery.of(context).size.width,
+              child: new RaisedButton(
+                child: Text("Home",
+                    style:
+                        TextStyle(color: Theme.of(context).textSelectionColor)),
+                color: Theme.of(context).accentColor,
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0)),
+                elevation: 50,
+                onPressed: () {
+                  // Perform some action
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeNav()));
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -1555,7 +1550,29 @@ class ProfileTab extends StatelessWidget {
                     Icons.arrow_forward_ios,
                     color: Theme.of(context).buttonColor,
                   ),
-                  onPressed: null,
+                  onPressed: () {
+                    showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Feature not available'),
+                          content: const Text(
+                              'This feature will be made available in future updates!'),
+                          actions: <Widget>[
+                            FloatingActionButton(
+                              child: Icon(Icons.check),
+                              backgroundColor: Color(0xffFFA630),
+                              foregroundColor:
+                                  Color(0xff222222),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                 )
               ],
             ),
@@ -1767,8 +1784,11 @@ class ProfileTabAboutUs extends StatelessWidget {
                           title: Text('About Gas2Go'),
                           content: const Text('LoremIpsum Bla bla blablalbla'),
                           actions: <Widget>[
-                            FlatButton(
-                              child: Text('OK'),
+                            FloatingActionButton(
+                              child: Icon(Icons.check),
+                              backgroundColor: Color(0xffFFA630),
+                              foregroundColor:
+                                  Color(0xff222222),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
@@ -1804,8 +1824,11 @@ class ProfileTabAboutUs extends StatelessWidget {
                           title: Text('Please click on the link below'),
                           content: const Text('LoremIpsum Bla bla blablalbla'),
                           actions: <Widget>[
-                            FlatButton(
-                              child: Text('OK'),
+                            FloatingActionButton(
+                              child: Icon(Icons.check),
+                              backgroundColor: Color(0xffFFA630),
+                              foregroundColor:
+                                  Color(0xff222222),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
@@ -1841,8 +1864,11 @@ class ProfileTabAboutUs extends StatelessWidget {
                           title: Text('Our Privacy Policy'),
                           content: const Text('LoremIpsum Bla bla blablalbla'),
                           actions: <Widget>[
-                            FlatButton(
-                              child: Text('OK'),
+                            FloatingActionButton(
+                              child: Icon(Icons.check),
+                              backgroundColor: Color(0xffFFA630),
+                              foregroundColor:
+                                  Color(0xff222222),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
@@ -1878,8 +1904,11 @@ class ProfileTabAboutUs extends StatelessWidget {
                           title: Text('Terms and Conditions'),
                           content: const Text('LoremIpsum Bla bla blablalbla'),
                           actions: <Widget>[
-                            FlatButton(
-                              child: Text('OK'),
+                            FloatingActionButton(
+                              child: Icon(Icons.check),
+                              backgroundColor: Color(0xffFFA630),
+                              foregroundColor:
+                                  Color(0xff222222),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
