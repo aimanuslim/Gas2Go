@@ -775,7 +775,7 @@ class ConfirmOrder extends StatelessWidget {
             ),
           ),
           new Container(
-            width: 300.0,
+            width: MediaQuery.of(context).size.width,
             child: new RaisedButton(
               child: Text("Confirm Address",
                   style:
@@ -971,7 +971,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
               ),
             ),
             Container(
-              width: 300.0,
+              width: MediaQuery.of(context).size.width,
               child: new RaisedButton(
                 child: Text("Confirm Delivery Period",
                     style:
@@ -1194,7 +1194,7 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                 ],
               )),
           Container(
-            width: 300.0,
+            width: MediaQuery.of(context).size.width,
             child: new RaisedButton(
               child: Text("Confirm Order",
                   style:
@@ -1257,7 +1257,7 @@ class CustomerOrderComplete extends StatelessWidget {
           //new Image(image: null,), //to add image
 
           Container(
-            width: 300.0,
+            width: MediaQuery.of(context).size.width,
             child: new RaisedButton(
               child: Text("Home",
                   style:
@@ -1536,7 +1536,7 @@ class ProfileTab extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: new Text(
-                    "About Us",
+                    "About",
                     style: new TextStyle(color: Colors.white),
                   ),
                 ),
