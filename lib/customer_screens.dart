@@ -1563,8 +1563,7 @@ class ProfileTab extends StatelessWidget {
                             FloatingActionButton(
                               child: Icon(Icons.check),
                               backgroundColor: Color(0xffFFA630),
-                              foregroundColor:
-                                  Color(0xff222222),
+                              foregroundColor: Color(0xff222222),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
@@ -1733,12 +1732,9 @@ class ProfileTabSettings extends StatelessWidget {
 // Profile tab - screen 23
 
 class ProfileTabAboutUs extends StatelessWidget {
-
   // launchSite(){
   //   launch ('https://google.com');
   // }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -1767,47 +1763,70 @@ class ProfileTabAboutUs extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "About us",
-                    style: new TextStyle(
-                      color: Colors.white,
+            GestureDetector(
+              // work on the onTap method
+              onTap: () {
+                showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('About EZ Gas'),
+                        content: const Text('LoremIpsum Bla bla blablalbla'),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            child: Icon(Icons.check),
+                            backgroundColor: Color(0xffFFA630),
+                            foregroundColor: Color(0xff222222),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "About us",
+                      style: new TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('About Gas2Go'),
-                          content: const Text('LoremIpsum Bla bla blablalbla'),
-                          actions: <Widget>[
-                            FloatingActionButton(
-                              child: Icon(Icons.check),
-                              backgroundColor: Color(0xffFFA630),
-                              foregroundColor:
-                                  Color(0xff222222),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                )
-              ],
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('About Gas2Go'),
+                            content:
+                                const Text('LoremIpsum Bla bla blablalbla'),
+                            actions: <Widget>[
+                              FloatingActionButton(
+                                child: Icon(Icons.check),
+                                backgroundColor: Color(0xffFFA630),
+                                foregroundColor: Color(0xff222222),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
             new Row(
               children: <Widget>[
@@ -1828,128 +1847,197 @@ class ProfileTabAboutUs extends StatelessWidget {
                 )
               ],
             ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Privacy Policy",
-                    style: new TextStyle(color: Colors.white),
+            GestureDetector(
+              // work on the onTap method
+              onTap: () {
+                showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Privacy Policy'),
+                        content: const Text('LoremIpsum Bla bla blablalbla'),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            child: Icon(Icons.check),
+                            backgroundColor: Color(0xffFFA630),
+                            foregroundColor: Color(0xff222222),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "Privacy Policy",
+                      style: new TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Our Privacy Policy'),
-                          content: const Text('LoremIpsum Bla bla blablalbla'),
-                          actions: <Widget>[
-                            FloatingActionButton(
-                              child: Icon(Icons.check),
-                              backgroundColor: Color(0xffFFA630),
-                              foregroundColor:
-                                  Color(0xff222222),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                )
-              ],
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Our Privacy Policy'),
+                            content:
+                                const Text('LoremIpsum Bla bla blablalbla'),
+                            actions: <Widget>[
+                              FloatingActionButton(
+                                child: Icon(Icons.check),
+                                backgroundColor: Color(0xffFFA630),
+                                foregroundColor: Color(0xff222222),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Terms & Conditions",
-                    style: new TextStyle(color: Colors.white),
+            GestureDetector(
+              // work on the onTap method
+              onTap: () {
+                showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Terms & Conditions'),
+                        content: const Text('LoremIpsum Bla bla blablalbla'),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            child: Icon(Icons.check),
+                            backgroundColor: Color(0xffFFA630),
+                            foregroundColor: Color(0xff222222),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "Terms & Conditions",
+                      style: new TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Terms and Conditions'),
-                          content: const Text('LoremIpsum Bla bla blablalbla'),
-                          actions: <Widget>[
-                            FloatingActionButton(
-                              child: Icon(Icons.check),
-                              backgroundColor: Color(0xffFFA630),
-                              foregroundColor:
-                                  Color(0xff222222),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                )
-              ],
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Terms and Conditions'),
+                            content:
+                                const Text('LoremIpsum Bla bla blablalbla'),
+                            actions: <Widget>[
+                              FloatingActionButton(
+                                child: Icon(Icons.check),
+                                backgroundColor: Color(0xffFFA630),
+                                foregroundColor: Color(0xff222222),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "FAQ",
-                    style: new TextStyle(color: Colors.white),
+            GestureDetector(
+              // work on the onTap method
+              onTap: () {
+                showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('FAQ'),
+                        content: const Text('LoremIpsum Bla bla blablalbla'),
+                        actions: <Widget>[
+                          FloatingActionButton(
+                            child: Icon(Icons.check),
+                            backgroundColor: Color(0xffFFA630),
+                            foregroundColor: Color(0xff222222),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      );
+                    });
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "FAQ",
+                      style: new TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Frequently Asked Questions'),
-                          content: const Text('LoremIpsum Bla bla blablalbla'),
-                          actions: <Widget>[
-                            FloatingActionButton(
-                              child: Icon(Icons.check),
-                              backgroundColor: Color(0xffFFA630),
-                              foregroundColor:
-                                  Color(0xff222222),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                )
-              ],
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Frequently Asked Questions'),
+                            content:
+                                const Text('LoremIpsum Bla bla blablalbla'),
+                            actions: <Widget>[
+                              FloatingActionButton(
+                                child: Icon(Icons.check),
+                                backgroundColor: Color(0xffFFA630),
+                                foregroundColor: Color(0xff222222),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 50, 0, 0) ,
+              padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
             ),
             new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
