@@ -151,21 +151,27 @@ class CustomerHomePageState extends State<CustomerHomePage>
     _thirdTabController = TabController(length: 2, vsync: this);
     _minOrder = true;
     _maxOrder = false;
+    
   }
 
   num quantity = 1;
-  num newPrice14 = 115.0; //
-  num newPrice12 = 111.2;
-  num refillPrice14 = 35.0;
-  num refillPrice12 = 31.2;
+  double basePriceNew14 = 115.0;
+  double basePriceNew12 = 111.2;
+  double basePriceRefill14 = 35.0;
+  double basePriceRefill12 = 31.2;
+  
+  double newPrice14 = 115.0; 
+  double newPrice12 = 111.2;
+  double refillPrice14 = 35.0;
+  double refillPrice12 = 31.2;
 
   void subtractOrders() {
     setState(() {
       quantity = quantity - 1;
-      newPrice14 = 115.3 * quantity;
-      newPrice12 = 112.2 * quantity;
-      refillPrice14 = 37.8 * quantity;
-      refillPrice12 = 32.6 * quantity;
+      newPrice14 = basePriceNew14 * quantity;
+      newPrice12 = basePriceNew12 * quantity;
+      refillPrice14 = basePriceRefill14 * quantity;
+      refillPrice12 = basePriceRefill12 * quantity;
 
       if (quantity == 1) {
         return _minOrder = true;
@@ -180,10 +186,10 @@ class CustomerHomePageState extends State<CustomerHomePage>
   void addOrders() {
     setState(() {
       quantity = quantity + 1;
-      newPrice14 = 115.3 * quantity;
-      newPrice12 = 112.2 * quantity;
-      refillPrice14 = 37.8 * quantity;
-      refillPrice12 = 32.6 * quantity;
+      newPrice14 = basePriceNew14 * quantity;
+      newPrice12 = basePriceNew12 * quantity;
+      refillPrice14 = basePriceRefill14 * quantity;
+      refillPrice12 = basePriceRefill12 * quantity;
 
       if (quantity == 2) {
         return _minOrder = false;
@@ -364,7 +370,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                   color: Colors.white70),
                                             ),
                                             new Text(
-                                              "RM $newPrice14",
+                                              "RM ${newPrice14.toStringAsFixed(2)}",
                                               style: new TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold),
@@ -445,7 +451,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                   color: Colors.white70),
                                             ),
                                             new Text(
-                                              "RM $newPrice12",
+                                              "RM ${newPrice12.toStringAsFixed(2)}",
                                               style: new TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold),
@@ -585,7 +591,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                   color: Colors.white70),
                                             ),
                                             new Text(
-                                              "RM $refillPrice14", //14kg
+                                              "RM ${refillPrice14.toStringAsFixed(2)}", //14kg
                                               style: new TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold),
@@ -666,7 +672,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
                                                   color: Colors.white70),
                                             ),
                                             new Text(
-                                              "RM $refillPrice12", //12kg
+                                              "RM ${refillPrice12.toStringAsFixed(2)}", //12kg
                                               style: new TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold),
