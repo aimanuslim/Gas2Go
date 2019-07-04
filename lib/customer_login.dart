@@ -315,7 +315,10 @@ class CustomerRegisterAddressState extends State<CustomerRegisterAddressPage> {
                 createFormField("State", null, false, null),
                 Row(
                   children: <Widget>[
-                    Checkbox(value: false),
+                    Checkbox(
+                      value: false,
+                      onChanged: (bool value) {},
+                    ),
                     focusText("Save this address")
                   ],
                 ),
@@ -328,7 +331,6 @@ class CustomerRegisterAddressState extends State<CustomerRegisterAddressPage> {
         ));
   }
 }
-
 
 // screen 8
 class ForgotPasswordPage extends StatefulWidget {

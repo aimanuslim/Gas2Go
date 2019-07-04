@@ -151,7 +151,6 @@ class CustomerHomePageState extends State<CustomerHomePage>
     _thirdTabController = TabController(length: 2, vsync: this);
     _minOrder = true;
     _maxOrder = false;
-    
   }
 
   num quantity = 1;
@@ -159,8 +158,8 @@ class CustomerHomePageState extends State<CustomerHomePage>
   double basePriceNew12 = 111.2;
   double basePriceRefill14 = 35.0;
   double basePriceRefill12 = 31.2;
-  
-  double newPrice14 = 115.0; 
+
+  double newPrice14 = 115.0;
   double newPrice12 = 111.2;
   double refillPrice14 = 35.0;
   double refillPrice12 = 31.2;
@@ -1730,7 +1729,7 @@ class ProfileTabAboutUs extends StatelessWidget {
           },
         ),
         title: new Text(
-          "About EZGas",
+          "About",
           style: new TextStyle(
             color: Colors.white,
           ),
