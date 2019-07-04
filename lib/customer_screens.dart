@@ -1228,57 +1228,79 @@ class CustomerOrderState extends State<CustomerOrderPage> {
 class CustomerOrderComplete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: 400.0,
-      width: 300.0,
-      decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            height: 550.0,
-            width: 300.0,
-            padding: EdgeInsets.all(50.0),
-            child: new Column(children: <Widget>[
-              new Text(
-                "Order Completed",
-                textAlign: TextAlign.center,
-                style: new TextStyle(fontSize: 20.0, color: Colors.white),
+    return Scaffold(
+      body: Container(
+        color: Theme.of(context).backgroundColor,
+        child: new Column(
+            children: <Widget>[
+              new Container(
+                height: 250.0,
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
+                child: new Column(children: <Widget>[
+                  Container(
+                    //padding: EdgeInsets.all(20.0),
+                    child: new Text(
+                      "Order completed!",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(fontSize: 20.0, color: Colors.white),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(20.0),
+                    child: new Text(
+                      "You will receive notification updates as your order progresses",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(fontSize: 15.0, color: Colors.white),
+                    ),
+                  ),
+                  
+                  Container(
+                    child: new Text(
+                      "Order #292374",
+                      textAlign: TextAlign.center,
+                      style: new TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ), //to be made a var
+                ]),
               ),
-              new Text(
-                "You will receive notification updates as your order progresses",
-                textAlign: TextAlign.center,
-                style: new TextStyle(fontSize: 15.0, color: Colors.white),
-              ),
-              new Text(
-                "Order #292374",
-                textAlign: TextAlign.center,
-                style: new TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
+                
+                
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 280.0,
+                child: new Icon(
+                  Icons.check,
+                  size: 100.0,
                 ),
+                
               ),
-            ]), //to be made a var
-          ),
-          //new Image(image: null,), //to add image
+              
+              //new Image(image: null,), //to add image
 
-          Container(
-            width: MediaQuery.of(context).size.width,
-            child: new RaisedButton(
-              child: Text("Home",
-                  style:
-                      TextStyle(color: Theme.of(context).textSelectionColor)),
-              color: Theme.of(context).accentColor,
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0)),
-              elevation: 50,
-              onPressed: () {
-                // Perform some action
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeNav()));
-              },
-            ),
-          )
-        ],
+              Container(
+                padding: EdgeInsets.all(20.0),
+                width: MediaQuery.of(context).size.width,
+                child: new RaisedButton(
+                  child: Text("Home",
+                      style:
+                          TextStyle(color: Theme.of(context).textSelectionColor)),
+                  color: Theme.of(context).accentColor,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0)),
+                  elevation: 50,
+                  onPressed: () {
+                    // Perform some action
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeNav()));
+                  },
+                ),
+              )
+            ],
+        ),
       ),
     );
   }
