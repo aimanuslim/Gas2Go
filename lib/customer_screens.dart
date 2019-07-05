@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gas2go/texts.dart';
 import 'commonelements.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share/share.dart';
 
 class HomeNav extends StatelessWidget {
   @override
@@ -833,7 +834,6 @@ class RegisterAlternateAddress extends StatefulWidget {
 class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
   final _formKey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -868,7 +868,10 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        createFormField("Address Line 1",() {},),
+                        createFormField(
+                          "Address Line 1",
+                          () {},
+                        ),
                         createFormField("Address Line 2", () {}),
                         createFormField("City", () {}),
                         createFormField("Postcode", () {}),
@@ -1615,12 +1618,12 @@ class ProfileTab extends StatelessWidget {
 
 class ProfileTabSettings extends StatefulWidget {
   @override
-  _ProfileTabSettingsState createState(){
+  _ProfileTabSettingsState createState() {
     return _ProfileTabSettingsState();
   }
 }
 
-class _ProfileTabSettingsState extends State<ProfileTabSettings>{
+class _ProfileTabSettingsState extends State<ProfileTabSettings> {
   final nameController = TextEditingController();
   String name = 'Ahmad Saiful';
   String email = 'ahmadsaiful@gmail.com';
@@ -1672,15 +1675,15 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings>{
                   ),
                 ),
                 new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.edit,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    _valueFromEditFormName(context);}
-                )
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.edit,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      _valueFromEditFormName(context);
+                    })
               ],
             ),
             new Row(
@@ -1698,7 +1701,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings>{
                     Icons.edit,
                     color: Theme.of(context).buttonColor,
                   ),
-                  onPressed: (){
+                  onPressed: () {
                     _valueFromEditFormEmail(context);
                   },
                 )
@@ -1713,15 +1716,15 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings>{
                   ),
                 ),
                 IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.edit,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed:(){ _valueFromEditFormPhone(context);
-                  }
-                )
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.edit,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      _valueFromEditFormPhone(context);
+                    })
               ],
             ),
             Padding(
@@ -1750,48 +1753,42 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings>{
     );
   }
 
-  void _valueFromEditFormName (BuildContext context) async {
+  void _valueFromEditFormName(BuildContext context) async {
     final resultName = await Navigator.push(
-      context, MaterialPageRoute(builder: (context) => EditFormName())
-    );
+        context, MaterialPageRoute(builder: (context) => EditFormName()));
 
-    setState((){
+    setState(() {
       name = resultName;
     });
   }
 
-  void _valueFromEditFormEmail (BuildContext context) async {
+  void _valueFromEditFormEmail(BuildContext context) async {
     final resultEmail = await Navigator.push(
-      context, MaterialPageRoute(builder: (context) => EditFormEmail())
-    );
+        context, MaterialPageRoute(builder: (context) => EditFormEmail()));
 
-    setState((){
+    setState(() {
       email = resultEmail;
     });
   }
 
-  void _valueFromEditFormPhone (BuildContext context) async {
+  void _valueFromEditFormPhone(BuildContext context) async {
     final resultPhone = await Navigator.push(
-      context, MaterialPageRoute(builder: (context) => EditFormPhone())
-    );
+        context, MaterialPageRoute(builder: (context) => EditFormPhone()));
 
-    setState((){
+    setState(() {
       phone = resultPhone;
     });
   }
-
-
-
 }
 
 class EditFormName extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return EditFormNameState();
-      }
-    }
-    
-class EditFormNameState extends State<EditFormName>{
+  }
+}
+
+class EditFormNameState extends State<EditFormName> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
 
@@ -1811,53 +1808,50 @@ class EditFormNameState extends State<EditFormName>{
       ),
       body: new Container(
         padding: EdgeInsets.all(20.0),
-              height: 400.0,
-              child: new Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    controller: nameController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Enter some text";
-                      }
-                      return null;
+        height: 400.0,
+        child: new Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                  controller: nameController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter some text";
                     }
-                  ),
-                
-                ],
-              ),
-    ),
-            ),
-            floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.arrow_forward),                
-                backgroundColor: Theme.of(context).accentColor,
-                foregroundColor: Theme.of(context).textSelectionColor,
-                onPressed: (){
-                  if (_formKey.currentState.validate()){
-                    return _sendNameBack(context);
-                  }
-                },
-              ),
-        );
+                    return null;
+                  }),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        backgroundColor: Theme.of(context).accentColor,
+        foregroundColor: Theme.of(context).textSelectionColor,
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            return _sendNameBack(context);
+          }
+        },
+      ),
+    );
   }
 
-  void _sendNameBack (BuildContext context) {
+  void _sendNameBack(BuildContext context) {
     String nameToSendBack = nameController.text;
     Navigator.pop(context, nameToSendBack);
-  } 
+  }
 }
-
 
 class EditFormEmail extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return EditFormEmailState();
-      }
-    }
-    
-class EditFormEmailState extends State<EditFormEmail>{
+  }
+}
+
+class EditFormEmailState extends State<EditFormEmail> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
@@ -1877,39 +1871,37 @@ class EditFormEmailState extends State<EditFormEmail>{
       ),
       body: new Container(
         padding: EdgeInsets.all(20.0),
-              height: 400.0,
-              child: new Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    controller: emailController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Enter email";
-                      }
-                      return null;
+        height: 400.0,
+        child: new Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                  controller: emailController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter email";
                     }
-                  ),
-                
-                ],
-              ),
-    ),
-            ),
-            floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.arrow_forward),                
-                backgroundColor: Theme.of(context).accentColor,
-                foregroundColor: Theme.of(context).textSelectionColor,
-                onPressed: (){
-                  if (_formKey.currentState.validate()){
-                    return _sendEmailBack(context);
-                  }
-                },
-              ),
-        );
+                    return null;
+                  }),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        backgroundColor: Theme.of(context).accentColor,
+        foregroundColor: Theme.of(context).textSelectionColor,
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            return _sendEmailBack(context);
+          }
+        },
+      ),
+    );
   }
 
-  void _sendEmailBack (BuildContext context) {
+  void _sendEmailBack(BuildContext context) {
     String emailToSendBack = emailController.text;
     Navigator.pop(context, emailToSendBack);
   }
@@ -1919,10 +1911,10 @@ class EditFormPhone extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return EditFormPhoneState();
-      }
-    }
-    
-class EditFormPhoneState extends State<EditFormPhone>{
+  }
+}
+
+class EditFormPhoneState extends State<EditFormPhone> {
   final _formKey = GlobalKey<FormState>();
   final phoneController = TextEditingController();
 
@@ -1942,52 +1934,45 @@ class EditFormPhoneState extends State<EditFormPhone>{
       ),
       body: new Container(
         padding: EdgeInsets.all(20.0),
-              height: 400.0,
-              child: new Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    controller: phoneController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Enter phone number";
-                      }
-                      return null;
+        height: 400.0,
+        child: new Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                  controller: phoneController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter phone number";
                     }
-                  ),
-                
-                ],
-              ),
-    ),
-            ),
-            floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.arrow_forward),                
-                backgroundColor: Theme.of(context).accentColor,
-                foregroundColor: Theme.of(context).textSelectionColor,
-                onPressed: (){
-                  if (_formKey.currentState.validate()){
-                    return _sendPhoneBack(context);
-                  }
-                },
-              ),
-        );
+                    return null;
+                  }),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        backgroundColor: Theme.of(context).accentColor,
+        foregroundColor: Theme.of(context).textSelectionColor,
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            return _sendPhoneBack(context);
+          }
+        },
+      ),
+    );
   }
 
-  void _sendPhoneBack (BuildContext context) {
+  void _sendPhoneBack(BuildContext context) {
     String phoneToSendBack = phoneController.text;
     Navigator.pop(context, phoneToSendBack);
   }
 }
 
-
-
-
-
 // Profile tab - screen 23
 
 class ProfileTabAboutUs extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -2400,7 +2385,7 @@ class InviteFriend extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: new Text(
-                  "Share your invite code an discover how you and your friends can get cashback",
+                  "Share your invite code and discover how you and your friends can get cashback",
                   textAlign: TextAlign.center,
                   style: new TextStyle(color: Colors.white, fontSize: 15.0),
                 ),
@@ -2418,12 +2403,15 @@ class InviteFriend extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.share),
-        // onPressed: _changeText,
-        backgroundColor: Theme.of(context).accentColor,
-        foregroundColor: Theme.of(context).textSelectionColor,
-        onPressed: null,
-      ),
+          child: Icon(Icons.share),
+          // onPressed: _changeText,
+          backgroundColor: Theme.of(context).accentColor,
+          foregroundColor: Theme.of(context).textSelectionColor,
+          onPressed: () {
+            final RenderBox box = context.findRenderObject();
+            Share.share('Order cooking gas from EZ Gas!',
+                sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+          }),
     );
   }
 }
