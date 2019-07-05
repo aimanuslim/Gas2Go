@@ -870,12 +870,12 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
                       children: <Widget>[
                         createFormField(
                           "Address Line 1",
-                          () {},
+                          (value) {},
                         ),
-                        createFormField("Address Line 2", () {}),
-                        createFormField("City", () {}),
-                        createFormField("Postcode", () {}),
-                        createFormField("State", () {}),
+                        createFormField("Address Line 2", (value) {}),
+                        createFormField("City", (value) {}),
+                        createFormField("Postcode", (value) {}),
+                        createFormField("State", (value) {}),
                       ],
                     ),
                   ),
