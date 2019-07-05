@@ -831,6 +831,9 @@ class RegisterAlternateAddress extends StatefulWidget {
 }
 
 class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
+  final _formKey = GlobalKey<FormState>();
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -861,15 +864,15 @@ class _RegisterAlternateAddressState extends State<RegisterAlternateAddress> {
               new Expanded(
                 child: SingleChildScrollView(
                   child: Form(
-                    //key: _formKey,
+                    key: _formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        // createFormField("Address Line 1",() {},),
-                        // createFormField("Address Line 2", () {}),
-                        // createFormField("City", () {}),
-                        // createFormField("Postcode", () {}),
-                        // createFormField("State", () {}),
+                        createFormField("Address Line 1",() {},),
+                        createFormField("Address Line 2", () {}),
+                        createFormField("City", () {}),
+                        createFormField("Postcode", () {}),
+                        createFormField("State", () {}),
                       ],
                     ),
                   ),
@@ -1610,7 +1613,19 @@ class ProfileTab extends StatelessWidget {
 
 // Profile tab - screen 22
 
-class ProfileTabSettings extends StatelessWidget {
+class ProfileTabSettings extends StatefulWidget {
+  @override
+  _ProfileTabSettingsState createState(){
+    return _ProfileTabSettingsState();
+  }
+}
+
+class _ProfileTabSettingsState extends State<ProfileTabSettings>{
+  final nameController = TextEditingController();
+  String name = 'Ahmad Saiful';
+  String email = 'ahmadsaiful@gmail.com';
+  String phone = '017xxxxxxx';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1652,7 +1667,7 @@ class ProfileTabSettings extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: new Text(
-                    "Ahmad Saiful",
+                    name,
                     style: new TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
@@ -1663,7 +1678,8 @@ class ProfileTabSettings extends StatelessWidget {
                     Icons.edit,
                     color: Theme.of(context).buttonColor,
                   ),
-                  onPressed: null,
+                  onPressed: () {
+                    _valueFromEditFormName(context);}
                 )
               ],
             ),
@@ -1671,7 +1687,7 @@ class ProfileTabSettings extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: new Text(
-                    "ahmadsaiful@gmail.com",
+                    email,
                     style: new TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
@@ -1682,7 +1698,9 @@ class ProfileTabSettings extends StatelessWidget {
                     Icons.edit,
                     color: Theme.of(context).buttonColor,
                   ),
-                  onPressed: null,
+                  onPressed: (){
+                    _valueFromEditFormEmail(context);
+                  },
                 )
               ],
             ),
@@ -1690,7 +1708,7 @@ class ProfileTabSettings extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    "+60172839056",
+                    phone,
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
@@ -1701,9 +1719,13 @@ class ProfileTabSettings extends StatelessWidget {
                     Icons.edit,
                     color: Theme.of(context).buttonColor,
                   ),
-                  onPressed: null,
+                  onPressed:(){ _valueFromEditFormPhone(context);
+                  }
                 )
               ],
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1727,14 +1749,244 @@ class ProfileTabSettings extends StatelessWidget {
       ),
     );
   }
+
+  void _valueFromEditFormName (BuildContext context) async {
+    final resultName = await Navigator.push(
+      context, MaterialPageRoute(builder: (context) => EditFormName())
+    );
+
+    setState((){
+      name = resultName;
+    });
+  }
+
+  void _valueFromEditFormEmail (BuildContext context) async {
+    final resultEmail = await Navigator.push(
+      context, MaterialPageRoute(builder: (context) => EditFormEmail())
+    );
+
+    setState((){
+      email = resultEmail;
+    });
+  }
+
+  void _valueFromEditFormPhone (BuildContext context) async {
+    final resultPhone = await Navigator.push(
+      context, MaterialPageRoute(builder: (context) => EditFormPhone())
+    );
+
+    setState((){
+      phone = resultPhone;
+    });
+  }
+
+
+
 }
+
+class EditFormName extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return EditFormNameState();
+      }
+    }
+    
+class EditFormNameState extends State<EditFormName>{
+  final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+
+  // @override
+  // void dispose(){
+  //   nameController.dispose();
+  //   super.dispose();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        title: new Text("Edit Name"),
+      ),
+      body: new Container(
+        padding: EdgeInsets.all(20.0),
+              height: 400.0,
+              child: new Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: nameController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Enter some text";
+                      }
+                      return null;
+                    }
+                  ),
+                
+                ],
+              ),
+    ),
+            ),
+            floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.arrow_forward),                
+                backgroundColor: Theme.of(context).accentColor,
+                foregroundColor: Theme.of(context).textSelectionColor,
+                onPressed: (){
+                  if (_formKey.currentState.validate()){
+                    return _sendNameBack(context);
+                  }
+                },
+              ),
+        );
+  }
+
+  void _sendNameBack (BuildContext context) {
+    String nameToSendBack = nameController.text;
+    Navigator.pop(context, nameToSendBack);
+  } 
+}
+
+
+class EditFormEmail extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return EditFormEmailState();
+      }
+    }
+    
+class EditFormEmailState extends State<EditFormEmail>{
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+
+  // @override
+  // void dispose(){
+  //   nameController.dispose();
+  //   super.dispose();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        title: new Text("Edit Email"),
+      ),
+      body: new Container(
+        padding: EdgeInsets.all(20.0),
+              height: 400.0,
+              child: new Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: emailController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Enter email";
+                      }
+                      return null;
+                    }
+                  ),
+                
+                ],
+              ),
+    ),
+            ),
+            floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.arrow_forward),                
+                backgroundColor: Theme.of(context).accentColor,
+                foregroundColor: Theme.of(context).textSelectionColor,
+                onPressed: (){
+                  if (_formKey.currentState.validate()){
+                    return _sendEmailBack(context);
+                  }
+                },
+              ),
+        );
+  }
+
+  void _sendEmailBack (BuildContext context) {
+    String emailToSendBack = emailController.text;
+    Navigator.pop(context, emailToSendBack);
+  }
+}
+
+class EditFormPhone extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return EditFormPhoneState();
+      }
+    }
+    
+class EditFormPhoneState extends State<EditFormPhone>{
+  final _formKey = GlobalKey<FormState>();
+  final phoneController = TextEditingController();
+
+  // @override
+  // void dispose(){
+  //   nameController.dispose();
+  //   super.dispose();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        title: new Text("Edit Phone Number"),
+      ),
+      body: new Container(
+        padding: EdgeInsets.all(20.0),
+              height: 400.0,
+              child: new Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: phoneController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Enter phone number";
+                      }
+                      return null;
+                    }
+                  ),
+                
+                ],
+              ),
+    ),
+            ),
+            floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.arrow_forward),                
+                backgroundColor: Theme.of(context).accentColor,
+                foregroundColor: Theme.of(context).textSelectionColor,
+                onPressed: (){
+                  if (_formKey.currentState.validate()){
+                    return _sendPhoneBack(context);
+                  }
+                },
+              ),
+        );
+  }
+
+  void _sendPhoneBack (BuildContext context) {
+    String phoneToSendBack = phoneController.text;
+    Navigator.pop(context, phoneToSendBack);
+  }
+}
+
+
+
+
 
 // Profile tab - screen 23
 
 class ProfileTabAboutUs extends StatelessWidget {
-  // launchSite(){
-  //   launch ('https://google.com');
-  // }
 
   @override
   Widget build(BuildContext context) {
