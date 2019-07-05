@@ -1523,6 +1523,7 @@ class ProfileTab extends StatelessWidget {
                     "Invite Friends",
                     style: new TextStyle(
                       color: Colors.white,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
@@ -1547,7 +1548,10 @@ class ProfileTab extends StatelessWidget {
                 Expanded(
                   child: new Text(
                     "Redemption Code",
-                    style: new TextStyle(color: Colors.white),
+                    style: new TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                    ),
                   ),
                 ),
                 new IconButton(
@@ -1587,7 +1591,10 @@ class ProfileTab extends StatelessWidget {
                 Expanded(
                   child: new Text(
                     "About",
-                    style: new TextStyle(color: Colors.white),
+                    style: new TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                    ),
                   ),
                 ),
                 new IconButton(
@@ -2029,6 +2036,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                       "About us",
                       style: new TextStyle(
                         color: Colors.white,
+                        fontSize: 16.0,
                       ),
                     ),
                   ),
@@ -2077,7 +2085,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                   Expanded(
                     child: new Text(
                       "Contact us",
-                      style: new TextStyle(color: Colors.white),
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   new IconButton(
@@ -2104,7 +2115,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                   Expanded(
                     child: new Text(
                       "Visit our website",
-                      style: new TextStyle(color: Colors.white),
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   new IconButton(
@@ -2146,7 +2160,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                   Expanded(
                     child: new Text(
                       "Privacy Policy",
-                      style: new TextStyle(color: Colors.white),
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   new IconButton(
@@ -2209,7 +2226,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                   Expanded(
                     child: new Text(
                       "Terms & Conditions",
-                      style: new TextStyle(color: Colors.white),
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   new IconButton(
@@ -2272,7 +2292,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                   Expanded(
                     child: new Text(
                       "FAQ",
-                      style: new TextStyle(color: Colors.white),
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   new IconButton(
@@ -2316,7 +2339,10 @@ class ProfileTabAboutUs extends StatelessWidget {
               children: <Widget>[
                 new Text(
                   "Follow us",
-                  style: new TextStyle(color: Colors.white),
+                  style: new TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
