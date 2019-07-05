@@ -2044,7 +2044,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('About Gas2Go'),
+                            title: Text('About EZ Gas'),
                             content:
                                 const Text('LoremIpsum Bla bla blablalbla'),
                             actions: <Widget>[
@@ -2061,6 +2061,28 @@ class ProfileTabAboutUs extends StatelessWidget {
                         },
                       );
                     },
+                  )
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: null,
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "Contact us",
+                      style: new TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: _launchWebsite,
                   )
                 ],
               ),
