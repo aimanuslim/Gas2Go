@@ -207,11 +207,11 @@ class CustomerRegisterState extends State<CustomerRegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               createFormField("Full Name", (value) {}, false, null),
-              createFormField("New IC Number", (value) {
-                if (!value.isEmpty && !isNumeric(value)) {
-                  return 'Please enter digits only.';
-                }
-              }, false, null),
+              // createFormField("New IC Number", (value) {
+              //   if (!value.isEmpty && !isNumeric(value)) {
+              //     return 'Please enter digits only.';
+              //   }
+              // }, false, null),
               createFormField("Email address", (value) {
                 if (!value.isEmpty &&
                     !RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
