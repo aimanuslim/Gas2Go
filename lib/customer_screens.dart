@@ -2066,7 +2066,12 @@ class ProfileTabAboutUs extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: null,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ContactUs()),
+                );
+              },
               child: new Row(
                 children: <Widget>[
                   Expanded(
@@ -2082,7 +2087,12 @@ class ProfileTabAboutUs extends StatelessWidget {
                       Icons.arrow_forward_ios,
                       color: Theme.of(context).buttonColor,
                     ),
-                    onPressed: _launchWebsite,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ContactUs()),
+                      );
+                    },
                   )
                 ],
               ),
@@ -2315,7 +2325,7 @@ class ProfileTabAboutUs extends StatelessWidget {
                       GestureDetector(
                         onTap: _launchFacebook,
                         child: Icon(
-                          FontAwesomeIcons.facebookF,
+                          FontAwesomeIcons.facebookSquare,
                           color: Theme.of(context).buttonColor,
                         ),
                       ),
@@ -2352,7 +2362,7 @@ _launchWebsite() async {
 }
 
 _launchFacebook() async {
-  // edit the proper link once IG account has been created
+  // edit the proper link once FB account has been created
   const facebookURL = 'https://facebook.com';
   if (await canLaunch(facebookURL)) {
     await launch(facebookURL);
@@ -2368,6 +2378,159 @@ _launchInstagram() async {
     await launch(instagramURL);
   } else {
     throw 'Could not launch $instagramURL';
+  }
+}
+
+_launchTwitter() async {
+  // edit the proper link once twitter account has been created
+  const twitterURL = 'https://twitter.com';
+  if (await canLaunch(twitterURL)) {
+    await launch(twitterURL);
+  } else {
+    throw 'Could not launch $twitterURL';
+  }
+}
+
+_launchEmail() async {
+  // edit the proper mailto link once emails have been created
+  const emailTo = 'mailto:<email address>?subject=<subject>&body=<body>';
+  if (await canLaunch(emailTo)) {
+    await launch(emailTo);
+  } else {
+    throw 'Could not send email to $emailTo';
+  }
+}
+
+// Contact us screen
+class ContactUs extends StatelessWidget {
+  final contactUsDescription = Container(
+    margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
+    child: Text(
+      "Should you need help, never hesitate to reach out to us through these official channels. Whether you’re having issues with an order or would like to provide some feedback on our app/service, we would love to hear from you.",
+      style: TextStyle(fontSize: 15.0),
+    ),
+  );
+
+  final fbContact = Container(
+    margin: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 10.0),
+    child: GestureDetector(
+      onTap: _launchFacebook,
+      child: Row(
+        children: <Widget>[
+          Container(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Icon(
+                FontAwesomeIcons.facebookSquare,
+                color: Color(0xffFFA630),
+              )),
+          Container(
+              child: Text(
+            "Facebook",
+            style: TextStyle(color: Color(0xffFFA630)),
+          ))
+        ],
+      ),
+    ),
+  );
+
+  final twitterContact = Container(
+    margin: EdgeInsets.only(bottom: 30.0, left: 10.0),
+    child: GestureDetector(
+      onTap: _launchTwitter,
+      child: Row(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.twitter,
+              color: Color(0xffFFA630),
+            ),
+          ),
+          Container(
+            child: Text(
+              "Twitter",
+              style: TextStyle(color: Color(0xffFFA630)),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+
+  final instagramContact = Container(
+    margin: EdgeInsets.only(bottom: 30.0, left: 10.0),
+    child: GestureDetector(
+      onTap: _launchInstagram,
+      child: Row(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.instagram,
+              color: Color(0xffFFA630),
+            ),
+          ),
+          Container(
+            child: Text(
+              "Instagram",
+              style: TextStyle(color: Color(0xffFFA630)),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+
+  final emailContact = Container(
+    margin: EdgeInsets.only(left: 10.0),
+    child: GestureDetector(
+      onTap: _launchEmail,
+      child: Row(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(right: 10.0),
+            child: Icon(
+              FontAwesomeIcons.envelopeOpen,
+              color: Color(0xffFFA630),
+            ),
+          ),
+          Container(
+            child: Text(
+              "Email",
+              style: TextStyle(color: Color(0xffFFA630)),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        title: Text("Contact us"),
+        backgroundColor: Theme.of(context).backgroundColor,
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            contactUsDescription,
+            fbContact,
+            twitterContact,
+            instagramContact,
+            emailContact
+          ],
+        ),
+      ),
+    );
   }
 }
 
