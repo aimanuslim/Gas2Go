@@ -2358,6 +2358,16 @@ class ProfileTabAboutUs extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: GestureDetector(
+                          onTap: _launchTwitter,
+                          child: Icon(
+                            FontAwesomeIcons.twitter,
+                            color: Theme.of(context).buttonColor,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: GestureDetector(
                           onTap: _launchInstagram,
                           child: Icon(
                             FontAwesomeIcons.instagram,
