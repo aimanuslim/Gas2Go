@@ -1586,33 +1586,41 @@ class ProfileTab extends StatelessWidget {
                 )
               ],
             ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "About",
-                    style: new TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileTabAboutUs()),
+                );
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "About",
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileTabAboutUs()),
-                    );
-                  },
-                )
-              ],
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileTabAboutUs()),
+                      );
+                    },
+                  )
+                ],
+              ),
             ),
           ],
         ),
@@ -2170,30 +2178,16 @@ class ProfileTabAboutUs extends StatelessWidget {
             GestureDetector(
               // work on the onTap method
               onTap: () {
-                showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Terms & Conditions'),
-                        content: const Text('LoremIpsum Bla bla blablalbla'),
-                        actions: <Widget>[
-                          FloatingActionButton(
-                            child: Icon(Icons.check),
-                            backgroundColor: Color(0xffFFA630),
-                            foregroundColor: Color(0xff222222),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        ],
-                      );
-                    });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TermsAndConditions()),
+                );
               },
               child: new Row(
                 children: <Widget>[
                   Expanded(
                     child: new Text(
-                      "Terms & Conditions",
+                      "Terms & conditions",
                       style: new TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
@@ -2208,25 +2202,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                       color: Theme.of(context).buttonColor,
                     ),
                     onPressed: () {
-                      showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('Terms and Conditions'),
-                            content:
-                                const Text('LoremIpsum Bla bla blablalbla'),
-                            actions: <Widget>[
-                              FloatingActionButton(
-                                child: Icon(Icons.check),
-                                backgroundColor: Color(0xffFFA630),
-                                foregroundColor: Color(0xff222222),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TermsAndConditions()),
                       );
                     },
                   )
@@ -2753,6 +2732,90 @@ class ContactUs extends StatelessWidget {
             emailContact
           ],
         ),
+      ),
+    );
+  }
+}
+
+class TermsAndConditions extends StatefulWidget {
+  @override
+  _TermsAndConditionsState createState() => _TermsAndConditionsState();
+}
+
+class _TermsAndConditionsState extends State<TermsAndConditions> {
+  final tncIntroduction = Container(
+    child: Padding(
+      padding: const EdgeInsets.only(
+          top: 30.0, right: 10.0, bottom: 30.0, left: 10.0),
+      child: Column(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Text(
+                "Updated as at 5 July 2019",
+                style: TextStyle(fontSize: 15.0, fontStyle: FontStyle.italic),
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+              "The Services are made available by EZ Gas to you at its sole and absolute discretion and by using the Services upon Activation including but not limited to, purchasing any product and/or services on the App, you unconditionally: –",
+              style: TextStyle(fontSize: 15.0, height: 1.2),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+                "(a) acknowledge that you have read and fully understood these Terms and Conditions and agree to be bound by these Terms and Conditions;",
+                style: TextStyle(fontSize: 15.0, height: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+                "(b) consent to EZ Gas using and processing your personal information and data in accordance with EZ Gas’ Privacy Policy which can be found on the EZ Gas mobile application.",
+                style: TextStyle(fontSize: 15.0, height: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50.0),
+            child: Text(
+                "Any person that you allow to access the Service using your Account shall also be bound by these Terms and Conditions. If you do not accept these Terms and Conditions, please do not continue with the registration process or Activation or the use of this Service(s).",
+                style: TextStyle(fontSize: 15.0, height: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Divider(
+              color: Color(0xff808080),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        title: Text("Terms & conditions"),
+        backgroundColor: Theme.of(context).backgroundColor,
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: ListView(
+        children: <Widget>[
+          tncIntroduction,
+        ],
       ),
     );
   }
