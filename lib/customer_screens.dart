@@ -2010,24 +2010,10 @@ class ProfileTabAboutUs extends StatelessWidget {
             GestureDetector(
               // work on the onTap method
               onTap: () {
-                showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('About EZ Gas'),
-                        content: const Text('LoremIpsum Bla bla blablalbla'),
-                        actions: <Widget>[
-                          FloatingActionButton(
-                            child: Icon(Icons.check),
-                            backgroundColor: Color(0xffFFA630),
-                            foregroundColor: Color(0xff222222),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        ],
-                      );
-                    });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AboutUs()),
+                );
               },
               child: new Row(
                 children: <Widget>[
@@ -2048,26 +2034,8 @@ class ProfileTabAboutUs extends StatelessWidget {
                       color: Theme.of(context).buttonColor,
                     ),
                     onPressed: () {
-                      showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('About EZ Gas'),
-                            content:
-                                const Text('LoremIpsum Bla bla blablalbla'),
-                            actions: <Widget>[
-                              FloatingActionButton(
-                                child: Icon(Icons.check),
-                                backgroundColor: Color(0xffFFA630),
-                                foregroundColor: Color(0xff222222),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AboutUs()));
                     },
                   )
                 ],
@@ -2382,6 +2350,226 @@ class ProfileTabAboutUs extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AboutUs extends StatefulWidget {
+  @override
+  _AboutUsState createState() => _AboutUsState();
+}
+
+class _AboutUsState extends State<AboutUs> {
+  final ezGasLogo = Container(
+    margin: EdgeInsets.symmetric(vertical: 50.0),
+    child: Center(
+      child: Image.asset("assets/ezgas_logo_white_text.png", height: 100.0),
+    ),
+  );
+
+  final aboutUsDescription = Container(
+    child: Center(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: Text(
+              "Proudly made and developed in Malaysia",
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            child: Text(
+                "We at EZ Gas believed that the old fashioned way of ordering cooking gas barrels from taukes and convenient stores are not very efficient. We have also tried existing services and apps that try to digitalise this space, but we ran into a number of issues.",
+                style: TextStyle(fontSize: 15.0)),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Text(
+                "Some of them don’t even end up delivering the barrels, while others only cater to a small delivery area. Then there’s some that only provide cooking gas made by a certain brand. We thought we could do a better job than what’s already out there, and thus came about the idea of this app.",
+                style: TextStyle(fontSize: 15.0)),
+          ),
+          Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+              child: Text(
+                "Currently there’s 3 of us actively developing, improving and awaiting your feedback that we will take on board to get this product to greater and greater heights. We hope you will enjoy using this app and this service as much as we have developing it.",
+                style: TextStyle(fontSize: 15.0),
+              )),
+        ],
+      ),
+    ),
+  );
+
+  final comingSoonTitle = Container(
+    child: Center(
+      child: Column(
+        children: <Widget>[
+          Image.asset(
+            "assets/about_us_whats_coming.png",
+            height: 300.0,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text("What’s still to come",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                textAlign: TextAlign.center),
+          ),
+        ],
+      ),
+    ),
+  );
+
+  final comingSoonList = Container(
+    margin: EdgeInsets.only(top: 30.0, right: 30.0, bottom: 100.0, left: 30.0),
+    child: Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Image.asset(
+              "assets/online_payment_icon.png",
+              height: 80.0,
+              width: 100.0,
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 40.0),
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Text(
+                        "Online payments",
+                        style: TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Text(
+                        "Lorem ipsum dolor sit amet, elit consectetur adipiscing",
+                        style:
+                            TextStyle(fontSize: 14.0, color: Color(0xffCCCCCC)),
+                        textAlign: TextAlign.left),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                "assets/expanded_delivery_areas_icon.png",
+                height: 80.0,
+                width: 100.0,
+              ),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(left: 40.0),
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Text(
+                          "Expanded delivery areas",
+                          style: TextStyle(
+                              fontSize: 16.0, fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      Text(
+                          "Lorem ipsum dolor sit amet, elit consectetur adipiscing",
+                          style: TextStyle(
+                              fontSize: 14.0, color: Color(0xffCCCCCC)),
+                          textAlign: TextAlign.left),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: <Widget>[
+            Image.asset(
+              "assets/robust_rewards_system_icon.png",
+              height: 80.0,
+              width: 100.0,
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(left: 40.0),
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Text(
+                        "Robust rewards & referral system",
+                        style: TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Text(
+                        "Lorem ipsum dolor sit amet, elit consectetur adipiscing",
+                        style:
+                            TextStyle(fontSize: 14.0, color: Color(0xffCCCCCC)),
+                        textAlign: TextAlign.left),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
+    ),
+  );
+
+  final footerInfo = Container(
+    margin: EdgeInsets.only(bottom: 50.0),
+    child: Center(
+      child: Text(
+        "EZ Gas is a product of Auxci Sdn. Bhd. (1325487-W)",
+        style: TextStyle(fontSize: 13.0, color: Color(0xff808080)),
+      ),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        title: Text("About us"),
+        backgroundColor: Theme.of(context).backgroundColor,
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: ListView(
+        children: <Widget>[
+          ezGasLogo,
+          aboutUsDescription,
+          comingSoonTitle,
+          comingSoonList,
+          footerInfo,
+        ],
       ),
     );
   }
