@@ -46,6 +46,10 @@ flutter:
     - assets/onboarding_3_cashbacks.png
     - assets/ezgas_logo_black_text.png
     - assets/ezgas_logo_white_text.png
+    - assets/about_us_whats_coming.png
+    - assets/online_payment_icon.png
+    - assets/expanded_delivery_areas_icon.png
+    - assets/robust_rewards_system_icon.png
     - assets/invite_friends.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
