@@ -4,6 +4,7 @@ import 'package:gas2go/texts.dart';
 import 'commonelements.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
+import 'package:sticky_headers/sticky_headers.dart';
 
 class HomeNav extends StatelessWidget {
   @override
@@ -2362,6 +2363,7 @@ class _AboutUsState extends State<AboutUs> {
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            // italicise 'taukes'
             child: Text(
                 "We at EZ Gas believed that the old fashioned way of ordering cooking gas barrels from taukes and convenient stores are not very efficient. We have also tried existing services and apps that try to digitalise this space, but we ran into a number of issues.",
                 style: TextStyle(fontSize: 15.0)),
@@ -2738,6 +2740,7 @@ class ContactUs extends StatelessWidget {
 }
 
 class TermsAndConditions extends StatefulWidget {
+  // TermsAndConditions({Key key}) : super(key: key);
   @override
   _TermsAndConditionsState createState() => _TermsAndConditionsState();
 }
@@ -2745,8 +2748,7 @@ class TermsAndConditions extends StatefulWidget {
 class _TermsAndConditionsState extends State<TermsAndConditions> {
   final tncIntroduction = Container(
     child: Padding(
-      padding: const EdgeInsets.only(
-          top: 30.0, right: 10.0, bottom: 30.0, left: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 15.0),
       child: Column(
         children: <Widget>[
           Align(
@@ -2780,7 +2782,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
                 style: TextStyle(fontSize: 15.0, height: 1.2)),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 50.0),
+            padding: const EdgeInsets.only(bottom: 30.0),
             child: Text(
                 "Any person that you allow to access the Service using your Account shall also be bound by these Terms and Conditions. If you do not accept these Terms and Conditions, please do not continue with the registration process or Activation or the use of this Service(s).",
                 style: TextStyle(fontSize: 15.0, height: 1.2)),
@@ -2795,6 +2797,476 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
       ),
     ),
   );
+
+  final tncDefinitions = Container(
+    margin: EdgeInsets.symmetric(vertical: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 50.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Definitions",
+          style: TextStyle(color: Color(0xffFFFFFF), fontSize: 18.0),
+        ),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+              child: Text(
+                  "For the purpose of these Terms and Conditions, the following terms shall, unless the context otherwise requires, have the meanings as defined below. All other terms not defined herein shall have the meaning as may generally be accepted within the industry based on the context used herein:",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Account'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means your EZ Gas account which is: \n\n 1. linked to the telephone number of your Mobile Device; \n 2. managed and supervised by EZ Gas; and \n 3.	which records, amongst other things, your gas orders;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Activation' or 'Activated'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means the point in time when your Account is activated for use;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'App'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means software application named as “EZ Gas” or such other name as may be determined by EZ Gas from time to time which is downloaded unto the Mobile Device;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Authentication' or 'Authenticated'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means a confirmation sent by you to EZ Gas authorising a particular transaction undertaken or transacted by you. Such authenticated shall be in a manner stipulated or determined by EZ Gas from time to time including but not limited to keying in your personal details;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'EZ Gas' or 'we' or 'us' or 'our'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text("means AUXCI SDN BHD (Company No. 1325487-W);",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'FAQ'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means frequently asked questions as made available on the EZ Gas mobile application;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Force Majeure'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means any cause which is not within the control of EZ Gas including but not limited to act of God, flood, natural disaster, landslides, mudslides, soil erosions, storm, fire, earthquakes, war, riot, civil commotion, natural catastrophe, industrial disputes of any kind, act of government, government restraint, expropriation, change of law, strike, lockouts, blockade, outbreaks and pandemics and the interruption or failure of utility service including but not limited to electric, power, gas, water or telecommunication services;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Intellectual Property Rights'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means rights in, and in relation to, any patents, registered designs, design rights, trademarks, trade and business names (including all goodwill associated with any trademark or trade business names), copyright and related rights, moral rights, databases, domain names, semi-conductor and other topography rights and utility models, and including the benefit of all registrations of, applications to register and the right to apply for registration of any of the foregoing items and all rights in the nature of any of the foregoing items, each for their full term (including any extensions or renewals thereof);",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Mobile Device'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means a portable and wireless telecommunications device together with accessories including but not limited to smartphones and handheld tablets used by you to access and/or use the Service;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Payment'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means the payment to EZ Gas for the purchase of goods and services by means of the App;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Gas Supplier'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means merchants designated by EZ Gas to sell goods and/or services by means of the App;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Partners'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means the business partners of EZ Gas who offer and sell its goods and services on the App;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Service(s)'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means a stored value service provided by EZ Gas via the App which enables you to perform the transactions;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Terms and Conditions' or 'Agreement'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means these terms and conditions for the Service as may be varied or modified from time to time at EZ Gas’s sole discretion;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'You' or 'Your'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means the person who uses and/or accesses the Services;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'KYC'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "means Know Your Customer process as determined by us from time to time;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "'Password'",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text("means the password used to log into the App;",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final tncUseOfService = Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: StickyHeader(
+          header: Container(
+            height: 50.0,
+            color: Color(0xff3D4C8A),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Use of Service",
+              style: TextStyle(color: Color(0xffFFFFFF), fontSize: 18.0),
+            ),
+          ),
+          content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: Text(
+                      "2.1 In order to use the Services, you are required to create an account on the App by clicking on the “Register” link and following the on-screen prompts, and provide the requested information including but not limited to your name as per identity card, password, your mobile phone number or other similar identification properties.\n\n 2.2 The provision of the Services and the Activation of your Account is at EZ Gas’s sole and absolute discretion.\n\n 2.3 You may only use the Services once your Account has been Activated. Once your Account has been Activated, your use of the App and the Service shall be strictly in accordance with these Terms and Conditions.\n\n 2.4 The App and the Services is only available on a Mobile Device and is strictly for your own personal use only as a subscriber of the Service. Any instructions, confirmation and/or communication sent from your Mobile Device shall be deemed to have been sent and/or issued by you irrespective of whether such instructions, confirmations and/or communications were actually sent by you or not. You shall be personally liable and responsible for the use of your Account including but not limited to all transactions undertaken and/or transacted using the Account once the said transaction has been Authenticated irrespective of whether the transactions is undertaken and/or transacted by you unless it can be established that such transactions was erroneously transacted due to an error on EZ Gas’s part.\n\n 2.5 The Services made available to you via the App may perform the following transactions (the “Transactions”):\n\n (a) Gas Orders;\n\n 2.6 EZ Gas may engage with third party service providers to make the order deliveries.\n\n 2.7 Any transaction entered into between you and such third parties for third party product and/or services shall also be subject to any terms and conditions which may be stipulated by such third parties. Any such transactions are entered into at your own risk and you acknowledge and agree that EZ Gas shall not take any responsibility and/or liability for the products and/or services offered by the third parties to you including but not limited to the delivery, quality (including any defects or deficiency in the products and/or services), safety or the fitness for purpose of the products and/or services purchased by you from such third parties. EZ Gas shall not be responsible for the refusal of any merchant to honor or accept your purchases or payment made through the use of the Service. You further acknowledge and agree that you shall not initiate any legal proceedings against us for any claim you may have against such third parties.\n\n 2.8 EZ Gas does not make any warranty, representation and/or undertaking (expressly, impliedly or otherwise) that the App and any subsequent revisions, modifications, updates, upgrades or versions is and would be compatible with your Mobile Device. It is your responsibility to ensure that the App is and will be compatible with your Mobile Device at all times and you acknowledge and agree that EZ Gas shall not be liable in any manner whatsoever for any liability, loss, damages, cost and expense suffered and/or incurred by you due to the App being incompatible with your Mobile Device.\n\n 2.9 You shall, at all times be solely responsible to keep confidential and safeguard your account details including your username and password. You shall not disclose your username and password to any person. You shall be solely responsible and liable for any use and misuse of your Account and password and all activities that occur under your Account.\n\n 2.10 The record of all Transactions authenticated through your Mobile Device number registered for the Account shall be binding and conclusive evidence of your Transactions. Any information, instructions and/or confirmation sent from the Mobile Device via the Account shall be deemed to have been issued by you notwithstanding that such information, instructions and/or confirmation may have been issued by a third party, whether authorised or otherwise, EZ Gas shall deem that the Services has been accessed legitimately and the Transactions conducted shall be valid. EZ Gas shall not entertain any request to reverse any wrongful Transactions authenticated through the Mobile Device / mobile number registered for the Account.\n\n 2.11 Notwithstanding anything to the contrary, we reserve the right to block or decline any transaction at our sole and absolute discretion without assigning any reason thereto.\n\n 2.12 You may opt out from the Service at any time by deleting your account on the app.\n\n 2.13 You acknowledge that EZ Gas offers product powered by the Partners as part of our Services.\n\n 2.14 You agree to indemnify EZ Gas from any expenses, liability, loss, damages and actions whatsoever arising from your purchase and use of products from EZ Gas.",
+                      style: TextStyle(fontSize: 15.0, height: 1.2)),
+                ),
+              ]))));
+
+  final tncYourResponsibility = Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: StickyHeader(
+          header: Container(
+            height: 50.0,
+            color: Color(0xff3D4C8A),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Your Responsibility",
+              style: TextStyle(color: Color(0xffFFFFFF), fontSize: 18.0),
+            ),
+          ),
+          content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: Text(
+                      "3.1 You shall:\n\n (a) keep your personal information and Password for your Account confidential at all times and shall take all steps to prevent the disclosure of your Password;\n\n (b) ensure that all information and data provided to EZ Gas including personal data are true, accurate, updated and complete at the time of provision and shall promptly update such information and data if there are any changes to the same. EZ Gas shall not be responsible and liable whatsoever and howsoever to you due to any inaccurate or incomplete information and data provided to EZ Gas;\n\n (c) comply with all notice or instructions given by EZ Gas from time to time in relation to the use of the Service and App;\n\n (d) be responsible for all equipment necessary to use the Service and App, and also for the security and integrity of all information and data transmitted, disclosed and/or obtained through the use of the Service and App;\n\n (e) be responsible and liable for all usage of and all payment of the fees, charges, taxes and duties for using the Services including but not limited to payment of all fee, charges, taxes and duties for the purchase of products and/or services to EZ Gas and third parties including Participating Merchants in a timely manner;\n\n (f) be fully responsible for any and all data, information, instructions and/or confirmation transmitted or broadcasted from your Mobile Device whether by you or any other person whether authorized or otherwise. EZ Gas shall deem that the Services have been accessed legitimately and any Transaction made as a result of transmission of such data, information, instructions and/or confirmation are valid;\n\n (g) comply with all applicable laws of Malaysia relating to the Service, including without limitation to the Communication and Multimedia Act 1998, Financial Services Act 2012, Anti Money Laundering Anti-Terrorism Financing and Proceeds of Unlawful Activities Act 2001 and their respective subsidiary legislation, which may be amended from time to time;\n\n (h) take all reasonable steps to prevent fraudulent, improper or illegal use of the Service;\n\n (i) cease to utilise the Service or any part thereof for such period as may be required by EZ Gas;\n\n (j) report immediately to EZ Gas upon the discovery of any fraud, theft, loss, unauthorised usage or any other occurrence of unlawful acts in relation to the Mobile Device and its use. You agree to lodge a police report whenever instructed by EZ Gas and to give EZ Gas a certified copy of such report;\n\n (k) access the App and/or use the Services only for lawful purposes and in a lawful manner at all times and further agree to conduct any activity relating to the Services or the App (including participate in any campaigns/ promotional activities initiated by us) in good faith;\n\n (l) download and install the EZ Gas app from the Google PlayStore and/or Apple iOS store from the official EZ Gas account. Any downloads & installation outside of this will be deemed unlawful and any actions thereafter by the user will not be liable by EZ Gas; and\n\n (m) fully indemnify and shall keep EZ Gas fully indemnified against any loss, damage, liability, cost or expense, arising from any claims for libel, invasion of privacy, infringement of copyright, patent, breach of confidence or privilege or breach of any law or regulation whatsoever transmitted, received or stored via the Service or part thereof and for all other claims arising out of any act or omission of your or any unauthorised use or exploitation of the Services or part thereof.\n\n 3.2. You shall not:\n\n (a) use the Service and/or the App to cause embarrassment, distress, annoyance, irritation, harassment, inconvenience, anxiety or nuisance to any person;\n\n (b) use the Service and/or the App dishonestly, fraudulently or illegally;\n\n (c) use the Service and/or the App to cause excessive or disproportionate load on the Service or EZ Gas’s system;\n\n (d) use the Service and/or the App for any purpose which is against public interest, public order or national harmony;\n\n (e) use, permit or cause to be used the Service and/or App improperly or for any activities which breach any laws, infringe a third party’s rights, or breach any directives, content requirements or codes promulgated by any relevant authority including activities which will require EZ Gas to take remedial action under any applicable industry code or in a way interferes with other users or defames, harasses, menaces, restricts or inhibits any other use from using or enjoying the Service or the internet;\n\n (f) circumvent user authentication or security of any host, network or account (referred to as “cracking” or “hacking”) nor interfere with service to any user, host or network (referred to as “denial of service attacks”) nor copy any pages or register identical keywords with search engines to mislead other users into thinking that they are reading EZ Gas’s legitimate web pages (referred to as “page-jacking”), or use the App or the Services for any other unlawful or objectionable conduct. Users who violate systems or network security may incur criminal or civil liability, and EZ Gas will at its absolute discretion fully co-operate with investigations of suspected criminal violations, violation of systems or network security under the leadership of law enforcement or relevant authorities;\n\n (g) attempt to probe, scan or test the vulnerability of any of EZ Gas system or network or breach any security or authentication measures;\n\n (h) avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological measure implemented by us or any of the service providers or any other third party (including other users) appointed by us to protect our ability to provide the Service;\n\n (i) attempt to download the App for the use of the Services through the use of any engine, software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining tools or the like) other than the software and/or search agents provided by us or other approved third party web browsers;(i) attempt to download the App for the use of the Services through the use of any engine, software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining tools or the like) other than the software and/or search agents provided by us or other approved third party web browsers;\n\n (j) copy, disclose, modify, reformat, display, distribute, license, transmit, sell, perform, publish, transfer and/or otherwise make available any of the Services or any information obtained by you while using the Services or while accessing the App;\n\n (k) remove, change and/or obscure in any way anything on the App and/or the Services or otherwise use any material obtained whilst using the App and/or the Services except as set out in the Terms and Conditions; and\n\n (l) copy or use any material from the App and/or the Services for any commercial purpose, remove, obscure or change any copyright, trade mark or other intellectual property right notices contained in the original material, or from any material copied or printed off from the App, or obtained as a result of the Services.\n\n (m) use any of our trademarks, logo, URL or product name without EZ Gas’s express written consent;\n\n (n) attempt to decipher, decompile, disassemble or reverse engineer any of the software used to provide the Service; and\n\n (o) impersonate or misrepresent your affiliation with any person or entity.\n\n (p) attempt to receive funds from both EZ Gas and a Participating Merchant or other third party seller for the same transaction by submitting similar claims; (q) use an anonymizing proxy while registering an Account; (r) control an Account that is linked in any way to another account that has or suspected to be engaged in any restricted activities under these Terms and Conditions; (s) interfere with another’s utilization and enjoyment of the App or Services; (t) manipulate or exploit our promotional campaigns/ activities or other Services in anyway which EZ Gas may deem as improper, irregular o dishonest; (u) use the Services for, or in relation to, any illegal purpose or criminal activity of any nature; and (v) use the Services dishonestly or in bad faith or with malicious intent.\n\n 3.3 You acknowledge that chat, discussion groups or bulletin board services and similar services offered by EZ Gas (“Public Communication Services”) are public communications, and your communications may be available to others and consequently you should be cautious when disclosing personal or sensitive information or any information which may identify you. EZ Gas is not responsible for, and does not control or endorse any Public Communication Services.\n\n 3.4 Notwithstanding anything to the contrary, if any information provided by you is untrue, inaccurate, not current or incomplete, EZ Gas has the right to immediately terminate your account and refuse any and all current or future use of the Services or access to the App.",
+                      style: TextStyle(fontSize: 15.0, height: 1.2)),
+                ),
+              ]))));
+
+  final tncRightsOfEZGas = Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: StickyHeader(
+          header: Container(
+            height: 50.0,
+            color: Color(0xff3D4C8A),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "The Rights of EZ Gas",
+              style: TextStyle(color: Color(0xffFFFFFF), fontSize: 18.0),
+            ),
+          ),
+          content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: Text(
+                      "4.1 EZ Gas reserves the right to make any alteration or changes to the Service, or any part thereof, or suspend or terminate the Service or any part thereof without prior notice and EZ Gas shall not be liable for any loss or inconvenience to you resulting therefrom.\n\n 4.2 EZ Gas reserves the right at its absolute discretion, from time to time, to vary, add to or otherwise amend these Terms and Conditions.\n\n 4.3 Unless otherwise notified by you, you agree that EZ Gas may send you notifications relating to promotional and marketing activities from time to time. You may opt out from receiving any promotional or marketing messages from EZ Gas by unsubscribing via email or contacting customer service.\n\n 4.4 EZ Gas may extract any details or personal information or any other data from you which is required to be used as evidence in court and/or when necessary in the event of a suspected and or proven misuse of the Service.\n\n 4.5 EZ Gas may run campaigns/contest or promotions in relation to the Service as may be notified to you from time to time. You agree that your participation in such campaign/contest/promotion shall be subject to the specific terms conditions of such campaign/contest/promotion.\n\n 4.6  You agree that by using the Services, you are giving consent to EZ Gas that the information collected by EZ Gas from you (“Personal Information”) will be used and/or disclosed in accordance to our Privacy Policy as posted on our website and Personal Data Protection Act 2010. You are advised to read our Privacy Policy to understand your rights with regards to your Personal Information.\n\n 4.7  EZ Gas may request for additional information or documentation at any time and for any reason, including but not limited to confirming your identity, age and/or to confirm your bank details or debit, credit, prepaid facilities, for example, cards which you have registered with EZ Gas. You agree that you will provide such information and/or documentation promptly to EZ Gas upon request. If you do not provide such information and/or documentation promptly, EZ Gas may, without any liability to you, either limit your use of the Services or suspend or close your Account.",
+                      style: TextStyle(fontSize: 15.0, height: 1.2)),
+                ),
+              ]))));
+
+  final tncIntellectualPropertyRights = Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      child: StickyHeader(
+          header: Container(
+            height: 50.0,
+            color: Color(0xff3D4C8A),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Intellectual Property Rights",
+              style: TextStyle(color: Color(0xffFFFFFF), fontSize: 18.0),
+            ),
+          ),
+          content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: Text(
+                      "5.1 The Intellectual Property Rights in respect of all materials including without limitation all current and future copyrights, patent, trademarks, rights in databases, inventions or trade secrets, know-how, rights in designs, integrated circuit, topographies, trade and business names, domain names, get up, arks and devices (whether such applications can be made) which are capable of being protected and/or enforced in Malaysia and/or any relevant country of the world, any brand names, trademarks, services, products, hardware and software shall remain vested in the party originating or which has acquired the same. For clarity purposes, all trademarks used on the App and/or the Services are the trademarks of EZ Gas unless specified otherwise.\n\n 5.2 You acknowledge and agree that the Services and the App are protected by copyrights, trademarks, service marks, patents, or other proprietary rights and laws. All rights are expressly reserved.\n\n 5.3  You are only allowed to use the App and the Services as set out in the Terms and Conditions, and nothing on the App and/or the Services shall be construed as conferring any license or other transfer of rights to you of any intellectual property of other proprietary rights of EZ Gas.",
+                      style: TextStyle(fontSize: 15.0, height: 1.2)),
+                ),
+              ]))));
+
+  final tncDisclaimer = Container(
+      margin: EdgeInsets.only(top: 10.0, bottom: 30.0),
+      child: StickyHeader(
+          header: Container(
+            height: 50.0,
+            color: Color(0xff3D4C8A),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Disclaimer",
+              style: TextStyle(color: Color(0xffFFFFFF), fontSize: 18.0),
+            ),
+          ),
+          content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                  child: Text(
+                      "6.1 The App and the Service are provided on an “as is” and “as available” basis.\n\n 6.2 Except as expressly set out in these Terms & Conditions, all representations, conditions and warranties (whether express or implied, statutory or otherwise) including but not limited to the availability, accessibility, timeliness and uninterrupted use of the App and Service; sequence, accuracy, completeness, timeliness or the security of any data or information provided to you as part of the Service; any implied warranty of merchantability; any implied warranty of fitness for a particular purpose; any implied warranty of non-infringement; and any implied warranty arising out of the course of dealing, custom or usage of trade with respect to the Service provided by EZ Gas are expressly negative and excluded. The representations, conditions and warranties set forth in this Agreement with respect to the Services and App are the only representations, conditions and warranties made by EZ Gas and will not be enlarged or diminished without EZ Gas’s prior written approval.",
+                      style: TextStyle(fontSize: 15.0, height: 1.2)),
+                ),
+              ]))));
 
   @override
   Widget build(BuildContext context) {
@@ -2815,6 +3287,12 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
       body: ListView(
         children: <Widget>[
           tncIntroduction,
+          tncDefinitions,
+          tncUseOfService,
+          tncYourResponsibility,
+          tncRightsOfEZGas,
+          tncIntellectualPropertyRights,
+          tncDisclaimer,
         ],
       ),
     );
