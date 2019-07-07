@@ -2362,21 +2362,21 @@ class _AboutUsState extends State<AboutUs> {
           ),
           Padding(
             padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
             // italicise 'taukes'
             child: Text(
                 "We at EZ Gas believed that the old fashioned way of ordering cooking gas barrels from taukes and convenient stores are not very efficient. We have also tried existing services and apps that try to digitalise this space, but we ran into a number of issues.",
                 style: TextStyle(fontSize: 15.0)),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
                 "Some of them don’t even end up delivering the barrels, while others only cater to a small delivery area. Then there’s some that only provide cooking gas made by a certain brand. We thought we could do a better job than what’s already out there, and thus came about the idea of this app.",
                 style: TextStyle(fontSize: 15.0)),
           ),
           Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
               child: Text(
                 "Currently there’s 3 of us actively developing, improving and awaiting your feedback that we will take on board to get this product to greater and greater heights. We hope you will enjoy using this app and this service as much as we have developing it.",
                 style: TextStyle(fontSize: 15.0),
@@ -2609,7 +2609,7 @@ _launchEmail() async {
 // Contact us screen
 class ContactUs extends StatelessWidget {
   final contactUsDescription = Container(
-    margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
+    margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
     child: Text(
       "Should you need help, never hesitate to reach out to us through these official channels. Whether you’re having issues with an order or would like to provide some feedback on our app/service, we would love to hear from you.",
       style: TextStyle(fontSize: 15.0),
@@ -2617,7 +2617,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final fbContact = Container(
-    margin: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 10.0),
+    margin: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 20.0),
     child: GestureDetector(
       onTap: _launchFacebook,
       child: Row(
@@ -2639,7 +2639,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final twitterContact = Container(
-    margin: EdgeInsets.only(bottom: 30.0, left: 10.0),
+    margin: EdgeInsets.only(bottom: 30.0, left: 20.0),
     child: GestureDetector(
       onTap: _launchTwitter,
       child: Row(
@@ -2663,7 +2663,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final instagramContact = Container(
-    margin: EdgeInsets.only(bottom: 30.0, left: 10.0),
+    margin: EdgeInsets.only(bottom: 30.0, left: 20.0),
     child: GestureDetector(
       onTap: _launchInstagram,
       child: Row(
@@ -2687,7 +2687,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final emailContact = Container(
-    margin: EdgeInsets.only(left: 10.0),
+    margin: EdgeInsets.only(left: 20.0),
     child: GestureDetector(
       onTap: _launchEmail,
       child: Row(
