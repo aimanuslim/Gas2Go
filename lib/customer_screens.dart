@@ -1513,7 +1513,7 @@ class ProfileTab extends StatelessWidget {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -2012,7 +2012,7 @@ class ProfileTabAboutUs extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: new Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -2609,7 +2609,7 @@ _launchEmail() async {
 // Contact us screen
 class ContactUs extends StatelessWidget {
   final contactUsDescription = Container(
-    margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
+    margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 15.0),
     child: Text(
       "Should you need help, never hesitate to reach out to us through these official channels. Whether you’re having issues with an order or would like to provide some feedback on our app/service, we would love to hear from you.",
       style: TextStyle(fontSize: 15.0),
@@ -2617,7 +2617,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final fbContact = Container(
-    margin: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 20.0),
+    margin: EdgeInsets.only(top: 30.0, bottom: 30.0, left: 15.0),
     child: GestureDetector(
       onTap: _launchFacebook,
       child: Row(
@@ -2639,7 +2639,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final twitterContact = Container(
-    margin: EdgeInsets.only(bottom: 30.0, left: 20.0),
+    margin: EdgeInsets.only(bottom: 30.0, left: 15.0),
     child: GestureDetector(
       onTap: _launchTwitter,
       child: Row(
@@ -2663,7 +2663,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final instagramContact = Container(
-    margin: EdgeInsets.only(bottom: 30.0, left: 20.0),
+    margin: EdgeInsets.only(bottom: 30.0, left: 15.0),
     child: GestureDetector(
       onTap: _launchInstagram,
       child: Row(
@@ -2687,7 +2687,7 @@ class ContactUs extends StatelessWidget {
   );
 
   final emailContact = Container(
-    margin: EdgeInsets.only(left: 20.0),
+    margin: EdgeInsets.only(left: 15.0),
     child: GestureDetector(
       onTap: _launchEmail,
       child: Row(
