@@ -1842,7 +1842,32 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             Padding(
               padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
             ),
-            Row(
+            GestureDetector(
+              onTap: null,
+              child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.lock,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+                Text(
+                  "Reset password",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
+            ),
+            GestureDetector(
+              onTap: null,
+              child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
@@ -1859,6 +1884,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                 ),
               ],
             )
+            ),
           ],
         ),
       ),
@@ -1917,6 +1943,15 @@ class EditFormNameState extends State<EditFormName> {
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
         title: new Text("Edit Name"),
+        leading: IconButton(
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Theme.of(context).buttonColor,
+          ),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTabSettings()));
+          },
+        ),
       ),
       body: new Container(
         padding: EdgeInsets.all(20.0),
