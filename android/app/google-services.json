@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "21771876115",
+    "firebase_url": "https://ez-gas.firebaseio.com",
+    "project_id": "ez-gas",
+    "storage_bucket": "ez-gas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21771876115:android:f696411d683e2bc9",
+        "android_client_info": {
+          "package_name": "com.auxci.ez_gas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21771876115-4lnsvr28097t1okmhqm6br61aab7i21b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4QVahlGf0mgozbXCDlZ59_--8SE-llV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21771876115-4lnsvr28097t1okmhqm6br61aab7i21b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
