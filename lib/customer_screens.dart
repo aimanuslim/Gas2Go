@@ -1752,7 +1752,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTab()));
           },
         ),
         title: Text(
