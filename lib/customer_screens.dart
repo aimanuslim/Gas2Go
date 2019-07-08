@@ -1043,170 +1043,161 @@ class CustomerOrderState extends State<CustomerOrderPage> {
               // height: 450.0,
               // width: 350.0,
               child: new ListView(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Card(
-                      child: Column(
-                        children: <Widget>[
-                          getOrderCard(context),
-                        ],
-                      ),
-                    ),
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 4),
+                child: Card(
+                  child: Column(
+                    children: <Widget>[
+                      getOrderCard(context),
+                    ],
                   ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(vertical: 4),
-                      child: Card(
-                          child: Column(
-                        children: <Widget>[
-                          Container(
-                            decoration: new BoxDecoration(
-                                border: Border(
-                                    bottom:
-                                        BorderSide(color: Color(0xff667FE6)))
-                                // new Border(top: BorderSide(
-                                //   color: Colors.grey
-                                // ))
-                                ),
-                            child: Row(
-                              children: <Widget>[
-                                Padding(
-                                    padding: EdgeInsets.all(15),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        headerText(
-                                            string: "Delivery Address"
-                                                .toUpperCase()),
-                                        Text(
-                                          "Ahmad Saiful",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text("The Very Long Address"),
-                                        Text(
-                                          "Change address?",
-                                          style: TextStyle(
-                                              color:
-                                                  Theme.of(context).accentColor,
-                                              fontSize: 14.0),
-                                        ),
-                                      ],
-                                    )),
-                              ],
+                ),
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4),
+                  child: Card(
+                      child: Column(
+                    children: <Widget>[
+                      Container(
+                        decoration: new BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(color: Color(0xff667FE6)))
+                            // new Border(top: BorderSide(
+                            //   color: Colors.grey
+                            // ))
                             ),
-                          ),
-                          Container(
-                            child: Padding(
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
                                 padding: EdgeInsets.all(15),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     headerText(
                                         string:
-                                            "Delivery  Period".toUpperCase()),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Text("Date"),
-                                        Text("Tuesday, 31st March 2019",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
+                                            "Delivery Address".toUpperCase()),
+                                    Text(
+                                      "Ahmad Saiful",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Text("Time Frame"),
-                                        Text("2 - 5 pm",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
-                                    )
+                                    Text("The Very Long Address"),
+                                    Text(
+                                      "Change address?",
+                                      style: TextStyle(
+                                          color: Theme.of(context).accentColor,
+                                          fontSize: 14.0),
+                                    ),
                                   ],
                                 )),
-                          )
-                        ],
-                      ))),
-                  Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Card(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                              padding:
-                                  EdgeInsets.only(left: 15, right: 15, top: 10),
-                              child: Text.rich(TextSpan(children: [
-                                TextSpan(text: "Have a coupon code?"),
-                                TextSpan(
-                                    text: " Enter here",
-                                    style: TextStyle(
-                                        color: Theme.of(context).accentColor)),
-                              ]))),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10, right: 10, top: 5, bottom: 5),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            width: 1,
-                                            color: Color(0xff667FE6)))),
-                              )),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  headerText(string: "Subtotal"),
-                                  normalText("RM45")
-                                ]),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  headerText(string: "Delivery fee"),
-                                  normalText("RM5")
-                                ]),
-                          ),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: 5, bottom: 10, left: 10, right: 10),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            width: 2,
-                                            color: Color(0xff667FE6)))),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Row(
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                            padding: EdgeInsets.all(15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                headerText(
+                                    string: "Delivery  Period".toUpperCase()),
+                                Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    headerText(string: "Total amount"),
-                                    normalText("RM50")
-                                  ])),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: 4, bottom: 10, left: 15, right: 15),
-                              child: smallText(
-                                  "Please pay by cash upon delivery. We are working on online payments."))
-                        ],
+                                    Text("Date"),
+                                    Text("Tuesday, 31st March 2019",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold))
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text("Time Frame"),
+                                    Text("2 - 5 pm",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold))
+                                  ],
+                                )
+                              ],
+                            )),
+                      )
+                    ],
+                  ))),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Text.rich(TextSpan(children: [
+                            TextSpan(text: "Have a coupon code?"),
+                            TextSpan(
+                                text: " Enter here",
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor)),
+                          ]))),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 5, bottom: 5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 1, color: Color(0xff667FE6)))),
+                          )),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              headerText(string: "Subtotal"),
+                              normalText("RM45")
+                            ]),
                       ),
-                    ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              headerText(string: "Delivery fee"),
+                              normalText("RM5")
+                            ]),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              top: 5, bottom: 10, left: 10, right: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 2, color: Color(0xff667FE6)))),
+                          )),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                headerText(string: "Total amount"),
+                                normalText("RM50")
+                              ])),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              top: 4, bottom: 10, left: 15, right: 15),
+                          child: smallText(
+                              "Please pay by cash upon delivery. We are working on online payments."))
+                    ],
                   ),
-                ],
-              )),
+                ),
+              ),
+            ],
+          )),
           Container(
             width: MediaQuery.of(context).size.width,
             child: new RaisedButton(
@@ -1247,47 +1238,48 @@ class CustomerOrderComplete extends StatelessWidget {
               // width: MediaQuery.of(context).size.width,
               // padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
               child: new Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                  child: new Text(
-                    "Order completed!",
-                    textAlign: TextAlign.center,
-                    style: new TextStyle(fontSize: 20.0, color: Colors.white),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(50.0),
-                  child: new Text(
-                    "You will receive notification updates as your order progresses",
-                    textAlign: TextAlign.center,
-                    style: new TextStyle(fontSize: 15.0, color: Colors.white),
-                  ),
-                ),
-
-                Container(
-                  child: new Text(
-                    "Order #292374",
-                    textAlign: TextAlign.center,
-                    style: new TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                      child: new Text(
+                        "Order completed!",
+                        textAlign: TextAlign.center,
+                        style:
+                            new TextStyle(fontSize: 20.0, color: Colors.white),
+                      ),
                     ),
-                  ),
-                ),
-                
-                Container(
-              width: MediaQuery.of(context).size.width,
-              height: 280.0,
-              child: new Icon(
-                Icons.check,
-                size: 100.0,
-              ),
-            ), //to be made a var
-              ]),
+                    Container(
+                      padding: EdgeInsets.all(50.0),
+                      child: new Text(
+                        "You will receive notification updates as your order progresses",
+                        textAlign: TextAlign.center,
+                        style:
+                            new TextStyle(fontSize: 15.0, color: Colors.white),
+                      ),
+                    ),
+
+                    Container(
+                      child: new Text(
+                        "Order #292374",
+                        textAlign: TextAlign.center,
+                        style: new TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 280.0,
+                      child: new Icon(
+                        Icons.check,
+                        size: 100.0,
+                      ),
+                    ), //to be made a var
+                  ]),
             ),
-            
             Container(
               padding: EdgeInsets.all(20.0),
               width: MediaQuery.of(context).size.width,
@@ -1752,7 +1744,8 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTab()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => ProfileTab()));
           },
         ),
         title: Text(
@@ -1845,46 +1838,45 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             GestureDetector(
               onTap: null,
               child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.lock,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-                Text(
-                  "Reset password",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.lock,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                  Text(
+                    "Reset password",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
             ),
             GestureDetector(
-              onTap: null,
-              child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
+                onTap: null,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Icon(
-                      Icons.exit_to_app,
-                      color: Theme.of(context).buttonColor,
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.exit_to_app,
+                          color: Theme.of(context).buttonColor,
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "Sign out",
+                      style: TextStyle(color: Theme.of(context).accentColor),
                     ),
                   ],
-                ),
-                Text(
-                  "Sign out",
-                  style: TextStyle(color: Theme.of(context).accentColor),
-                ),
-              ],
-            )
-            ),
+                )),
           ],
         ),
       ),
@@ -1949,7 +1941,8 @@ class EditFormNameState extends State<EditFormName> {
             color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTabSettings()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ProfileTabSettings()));
           },
         ),
       ),
@@ -2242,32 +2235,17 @@ class ProfileTabAboutUs extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              // work on the onTap method
               onTap: () {
-                showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Privacy Policy'),
-                        content: const Text('LoremIpsum Bla bla blablalbla'),
-                        actions: <Widget>[
-                          FloatingActionButton(
-                            child: Icon(Icons.check),
-                            backgroundColor: Color(0xffFFA630),
-                            foregroundColor: Color(0xff222222),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        ],
-                      );
-                    });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PrivacyPolicy()),
+                );
               },
               child: new Row(
                 children: <Widget>[
                   Expanded(
                     child: new Text(
-                      "Privacy Policy",
+                      "Privacy policy",
                       style: new TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
@@ -2282,25 +2260,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                       color: Theme.of(context).buttonColor,
                     ),
                     onPressed: () {
-                      showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('Our Privacy Policy'),
-                            content:
-                                const Text('LoremIpsum Bla bla blablalbla'),
-                            actions: <Widget>[
-                              FloatingActionButton(
-                                child: Icon(Icons.check),
-                                backgroundColor: Color(0xffFFA630),
-                                foregroundColor: Color(0xff222222),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PrivacyPolicy()),
                       );
                     },
                   )
@@ -2308,7 +2271,6 @@ class ProfileTabAboutUs extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              // work on the onTap method
               onTap: () {
                 Navigator.push(
                   context,
@@ -2870,13 +2832,528 @@ class ContactUs extends StatelessWidget {
   }
 }
 
+class PrivacyPolicy extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => PrivacyPolicyState();
+}
+
+class PrivacyPolicyState extends State<PrivacyPolicy> {
+  final privacyPolicyIntro = Container(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 15.0),
+      child: Column(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Text(
+                "Introduction",
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+              "Auxci Sdn Bhd (hereinafter, “we”, “us”, or “our”) (Company No. 1325487-W) values privacy and we are committed to protecting all Personal Information (as defined below) kept by us, in accordance with the relevant laws (including the Personal Data Protection Act, 2010), this Privacy Notice and our Terms of Use. For the avoidance of doubt, unless the context requires otherwise, the words used in this Privacy Notice shall have the same meanings stipulated in the Terms of Use.",
+              style: TextStyle(fontSize: 15.0, height: 1.2),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+                "This Privacy Notice describes our practices regarding the Personal Information we collect through your download and use of the EZ Gas mobile application as well as all content, products, services and functionality available at or through the App (collectively, together with the Platform, the “Services”).",
+                style: TextStyle(fontSize: 15.0, height: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+                "This Privacy Notice explains:\n\n•	The type of Personal Information we collect and how we collect it;\n\n •	How we use your Personal Information;\n\n •	The parties that we disclose the Personal Information to; and\n\n •	The choices we offer, including how to access and update your Personal Information.\n\n •	In the event of any conflict between the English and other language versions, the English version shall prevail.",
+                style: TextStyle(fontSize: 15.0, height: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 30.0),
+            child: Text(
+                "By using our Services, you agree to the terms of this Privacy Notice and you will be deemed to have consented to the collection, use and disclosure of your Personal Information in accordance with this Privacy Notice.",
+                style: TextStyle(fontSize: 15.0, height: 1.2)),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Divider(
+              color: Color(0xff808080),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+
+  final privacyPolicyPersonalInfoCollection = Container(
+    margin: EdgeInsets.only(top: 20.0, bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text(
+            "What Kind Of Personal Information We Collect and How We Collect It",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "“Personal Information” means any information that relates to you or allows someone to identify you, including, for example, your name, address, telephone number, e-mail address, information about your transactions in relation to the Services such as reward points, reward points account balances, redemption history, and account activities as well as any other non-public information about you that is associated with or linked to any of the foregoing data. “Anonymous Information”, means, data that is not associated with or linked to your Personal Information including, aggregated information. Anonymous Information does not, by itself, permit the identification of individual persons.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "In order to enable us to provide you this Service we may need to and/or may be required to collect, record, hold, use, disclose and store (i.e. “process”) Personal Information and Anonymous Information, including, but not limited to:",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(a) Information you provide to us through your relationship with us, including but not limited to, information provided by you when using the Services, when interacting with the Suppliers, when taking part in customer surveys, competitions and promotions. Examples include:",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "   • Personal Information from you, such as your first and last name, profile picture, photos or avatar, gender, age, ethnicity, marital status, educational level, interests, hobbies, precise location-based information, e-mail and mailing addresses, phone numbers, device ID numbers, and passwords when you create an account for our Services (“EZ Gas Account”), and any other information you directly give us through the Services (including, but not limited to messages that you send through the Services).\n\n   • Information about your interactions with the Services including, your engagement with particular Suppliers, and the products and services you have purchased.\n\n   •	Information you disclose through your interactions with the Suppliers.\n\n   •	Information necessary to complete a transaction through the Services, including your name and shipping information where applicable.\n\n   • Information such as files and messages that you store using your EZ Gas Account.\n\n   •	Information from written communications when you provide us feedback or contact us e.g. your name and e-mail address, as well as any other content included in the e-mail, in order to send you a reply",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(b) Information collected by technology via the Platform.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "For example:\n\n   •	Information from you, including your web browser type, Internet Protocol (IP) address (a number that is automatically assigned to your computer when you use the Internet, which may vary from session to session), domain name, user profiles, and/or a date/time stamp for your visit, and, with respect to your mobile phone, the unique device identifier, better known as the Android ID.\n\n   •	Information from third party service providers, with your consent, which may include your profile content or other types of personally identifiable information.\n\n   •	Cookies and URL information to gather information regarding the date and time of your visit and the information for which you searched and viewed. “Cookies” are small pieces of information that a website sends to your computer’s hard drive while you are viewing a website. We may use both session Cookies (which expire once you close your web browser) and persistent Cookies (which stay on your computer until you delete them) to provide you with a more personal and interactive experience on the Platform. Persistent Cookies can be removed by following web browser’s directions.\n\n   • Information from corresponding technologies used in connection with mobile phones, including the Android ID, to record date, time, search and viewing information related to your mobile phone.\n\n   • Information about how you use and interact with the Platform and the Services via third party analytics services such as Google Analytics (https://www.google.com/analytics) or Google AdSense (https://www.google.com/adsense). Such third party analytics services may use Cookies to gather information such as the pages you visited, your IP address, a date/time stamp for your visit and the sites that redirected you to the Platform.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(c) Information from third parties or other sources which you have given your consent to disclose information relating to you and/or where not otherwise restricted.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(d) Information collected from you about others in situations where you decide to invite a third party to create an EZ Gas Account. We will collect your and the third party’s names and e-mail addresses in order to send an e-mail and follow up with the third party.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final privacyPolicyUseOfPersonalInfo = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text("How We Use Your Personal Information",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "(a) For general use or collected by technology. In addition to the purposes stated above, we may use your Personal Information either to respond to requests that you make, or to aid us in serving you better, whether or not through technological means, for one or more of the following purposes:\n\n   •	to provide the Services;\n\n   • to facilitate the creation of and secure your EZ Gas Account on our network;\n\n   • to identify you as a user in our system;\n\n   • to provide improved administration of our Services;\n\n   • to notify visitors about updates to our Services;\n\n   • to promote our Services; or products, services and special offers of third parties whose products and services we think may be of interest to you;\n\n   •	to improve and customize the quality of experience when you interact with our Services;\n\n   •	to send you a welcome e-mail and to verify ownership of the e-mail address provided when your EZ Gas Account was created;\n\n   •	to send you administrative e-mail notifications, such as security or support and maintenance advisories;\n\n   • to respond to your inquiries related to employment opportunities or other requests;\n\n   •	to send offers and promotional materials related to our Services and for other marketing purposes;\n\n   • to track user-specific information on what pages users’ access or visit;\n\n   • to improve and customize the quality of experience when you interact with the Platform, and the Services;\n\n   • for our day to day operations and administrative purposes including account management, billing and collection, audits, reporting and investigations;\n\n   •	for the purposes of enforcing or defending our legal rights and/or obtaining legal advice;\n\n   • to assist in the prevention, detection or investigation of crime or possible criminal activities or for the administration of justice;\n\n  • for security and internal audit purposes;\n\n   • for such other purposes as may be directed or consented to by you; and\n\n   • for all other purposes in relation to or incidental to the above.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(b) Creation of Anonymous Information. We may also anonymise or aggregate your Personal Information by excluding information (such as your name) that make the data personally identifiable to you. This Anonymous Information may be used to personalize the Services, including directing certain advertisements to make them more relevant to you or to analyse request and usage patterns so that we may enhance the content of the Services and improve the Platform navigation or for any related market research purposes, either internally or through third parties.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final disclosureOfPersonalInfo = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text("Disclosure of Your Personal Information",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "Subject to any laws (including regulations, guidelines and/or obligations) applicable to us and our Affiliates (as defined below) (whether in or outside Malaysia), we may disclose your Personal Information as described below and elsewhere in this Privacy Notice:",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(a) Third Party Service Providers. We may share your Personal Information with third party service providers who may be located within or outside Malaysia (a) to provide you with the Services that we offer you through the Platform; (b) to conduct quality assurance testing; (c) to facilitate creation of accounts; (d) to provide technical support; and/or (e) to provide other services to us. These third-party service providers are not required to use your Personal Information other than to provide the Services requested by us.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(b) Affiliates and Acquisitions. We may share some or all of your Personal Information with our joint ventures, or other companies under a common control (our “Affiliates”), in which case we will require our Affiliates to honour this Privacy Notice.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(c) Social Networking Sites (SNS). The Services may, with your consent, automatically post, information on your SNS profile based on your most recent activities (e.g., you used a coupon to purchase tickets to the newest blockbuster movie). See the section on Third Party Websites below for more information.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(d) We Do Not Share Personal Information with Advertisers, but…we do, however, allow advertisers to request that their advertisements are directed at certain users (e.g., users in a certain geographic location, or age, gender and/or with certain interests). In the event that you interact with certain advertisements, the advertisers (or the company which the advertiser works with, for example, its advertising agency or an advertising network) may determine certain characteristics about you.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(e) Third Party directed or consented to by you. We may share your Personal Information with any persons directed by or consented to by you.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(f) Professional Advisors. We may share your Personal Information with our professional advisors including but not limited to legal advisors, tax advisors, financial advisors, auditors, insurance brokers etc.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "(g) Other Disclosures. Regardless of any choices you make regarding your Personal Information, we may disclose Personal Information if we believe in good faith that such disclosure is necessary (a) in connection with any legal investigation; (b) to comply with relevant laws or to respond to subpoenas or warrants served on us; (c) to protect or defend our rights or property or users of the Services; and/or (d) to investigate or assist us in preventing any violation or potential violation of the laws, this Privacy Notice, or the Terms of Use.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "We may also be required to transfer your personal data outside of Malaysia for the purposes and to such third parties stated in this Notice.",
+                    style: TextStyle(fontSize: 15.0, height: 1.2)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final thirdPartyWebsites = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text("Third Party Websites",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "When you click on a link or, in case of smartphone and mobile device, swipe left to connect to any other website or location, you will leave the Services and be redirected to another site and another entity may collect Personal Information or Anonymous Information from you. We have no control over, do not review, and cannot be responsible for, these external websites or their content. This Privacy Notice do not apply to these external websites or their content, or to any collection of data after you click on links or swipe left to connect to these external websites.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final retentionOfPersonalInfo = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text("Retention and Security of Your Personal Information",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "We place great importance on ensuring the security of your Personal Information and will regularly review and implement up-to-date technical and organisational security measures to safeguard the confidentiality and security of all your Personal Information. This includes contractual agreements with relevant third parties, whereby we shall endeavour to procure them to incorporate our standards as a minimum. Your Personal Information will also be retained in compliance with this Privacy Notice and/or the terms and conditions of your agreements for the duration of your relationship with us, for such period as may be necessary to protect our interests as may be deemed necessary, where otherwise required by the law or relevant regulation.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "We also require you to enter a password that you should not disclose to anyone, to access your EZ Gas Account information and will require you to enter that same password again in order to access any sensitive information. Disclaimer: No method of transmission over the Internet, or method of electronic storage, is 100% secure. Therefore, while we use reasonable efforts to protect your Personal Information, we cannot guarantee its absolute security.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final rightsToAccess = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text(
+            "Your Rights to Access and Correct Your Personal Information",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "(a) Choices. We offer you choices regarding the collection, use, and sharing of your Personal Information. Nevertheless, should you decline to provide any Personal Information that is essential to us to enable us to process your application/request (for example for the registration), we may not be able to process your application/request or provide you with this Service.\n\n   •	We will periodically send you free newsletters and e-mails that promote the use of the Services. When you receive newsletters or promotional communications from us, you may indicate a preference to stop receiving further communications from us and you will have the opportunity to “opt-out” by following the “unsubscribe” instructions provided in the e-mail you receive, by terminating your EZ Gas Account or by contacting us directly (please see contact information below).\n\n   •	Despite your indicated e-mail preferences, you may not opt-out of communication related to the terms and conditions of the Services, including any updates to our Terms of Use or Privacy Notice unless you deactivate the use of the Services.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "(b) Changes to Personal Information. You may have access to or change your Personal Information in our possession or control through your profile within your EZ Gas Account. Any request of access to correct Personal Information may be subjected to a fee and also to the provisions of the applicable laws. We reserve the right to decline requests that jeopardize the security and privacy of the personal information of others as well as requests that are impractical or not made in good faith. Additionally, it is important to note that system-recorded Personal Information is not editable. When we delete any information, it will be deleted from the active database, but may remain in our archives. To the extent permitted by law, we may also retain your information for fraud prevention or similar purposes required by laws.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final incompletePersonalInfo = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text(
+            "What If Personal Information Provided By You Is Incomplete?",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "Where indicated (for example, during first-time sign-in for an EZ Gas Account), it is obligatory to provide your Personal Information to us in order to enable us to process your application for an EZ Gas Account, or for us to provide you with our Services. Should you decline to provide such obligatory Personal Information, we may not be able to process your application and/or provide you with our Services.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final privacyPolicyDisclaimer = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text("Disclaimer",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "The accuracy and completeness of your personal data depends on the information you provide. We assume that the information you have provided is accurate, up to date and complete unless you inform us otherwise.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  final privacyPolicyRevisions = Container(
+    margin: EdgeInsets.only(bottom: 30.0),
+    child: StickyHeader(
+      header: Container(
+        height: 60.0,
+        color: Color(0xff3D4C8A),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        alignment: Alignment.centerLeft,
+        child: Text("Revisions to Privacy Notice",
+            style: TextStyle(
+                color: Color(0xffFFFFFF), fontSize: 18.0, height: 1.2)),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "We may review and update this Privacy Notice from time to time to reflect changes in the laws, in our business practices, procedures and structure, and the community’s changing privacy expectations. The latest version of the Privacy Notice will be made available on the Platform.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "Where we consider, at our sole discretion, that the revisions made on the Privacy Notice are substantive, notice of such revisions will be provided on the Platform or by such other means of communication deemed suitable by us, for example, by sending you an e-mail to the last e-mail address you provided to us. Please note that at all times you are responsible for updating your Personal Information and to provide us with your most current e-mail address. In the event that the last e-mail address that you have provided us is not valid, or for any reason is not capable of delivering to you the notice described above, our dispatch of the e-mail containing such notice will nonetheless constitute effective notice of the changes described in the notice.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(
+                  "If you do not agree to the changes in our use of your Personal Information, you must notify us immediately and deactivate your EZ Gas Account with us. Continued use of our Services, following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.",
+                  style: TextStyle(fontSize: 15.0, height: 1.2)),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        title: Text("Privacy policy"),
+        backgroundColor: Theme.of(context).backgroundColor,
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: ListView(
+        children: <Widget>[
+          privacyPolicyIntro,
+          privacyPolicyPersonalInfoCollection,
+          privacyPolicyUseOfPersonalInfo,
+          disclosureOfPersonalInfo,
+          thirdPartyWebsites,
+          retentionOfPersonalInfo,
+          rightsToAccess,
+          incompletePersonalInfo,
+          privacyPolicyDisclaimer,
+          privacyPolicyRevisions,
+        ],
+      ),
+    );
+  }
+}
+
 class TermsAndConditions extends StatefulWidget {
   // TermsAndConditions({Key key}) : super(key: key);
   @override
-  _TermsAndConditionsState createState() => _TermsAndConditionsState();
+  TermsAndConditionsState createState() => TermsAndConditionsState();
 }
 
-class _TermsAndConditionsState extends State<TermsAndConditions> {
+class TermsAndConditionsState extends State<TermsAndConditions> {
   final tncIntroduction = Container(
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 15.0),
@@ -3280,7 +3757,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
   );
 
   final tncUseOfService = Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: EdgeInsets.only(bottom: 30.0),
       child: StickyHeader(
           header: Container(
             height: 50.0,
@@ -3304,7 +3781,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               ]))));
 
   final tncYourResponsibility = Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: EdgeInsets.only(bottom: 30.0),
       child: StickyHeader(
           header: Container(
             height: 50.0,
@@ -3328,7 +3805,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               ]))));
 
   final tncRightsOfEZGas = Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: EdgeInsets.only(bottom: 30.0),
       child: StickyHeader(
           header: Container(
             height: 50.0,
@@ -3352,7 +3829,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               ]))));
 
   final tncIntellectualPropertyRights = Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: EdgeInsets.only(bottom: 30.0),
       child: StickyHeader(
           header: Container(
             height: 50.0,
@@ -3376,7 +3853,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               ]))));
 
   final tncDisclaimer = Container(
-      margin: EdgeInsets.only(top: 10.0, bottom: 30.0),
+      margin: EdgeInsets.only(bottom: 30.0),
       child: StickyHeader(
           header: Container(
             height: 50.0,
