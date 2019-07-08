@@ -1744,9 +1744,8 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             color: Theme.of(context).buttonColor,
           ),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => ProfileTab()));
-          },
+            Navigator.of(context).pop();
+            },
         ),
         title: Text(
           "Account settings",
