@@ -735,9 +735,9 @@ class ConfirmOrder extends StatelessWidget {
       body: new Container(
         padding: EdgeInsets.all(20.0),
         child: new Column(children: <Widget>[
-          Container(
-            width: 350.0,
-            height: 450.0,
+          Expanded(
+            // width: 350.0,
+            // height: 450.0,
             child: new Column(
               children: <Widget>[
                 Padding(
@@ -949,9 +949,9 @@ class DeliveryWindowState extends State<DeliveryWindow> {
         padding: new EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Container(
-              height: 450.0,
-              width: 350.0,
+            Expanded(
+              // height: 450.0,
+              // width: 350.0,
               child: ListView(
                 children: <Widget>[
                   RadioListTile(
@@ -1039,9 +1039,9 @@ class CustomerOrderState extends State<CustomerOrderPage> {
       body: Container(
         padding: EdgeInsets.all(20.0),
         child: new Column(children: <Widget>[
-          Container(
-              height: 450.0,
-              width: 350.0,
+          Expanded(
+              // height: 450.0,
+              // width: 350.0,
               child: new ListView(
                 children: <Widget>[
                   Padding(
@@ -1242,13 +1242,15 @@ class CustomerOrderComplete extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         child: new Column(
           children: <Widget>[
-            new Container(
-              height: 250.0,
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
-              child: new Column(children: <Widget>[
+            new Expanded(
+              // height: 250.0,
+              // width: MediaQuery.of(context).size.width,
+              // padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
                 Container(
-                  //padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                   child: new Text(
                     "Order completed!",
                     textAlign: TextAlign.center,
@@ -1256,7 +1258,7 @@ class CustomerOrderComplete extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.all(50.0),
                   child: new Text(
                     "You will receive notification updates as your order progresses",
                     textAlign: TextAlign.center,
@@ -1273,17 +1275,19 @@ class CustomerOrderComplete extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ), //to be made a var
-              ]),
-            ),
-            Container(
+                ),
+                
+                Container(
               width: MediaQuery.of(context).size.width,
               height: 280.0,
               child: new Icon(
                 Icons.check,
                 size: 100.0,
               ),
+            ), //to be made a var
+              ]),
             ),
+            
             Container(
               padding: EdgeInsets.all(20.0),
               width: MediaQuery.of(context).size.width,
