@@ -3373,27 +3373,9 @@ class TermsAndConditionsState extends State<TermsAndConditions> {
           Padding(
             padding: const EdgeInsets.only(bottom: 30.0),
             child: Text(
-              "The Services are made available by EZ Gas to you at its sole and absolute discretion and by using the Services upon Activation including but not limited to, purchasing any product and/or services on the App, you unconditionally: –",
+              "The Services are made available by EZ Gas to you at its sole and absolute discretion and by using the Services upon Activation including but not limited to, purchasing any product and/or services on the App, you unconditionally: –\n\n (a) acknowledge that you have read and fully understood these Terms and Conditions and agree to be bound by these Terms and Conditions;\n\n (b) consent to EZ Gas using and processing your personal information and data in accordance with EZ Gas’ Privacy Policy which can be found on the EZ Gas mobile application.\n\n Any person that you allow to access the Service using your Account shall also be bound by these Terms and Conditions. If you do not accept these Terms and Conditions, please do not continue with the registration process or Activation or the use of this Service(s).",
               style: TextStyle(fontSize: 15.0, height: 1.2),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 30.0),
-            child: Text(
-                "(a) acknowledge that you have read and fully understood these Terms and Conditions and agree to be bound by these Terms and Conditions;",
-                style: TextStyle(fontSize: 15.0, height: 1.2)),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 30.0),
-            child: Text(
-                "(b) consent to EZ Gas using and processing your personal information and data in accordance with EZ Gas’ Privacy Policy which can be found on the EZ Gas mobile application.",
-                style: TextStyle(fontSize: 15.0, height: 1.2)),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 30.0),
-            child: Text(
-                "Any person that you allow to access the Service using your Account shall also be bound by these Terms and Conditions. If you do not accept these Terms and Conditions, please do not continue with the registration process or Activation or the use of this Service(s).",
-                style: TextStyle(fontSize: 15.0, height: 1.2)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -3407,7 +3389,7 @@ class TermsAndConditionsState extends State<TermsAndConditions> {
   );
 
   final tncDefinitions = Container(
-    margin: EdgeInsets.symmetric(vertical: 30.0),
+    margin: EdgeInsets.only(top: 20.0, bottom: 30.0),
     child: StickyHeader(
       header: Container(
         height: 50.0,
