@@ -1517,76 +1517,6 @@ class ProfileTab extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Invite Friends",
-                    style: new TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => InviteFriend()),
-                    );
-                  },
-                )
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Redemption Code",
-                    style: new TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.arrow_forward_ios,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    showDialog<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Feature not available'),
-                          content: const Text(
-                              'This feature will be made available in future updates!'),
-                          actions: <Widget>[
-                            FloatingActionButton(
-                              child: Icon(Icons.check),
-                              backgroundColor: Color(0xffFFA630),
-                              foregroundColor: Color(0xff222222),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                )
-              ],
-            ),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -1617,6 +1547,168 @@ class ProfileTab extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ProfileTabAboutUs()),
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                showDialog<void>(
+                  context: context,
+                  barrierDismissible: true, // user must tap button!
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Coming soon'),
+                      content: SingleChildScrollView(
+                        child: ListBody(
+                          children: <Widget>[
+                            Text(
+                                'This feature is one of many we will push out in a future update. Stay tuned!'),
+                          ],
+                        ),
+                      ),
+                      actions: <Widget>[
+                        FlatButton(
+                          child: Text('Dismiss'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "Invite friends",
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => InviteFriend()),
+                      // );
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: true, // user must tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Coming soon'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Text(
+                                      'This feature is one of many we will push out in a future update. Stay tuned!'),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text('Dismiss'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                showDialog<void>(
+                  context: context,
+                  barrierDismissible: true, // user must tap button!
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Coming soon'),
+                      content: SingleChildScrollView(
+                        child: ListBody(
+                          children: <Widget>[
+                            Text(
+                                'This feature is one of many we will push out in a future update. Stay tuned!'),
+                          ],
+                        ),
+                      ),
+                      actions: <Widget>[
+                        FlatButton(
+                          child: Text('Dismiss'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      "Redemption code",
+                      style: new TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.arrow_forward_ios,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => InviteFriend()),
+                      // );
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: true, // user must tap button!
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Coming soon'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Text(
+                                      'This feature is one of many we will push out in a future update. Stay tuned!'),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              FlatButton(
+                                child: Text('Dismiss'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   )
@@ -3299,72 +3391,73 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
   }
 }
 
-//screen 24/25
-class InviteFriend extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: new AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        leading: IconButton(
-          tooltip: "Previous page",
-          icon:
-              new Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: new Container(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new Container(
-                child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: new Image.asset("assets/invite_friends.png"),
-            )),
-            new Container(
-              child: new Text(
-                "Enjoy Cashback & Perks",
-                style: new TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            ),
-            new Container(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: new Text(
-                  "Share your invite code and discover how you and your friends can get cashback",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(color: Colors.white, fontSize: 15.0),
-                ),
-              ),
-            ),
-            new Container(
-              child: new Center(
-                child: new HowDoInvitesWork(),
-              ),
-            ),
-            new Container(
-              child: new Center(child: new InviteCode()),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.share),
-          // onPressed: _changeText,
-          backgroundColor: Theme.of(context).accentColor,
-          foregroundColor: Theme.of(context).textSelectionColor,
-          onPressed: () {
-            final RenderBox box = context.findRenderObject();
-            Share.share('Order cooking gas from EZ Gas!',
-                sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
-          }),
-    );
-  }
-}
+// 'Invite friends' screen, to be incorporated in later updates
+
+// class InviteFriend extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       backgroundColor: Theme.of(context).backgroundColor,
+//       appBar: new AppBar(
+//         backgroundColor: Theme.of(context).backgroundColor,
+//         leading: IconButton(
+//           tooltip: "Previous page",
+//           icon:
+//               new Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//         ),
+//       ),
+//       body: new Container(
+//         child: new Column(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           children: <Widget>[
+//             new Container(
+//                 child: Padding(
+//               padding: const EdgeInsets.all(30.0),
+//               child: new Image.asset("assets/invite_friends.png"),
+//             )),
+//             new Container(
+//               child: new Text(
+//                 "Enjoy Cashback & Perks",
+//                 style: new TextStyle(color: Colors.white, fontSize: 18.0),
+//               ),
+//             ),
+//             new Container(
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
+//                 child: new Text(
+//                   "Share your invite code and discover how you and your friends can get cashback",
+//                   textAlign: TextAlign.center,
+//                   style: new TextStyle(color: Colors.white, fontSize: 15.0),
+//                 ),
+//               ),
+//             ),
+//             new Container(
+//               child: new Center(
+//                 child: new HowDoInvitesWork(),
+//               ),
+//             ),
+//             new Container(
+//               child: new Center(child: new InviteCode()),
+//             ),
+//           ],
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//           child: Icon(Icons.share),
+//           // onPressed: _changeText,
+//           backgroundColor: Theme.of(context).accentColor,
+//           foregroundColor: Theme.of(context).textSelectionColor,
+//           onPressed: () {
+//             final RenderBox box = context.findRenderObject();
+//             Share.share('Order cooking gas from EZ Gas!',
+//                 sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+//           }),
+//     );
+//   }
+// }
 
 class InviteCode extends StatelessWidget {
   @override

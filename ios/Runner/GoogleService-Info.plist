@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>21771876115-n0fp6qcu271arcgl7oth17d50sbgp7lp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.21771876115-n0fp6qcu271arcgl7oth17d50sbgp7lp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB8lMTAPiDPfS9GS9Bi5KbZSpxDdvz5K2A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>21771876115</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.auxci.ezgas</string>
+	<key>PROJECT_ID</key>
+	<string>ez-gas</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ez-gas.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:21771876115:ios:3f5e9e93a10f70dd</string>
+	<key>DATABASE_URL</key>
+	<string>https://ez-gas.firebaseio.com</string>
+</dict>
+</plist>
