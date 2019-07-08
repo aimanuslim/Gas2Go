@@ -2307,26 +2307,12 @@ class ProfileTabAboutUs extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              // work on the onTap method
               onTap: () {
-                showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('FAQ'),
-                        content: const Text('LoremIpsum Bla bla blablalbla'),
-                        actions: <Widget>[
-                          FloatingActionButton(
-                            child: Icon(Icons.check),
-                            backgroundColor: Color(0xffFFA630),
-                            foregroundColor: Color(0xff222222),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        ],
-                      );
-                    });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FrequentlyAskedQuestions()),
+                );
               },
               child: new Row(
                 children: <Widget>[
@@ -2347,25 +2333,10 @@ class ProfileTabAboutUs extends StatelessWidget {
                       color: Theme.of(context).buttonColor,
                     ),
                     onPressed: () {
-                      showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('Frequently Asked Questions'),
-                            content:
-                                const Text('LoremIpsum Bla bla blablalbla'),
-                            actions: <Widget>[
-                              FloatingActionButton(
-                                child: Icon(Icons.check),
-                                backgroundColor: Color(0xffFFA630),
-                                foregroundColor: Color(0xff222222),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FrequentlyAskedQuestions()),
                       );
                     },
                   )
@@ -3886,6 +3857,149 @@ class TermsAndConditionsState extends State<TermsAndConditions> {
         ],
       ),
     );
+  }
+}
+
+class FrequentlyAskedQuestions extends StatefulWidget {
+  @override
+  FrequentlyAskedQuestionsState createState() =>
+      FrequentlyAskedQuestionsState();
+}
+
+class FrequentlyAskedQuestionsState extends State<FrequentlyAskedQuestions> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+        title: Text('Frequently asked questions'),
+        backgroundColor: Theme.of(context).backgroundColor,
+        leading: IconButton(
+          tooltip: "Previous page",
+          icon: Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: ListView.builder(
+        itemBuilder: (BuildContext context, int index) =>
+            EntryItem(data[index]),
+        itemCount: data.length,
+      ),
+    );
+  }
+}
+
+// One entry in the multilevel list displayed by this app.
+class Entry {
+  Entry(this.title, [this.children = const <Entry>[]]);
+
+  final String title;
+  final List<Entry> children;
+}
+
+// The entire multilevel list displayed by this app.
+final List<Entry> data = <Entry>[
+  Entry(
+    'What is EZ Gas?',
+    <Entry>[
+      Entry(
+          'EZ Gas is a smartphone-based cooking gas ordering and delivery platform. Our vision is to revamp Malaysia’s gas delivery industry, making it a more convenient and efficient means of delivery to serve the Malaysian community.'),
+    ],
+  ),
+  Entry(
+    'Which area does EZ Gas serve?',
+    <Entry>[
+      Entry(
+          'We serve the states of Selangor and Kuala Lumpur currently. We are expanding very rapidly and will be updating our new area of coverage every month on our social media platforms.'),
+    ],
+  ),
+  Entry(
+    'Where do I order gas?',
+    <Entry>[
+      Entry(
+          'You can download our app on Google Play as well as the App store. You will be able to place your orders when you set-up your EZ Gas account on our mobile application. We do not accept any orders from phone calls and emails.'),
+    ],
+  ),
+  Entry(
+    'What will happen after I order gas from EZ Gas?',
+    <Entry>[
+      Entry(
+          'An automated email will be sent to you to inform that your order has been requested and broadcasted to the suppliers. You will receive another automated email when a supplier accepts your order along with the driver’s information and order details.'),
+    ],
+  ),
+  Entry(
+    'Is our service on demand? What if I want gas now?',
+    <Entry>[
+      Entry(
+          'Currently our service is not on demand, we cannot ensure that a gas driver will come to you right after you ordered. The drivers would accept your order within 2 hours. We are working hard towards achieving on demand gas delivery service.'),
+    ],
+  ),
+  Entry(
+    'Why do I need to submit my phone number to register?',
+    <Entry>[
+      Entry(
+          'This is important for us and the drivers to get in touch with you when delivering your gas. Drivers might call you before they make their delivery.'),
+    ],
+  ),
+  Entry(
+    'Why are customers advised to order the same brand that they are using currently?',
+    <Entry>[
+      Entry(
+          'We strongly recommend you to order the same brand of gas cylinder that you are using now. It is because most of the time gas drivers will not be willing to collect the current brand of gas cylinder you’re using if it is different brand from what he is delivering. Between if you willing to accept others brand cylinder you can tick it (in page 1) when you place order.'),
+    ],
+  ),
+  Entry(
+    'What is new gas and refill gas?',
+    <Entry>[
+      Entry(
+          'When ordering, choose “new gas cylinder” if you do not have any cylinder currently and would like to have one.\n\n “Refill gas cylinder” is about exchanging your current gas cylinders to a new one with full tank of gas with the gas driver.'),
+    ],
+  ),
+  Entry(
+    'How would I know if my order is accepted?',
+    <Entry>[
+      Entry(
+          'You will receive an automated email upon driver accepting your order.'),
+    ],
+  ),
+  Entry(
+    'Who are the drivers?',
+    <Entry>[
+      Entry(
+          'As a technology-based company, we do not own any drivers nor gas cylinders. Once you have placed your order through our mobile app, the order will be broadcasted to our suppliers who are within close proximity to your location. These suppliers will then receive and view your order through the EZ Gas mobile app.'),
+    ],
+  ),
+  Entry(
+    'A driver accepted my order but he never delivered my gas tank! What do I do?',
+    <Entry>[
+      Entry(
+          'Our automated email includes driver’s information such as contacts, so feel free to call your designated driver. If any problems occur, please contact us and we will investigate this for you and take appropriate actions.'),
+    ],
+  ),
+];
+
+// Displays one Entry. If the entry has children then it's displayed
+// with an ExpansionTile.
+class EntryItem extends StatelessWidget {
+  const EntryItem(this.entry);
+
+  final Entry entry;
+
+  Widget _buildTiles(Entry root) {
+    if (root.children.isEmpty) return ListTile(title: Text(root.title));
+    return ExpansionTile(
+      key: PageStorageKey<Entry>(root),
+      title: Text(root.title),
+      children: root.children.map(_buildTiles).toList(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildTiles(entry);
   }
 }
 
