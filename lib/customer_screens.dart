@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gas2go/texts.dart';
@@ -1825,7 +1826,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             GestureDetector(
               onTap: null,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
@@ -1835,9 +1836,12 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                       ),
                     ],
                   ),
-                  Text(
-                    "Reset password",
-                    style: TextStyle(color: Colors.white),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      "Reset password",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -1848,7 +1852,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             GestureDetector(
                 onTap: null,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Row(
                       children: <Widget>[
@@ -1858,9 +1862,15 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                         ),
                       ],
                     ),
-                    Text(
-                      "Sign out",
-                      style: TextStyle(color: Theme.of(context).accentColor),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: GestureDetector(
+                        child: Text(
+                          "Sign out",
+                          style:
+                              TextStyle(color: Theme.of(context).accentColor),
+                        ),
+                      ),
                     ),
                   ],
                 )),
