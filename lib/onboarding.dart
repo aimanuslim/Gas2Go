@@ -111,7 +111,7 @@ class _CustomerOnboardingState extends State<CustomerOnboarding> {
   }
 
   void onDonePress() {
-    Navigator.pushNamed(context, CustomerAppEntry.id);
+    Navigator.pushNamed(context, CustomerIntro.id);
   }
 
   @override

@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'customer_registration.dart';
 import 'customer_sign_in.dart';
 
-class CustomerAppEntry extends StatelessWidget {
+class CustomerIntro extends StatelessWidget {
   static const String id = "customer_app_entry";
 
   @override
@@ -51,7 +51,7 @@ class CustomerAppEntry extends StatelessWidget {
             Navigator.push(
                 context,
                 new MaterialPageRoute(
-                    builder: (context) => new CustomerRegisterPartOne()));
+                    builder: (context) => new CustomerRegistration()));
           }
           // Navigator.pushNamed(context, CustomerRegisterPartOne.id);
           ),
