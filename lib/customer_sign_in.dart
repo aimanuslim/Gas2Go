@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gas2go/customer_screens.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CustomerSignIn extends StatefulWidget {
   static const String id = "customer_sign_in";
@@ -8,7 +9,14 @@ class CustomerSignIn extends StatefulWidget {
 }
 
 class _CustomerSignInState extends State<CustomerSignIn> {
+  final _auth = FirebaseAuth.instance;
+  static String email;
+  static String password;
+
   final emailInput = TextField(
+    onChanged: (value) {
+      email = value;
+    },
     keyboardType: TextInputType.emailAddress,
     decoration: InputDecoration(
       labelStyle: TextStyle(color: Color(0xffFFFFFF)),
@@ -23,6 +31,9 @@ class _CustomerSignInState extends State<CustomerSignIn> {
   );
 
   final passwordInput = TextField(
+    onChanged: (value) {
+      password = value;
+    },
     obscureText: true,
     decoration: InputDecoration(
       labelStyle: TextStyle(color: Color(0xffFFFFFF)),
@@ -112,11 +123,20 @@ class _CustomerSignInState extends State<CustomerSignIn> {
                             shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(30.0)),
                             elevation: 10,
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => new HomeNav()));
+                            onPressed: () async {
+                              try {
+                                final user =
+                                    await _auth.signInWithEmailAndPassword(
+                                        email: email, password: password);
+                                if (user != null) {
+                                  Navigator.push(
+                                      context,
+                                      new MaterialPageRoute(
+                                          builder: (context) => new HomeNav()));
+                                }
+                              } catch (e) {
+                                print(e);
+                              }
                             },
                           ),
                         ),
@@ -148,6 +168,7 @@ class _CustomerForgotPasswordState extends State<CustomerForgotPassword> {
   );
 
   final getEmail = TextField(
+    onChanged: (value) {},
     keyboardType: TextInputType.emailAddress,
     decoration: InputDecoration(
       labelStyle: TextStyle(color: Color(0xffFFFFFF)),
@@ -194,7 +215,7 @@ class _CustomerForgotPasswordState extends State<CustomerForgotPassword> {
               },
             )),
         body: Padding(
-          padding: const EdgeInsets.only(top: 50.0, right: 20.0, left: 20.0),
+          padding: const EdgeInsets.only(top: 30.0, right: 20.0, left: 20.0),
           child: Container(
             child: ListView(
               // crossAxisAlignment: CrossAxisAlignment.center,
