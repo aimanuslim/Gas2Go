@@ -698,7 +698,6 @@ class CustomerHomePageState extends State<CustomerHomePage>
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_forward),
-        // onPressed: _changeText,
         backgroundColor: Theme.of(context).accentColor,
         foregroundColor: Theme.of(context).textSelectionColor,
         onPressed: () {
@@ -736,8 +735,6 @@ class ConfirmOrder extends StatelessWidget {
         padding: EdgeInsets.all(20.0),
         child: new Column(children: <Widget>[
           Expanded(
-            // width: 350.0,
-            // height: 450.0,
             child: new Column(
               children: <Widget>[
                 Padding(
@@ -793,7 +790,6 @@ class ConfirmOrder extends StatelessWidget {
                   borderRadius: new BorderRadius.circular(30.0)),
               elevation: 50,
               onPressed: () {
-                // Perform some action
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DeliveryWindow()));
               },
@@ -950,8 +946,6 @@ class DeliveryWindowState extends State<DeliveryWindow> {
         child: Column(
           children: <Widget>[
             Expanded(
-              // height: 450.0,
-              // width: 350.0,
               child: ListView(
                 children: <Widget>[
                   RadioListTile(
@@ -995,11 +989,7 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                     borderRadius: new BorderRadius.circular(30.0)),
                 elevation: 50,
                 onPressed: () {
-                  // Perform some action
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CustomerOrderPage()));
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => CustomerOrderPage()),);
                 },
               ),
             ),
@@ -1040,8 +1030,6 @@ class CustomerOrderState extends State<CustomerOrderPage> {
         padding: EdgeInsets.all(20.0),
         child: new Column(children: <Widget>[
           Expanded(
-              // height: 450.0,
-              // width: 350.0,
               child: new ListView(
             children: <Widget>[
               Padding(
@@ -1209,7 +1197,6 @@ class CustomerOrderState extends State<CustomerOrderPage> {
                   borderRadius: new BorderRadius.circular(30.0)),
               elevation: 50,
               onPressed: () {
-                // Perform some action
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -1234,9 +1221,6 @@ class CustomerOrderComplete extends StatelessWidget {
         child: new Column(
           children: <Widget>[
             new Expanded(
-              // height: 250.0,
-              // width: MediaQuery.of(context).size.width,
-              // padding: EdgeInsets.fromLTRB(10.0, 100.0, 10.0, 0.0),
               child: new Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -1277,7 +1261,7 @@ class CustomerOrderComplete extends StatelessWidget {
                         Icons.check,
                         size: 100.0,
                       ),
-                    ), //to be made a var
+                    ),
                   ]),
             ),
             Container(
@@ -1292,7 +1276,6 @@ class CustomerOrderComplete extends StatelessWidget {
                     borderRadius: new BorderRadius.circular(30.0)),
                 elevation: 50,
                 onPressed: () {
-                  // Perform some action
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => HomeNav()));
                 },
@@ -1728,7 +1711,6 @@ class ProfileTabSettings extends StatefulWidget {
 }
 
 class _ProfileTabSettingsState extends State<ProfileTabSettings> {
-  final nameController = TextEditingController();
   String name = 'Ahmad Saiful';
   String email = 'ahmadsaiful@gmail.com';
   String phone = '017xxxxxxx';
@@ -1919,31 +1901,22 @@ class EditFormName extends StatefulWidget {
 
 class EditFormNameState extends State<EditFormName> {
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
+  final nameController = TextEditingController(text: 'name');
 
-  // @override
-  // void dispose(){
-  //   nameController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose(){
+    nameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         title: new Text("Edit Name"),
-        leading: IconButton(
-          icon: new Icon(
-            Icons.arrow_back,
-            color: Theme.of(context).buttonColor,
-          ),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ProfileTabSettings()));
-          },
-        ),
       ),
       body: new Container(
         padding: EdgeInsets.all(20.0),
@@ -2006,6 +1979,8 @@ class EditFormEmailState extends State<EditFormEmail> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         title: new Text("Edit Email"),
       ),
       body: new Container(
@@ -2057,18 +2032,19 @@ class EditFormPhoneState extends State<EditFormPhone> {
   final _formKey = GlobalKey<FormState>();
   final phoneController = TextEditingController();
 
-  // @override
-  // void dispose(){
-  //   nameController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose(){
+    phoneController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: new AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         title: new Text("Edit Phone Number"),
       ),
       body: new Container(
