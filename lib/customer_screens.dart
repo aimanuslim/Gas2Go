@@ -9,19 +9,23 @@ import 'package:sticky_headers/sticky_headers.dart';
 class HomeNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'EZGas',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        backgroundColor: Color(0xff323E6E),
-        primaryColor: Color(0xff45569B),
-        accentColor: Color(0xffFFA630),
-        cardColor: Color(0xff3D4C8A),
-        bottomAppBarColor: Color(0xff3D4C8A),
-        buttonColor: Color(0xffFFA630),
-        textSelectionColor: Color(0xff222222),
+    return WillPopScope(
+      child: MaterialApp(
+        title: 'EZGas',
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          backgroundColor: Color(0xff323E6E),
+          primaryColor: Color(0xff45569B),
+          accentColor: Color(0xffFFA630),
+          cardColor: Color(0xff3D4C8A),
+          bottomAppBarColor: Color(0xff3D4C8A),
+          buttonColor: Color(0xffFFA630),
+          textSelectionColor: Color(0xff222222),
+        ),
+        home: CustomerAppEntry(),
       ),
-      home: CustomerAppEntry(),
+      // prevents the user from returning to the previous screen
+      onWillPop: () async => false,
     );
   }
 }
@@ -989,7 +993,11 @@ class DeliveryWindowState extends State<DeliveryWindow> {
                     borderRadius: new BorderRadius.circular(30.0)),
                 elevation: 50,
                 onPressed: () {
-                  Navigator.push(context,MaterialPageRoute(builder: (context) => CustomerOrderPage()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CustomerOrderPage()),
+                  );
                 },
               ),
             ),
@@ -1242,7 +1250,6 @@ class CustomerOrderComplete extends StatelessWidget {
                             new TextStyle(fontSize: 15.0, color: Colors.white),
                       ),
                     ),
-
                     Container(
                       child: new Text(
                         "Order #292374",
@@ -1253,7 +1260,6 @@ class CustomerOrderComplete extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: 280.0,
@@ -1904,7 +1910,7 @@ class EditFormNameState extends State<EditFormName> {
   final nameController = TextEditingController(text: 'name');
 
   @override
-  void dispose(){
+  void dispose() {
     nameController.dispose();
     super.dispose();
   }
@@ -2033,7 +2039,7 @@ class EditFormPhoneState extends State<EditFormPhone> {
   final phoneController = TextEditingController();
 
   @override
-  void dispose(){
+  void dispose() {
     phoneController.dispose();
     super.dispose();
   }
@@ -2990,7 +2996,7 @@ class PrivacyPolicyState extends State<PrivacyPolicy> {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
-                  "(a) For general use or collected by technology. In addition to the purposes stated above, we may use your Personal Information either to respond to requests that you make, or to aid us in serving you better, whether or not through technological means, for one or more of the following purposes:\n\n   •	to provide the Services;\n\n   • to facilitate the creation of and secure your EZ Gas Account on our network;\n\n   • to identify you as a user in our system;\n\n   • to provide improved administration of our Services;\n\n   • to notify visitors about updates to our Services;\n\n   • to promote our Services; or products, services and special offers of third parties whose products and services we think may be of interest to you;\n\n   •	to improve and customize the quality of experience when you interact with our Services;\n\n   •	to send you a welcome e-mail and to verify ownership of the e-mail address provided when your EZ Gas Account was created;\n\n   •	to send you administrative e-mail notifications, such as security or support and maintenance advisories;\n\n   • to respond to your inquiries related to employment opportunities or other requests;\n\n   •	to send offers and promotional materials related to our Services and for other marketing purposes;\n\n   • to track user-specific information on what pages users’ access or visit;\n\n   • to improve and customize the quality of experience when you interact with the Platform, and the Services;\n\n   • for our day to day operations and administrative purposes including account management, billing and collection, audits, reporting and investigations;\n\n   •	for the purposes of enforcing or defending our legal rights and/or obtaining legal advice;\n\n   • to assist in the prevention, detection or investigation of crime or possible criminal activities or for the administration of justice;\n\n  • for security and internal audit purposes;\n\n   • for such other purposes as may be directed or consented to by you; and\n\n   • for all other purposes in relation to or incidental to the above.",
+                  "(a) For general use or collected by technology. In addition to the purposes stated above, we may use your Personal Information either to respond to requests that you make, or to aid us in serving you better, whether or not through technological means, for one or more of the following purposes:\n\n   •	to provide the Services;\n\n   • to facilitate the creation of and secure your EZ Gas Account on our network;\n\n   • to identify you as a user in our system;\n\n   • to provide improved administration of our Services;\n\n   • to notify visitors about updates to our Services;\n\n   • to promote our Services; or products, services and special offers of third parties whose products and services we think may be of interest to you;\n\n   •	to improve and customize the quality of experience when you interact with our Services;\n\n   •	to send you a welcome e-mail and to verify ownership of the e-mail address provided when your EZ Gas Account was created;\n\n   •	to send you administrative e-mail notifications, such as security or support and maintenance advisories;\n\n   • to respond to your inquiries related to employment opportunities or other requests;\n\n   •	to send offers and promotional materials related to our Services and for other marketing purposes;\n\n   • to track user-specific information on what pages users��� access or visit;\n\n   • to improve and customize the quality of experience when you interact with the Platform, and the Services;\n\n   • for our day to day operations and administrative purposes including account management, billing and collection, audits, reporting and investigations;\n\n   •	for the purposes of enforcing or defending our legal rights and/or obtaining legal advice;\n\n   • to assist in the prevention, detection or investigation of crime or possible criminal activities or for the administration of justice;\n\n  • for security and internal audit purposes;\n\n   • for such other purposes as may be directed or consented to by you; and\n\n   • for all other purposes in relation to or incidental to the above.",
                   style: TextStyle(fontSize: 15.0, height: 1.2)),
             ),
             Padding(
