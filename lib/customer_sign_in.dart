@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gas2go/customer_screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class CustomerSignIn extends StatefulWidget {
   static const String id = "customer_sign_in";
@@ -53,6 +54,8 @@ class _CustomerSignInState extends State<CustomerSignIn> {
         fontSize: 15.0, fontWeight: FontWeight.bold, color: Color(0xffFFA630)),
   );
 
+  bool showSpinner = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,80 +74,92 @@ class _CustomerSignInState extends State<CustomerSignIn> {
                 Navigator.pop(context);
               },
             )),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 50.0, right: 20.0, left: 20.0),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                emailInput,
-                SizedBox(
-                  height: 50.0,
-                ),
-                passwordInput,
-                SizedBox(
-                  height: 50.0,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        new MaterialPageRoute(
-                            builder: (context) =>
-                                new CustomerForgotPassword()));
-                  },
-                  child: Text(
-                    "Forgot password?",
-                    style: TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xffE6E6E6)),
+        body: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50.0, right: 20.0, left: 20.0),
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  emailInput,
+                  SizedBox(
+                    height: 50.0,
                   ),
-                ),
-                SizedBox(
-                  height: 30.0,
-                ),
-                signInAsDealer,
-                SizedBox(
-                  height: 200.0,
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Container(
+                  passwordInput,
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) =>
+                                  new CustomerForgotPassword()));
+                    },
+                    child: Text(
+                      "Forgot password?",
+                      style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffE6E6E6)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  signInAsDealer,
+                  SizedBox(
+                    height: 200.0,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
                         child: Container(
-                          // width: MediaQuery.of(context).size.width,
-                          child: new RaisedButton(
-                            child: Text("Sign In",
-                                style: TextStyle(color: Color(0xff222222))),
-                            color: Color(0xffFFA630),
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(30.0)),
-                            elevation: 10,
-                            onPressed: () async {
-                              try {
-                                final user =
-                                    await _auth.signInWithEmailAndPassword(
-                                        email: email, password: password);
-                                if (user != null) {
-                                  Navigator.push(
-                                      context,
-                                      new MaterialPageRoute(
-                                          builder: (context) => new HomeNav()));
+                          child: Container(
+                            // width: MediaQuery.of(context).size.width,
+                            child: new RaisedButton(
+                              child: Text("Sign In",
+                                  style: TextStyle(color: Color(0xff222222))),
+                              color: Color(0xffFFA630),
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              elevation: 10,
+                              onPressed: () async {
+                                setState(() {
+                                  showSpinner = true;
+                                });
+                                try {
+                                  final user =
+                                      await _auth.signInWithEmailAndPassword(
+                                          email: email, password: password);
+                                  if (user != null) {
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) =>
+                                                new HomeNav()));
+                                  }
+
+                                  setState(() {
+                                    showSpinner = false;
+                                  });
+                                } catch (e) {
+                                  print(e);
                                 }
-                              } catch (e) {
-                                print(e);
-                              }
-                            },
+                              },
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

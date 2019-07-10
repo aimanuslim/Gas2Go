@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'customer_screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class CustomerRegistration extends StatefulWidget {
   static const String id = "customer_registration_one";
@@ -170,6 +171,7 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
   // );
 
   final _formKey = GlobalKey<FormState>();
+  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
@@ -189,136 +191,145 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
                 Navigator.pop(context);
               },
             )),
-        body: Form(
-          key: _formKey,
-          child: Container(
-            child: ListView(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisSize: MainAxisSize.max,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       top: 50.0, right: 20.0, bottom: 30.0, left: 20.0),
-                //   child: nameInput,
-                // ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      right: 20.0, bottom: 30.0, left: 20.0),
-                  child: emailInput,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      right: 20.0, bottom: 30.0, left: 20.0),
-                  child: passwordInput,
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       right: 20.0, bottom: 30.0, left: 20.0),
-                //   child: confirmPassword,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       right: 20.0, bottom: 50.0, left: 20.0),
-                //   child: phoneNumber,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                //   child: addressIntro,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       top: 30.0, right: 20.0, bottom: 30.0, left: 20.0),
-                //   child: addressLineOne,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       right: 20.0, bottom: 30.0, left: 20.0),
-                //   child: addressLineTwo,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       right: 20.0, bottom: 30.0, left: 20.0),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     // mainAxisSize: MainAxisSize.max,
-                //     crossAxisAlignment: CrossAxisAlignment.center,
-                //     children: <Widget>[
-                //       Expanded(
-                //         child: Padding(
-                //           padding: const EdgeInsets.only(right: 30.0),
-                //           child: addressPostcode,
-                //         ),
-                //         flex: 1,
-                //       ),
-                //       Expanded(
-                //         child: addressCity,
-                //         flex: 1,
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //       right: 20.0, bottom: 50.0, left: 20.0),
-                //   child: addressState,
-                // ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      right: 20.0, bottom: 50.0, left: 20.0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
+        body: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Form(
+            key: _formKey,
+            child: Container(
+              child: ListView(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisSize: MainAxisSize.max,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       top: 50.0, right: 20.0, bottom: 30.0, left: 20.0),
+                  //   child: nameInput,
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, bottom: 30.0, left: 20.0),
+                    child: emailInput,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, bottom: 30.0, left: 20.0),
+                    child: passwordInput,
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       right: 20.0, bottom: 30.0, left: 20.0),
+                  //   child: confirmPassword,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       right: 20.0, bottom: 50.0, left: 20.0),
+                  //   child: phoneNumber,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  //   child: addressIntro,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       top: 30.0, right: 20.0, bottom: 30.0, left: 20.0),
+                  //   child: addressLineOne,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       right: 20.0, bottom: 30.0, left: 20.0),
+                  //   child: addressLineTwo,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       right: 20.0, bottom: 30.0, left: 20.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     // mainAxisSize: MainAxisSize.max,
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: <Widget>[
+                  //       Expanded(
+                  //         child: Padding(
+                  //           padding: const EdgeInsets.only(right: 30.0),
+                  //           child: addressPostcode,
+                  //         ),
+                  //         flex: 1,
+                  //       ),
+                  //       Expanded(
+                  //         child: addressCity,
+                  //         flex: 1,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //       right: 20.0, bottom: 50.0, left: 20.0),
+                  //   child: addressState,
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, bottom: 50.0, left: 20.0),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
                           child: Container(
-                            // width: MediaQuery.of(context).size.width,
-                            child: new RaisedButton(
-                              child: Text("Complete Registration",
-                                  style: TextStyle(color: Color(0xff222222))),
-                              color: Color(0xffFFA630),
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(30.0)),
-                              elevation: 10,
-                              onPressed: () async {
-                                try {
-                                  final newUser = await _auth
-                                      .createUserWithEmailAndPassword(
-                                          email: email, password: password);
-                                  if (newUser != null) {
-                                    Navigator.push(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (context) =>
-                                                new HomeNav()));
+                            child: Container(
+                              // width: MediaQuery.of(context).size.width,
+                              child: new RaisedButton(
+                                child: Text("Complete Registration",
+                                    style: TextStyle(color: Color(0xff222222))),
+                                color: Color(0xffFFA630),
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(30.0)),
+                                elevation: 10,
+                                onPressed: () async {
+                                  setState(() {
+                                    showSpinner = true;
+                                  });
+                                  try {
+                                    final newUser = await _auth
+                                        .createUserWithEmailAndPassword(
+                                            email: email, password: password);
+                                    if (newUser != null) {
+                                      Navigator.push(
+                                          context,
+                                          new MaterialPageRoute(
+                                              builder: (context) =>
+                                                  new HomeNav()));
+                                    }
+                                    setState(() {
+                                      showSpinner = false;
+                                    });
+                                  } catch (e) {
+                                    print(e);
                                   }
-                                } catch (e) {
-                                  print(e);
                                 }
-                              }
-                              // try {
-                              //   final newUser =
-                              //       _auth.createUserWithEmailAndPassword(
-                              //           email: email, password: password);
-                              //   if (newUser != null) {
-                              //     Navigator.push(
-                              //         context,
-                              //         new MaterialPageRoute(
-                              //             builder: (context) =>
-                              //                 new HomeNav()));
-                              //   }
-                              // } catch (e) {
-                              //   print(e);
-                              // }
-                              ,
+                                // try {
+                                //   final newUser =
+                                //       _auth.createUserWithEmailAndPassword(
+                                //           email: email, password: password);
+                                //   if (newUser != null) {
+                                //     Navigator.push(
+                                //         context,
+                                //         new MaterialPageRoute(
+                                //             builder: (context) =>
+                                //                 new HomeNav()));
+                                //   }
+                                // } catch (e) {
+                                //   print(e);
+                                // }
+                                ,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
