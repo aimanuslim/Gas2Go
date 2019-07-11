@@ -28,10 +28,9 @@ class MyApp extends StatelessWidget {
       initialRoute: CustomerOnboarding.id,
       routes: {
         CustomerOnboarding.id: (context) => CustomerOnboarding(),
-        CustomerAppEntry.id: (context) => CustomerAppEntry(),
+        CustomerIntro.id: (context) => CustomerIntro(),
         CustomerSignIn.id: (context) => CustomerSignIn(),
-        CustomerRegisterPartOne.id: (context) => CustomerRegisterPartOne(),
-        CustomerRegisterPartTwo.id: (context) => CustomerRegisterPartTwo(),
+        CustomerRegistration.id: (context) => CustomerRegistration(),
         CustomerForgotPassword.id: (context) => CustomerForgotPassword(),
       },
     );
