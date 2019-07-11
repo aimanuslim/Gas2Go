@@ -9,26 +9,6 @@ class CustomerIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // void _registerScreen(BuildContext context) {
-    //   Navigator.push(
-    //       context,
-    //       new MaterialPageRoute(
-    //           builder: (context) => new CustomerRegisterPartOne()));
-    // }
-
-    // void _signInScreen(BuildContext context) {
-    //   Navigator.push(context,
-    //       new MaterialPageRoute(builder: (context) => new CustomerSignIn()));
-    // }
-
-    // final closeButton = Container(
-    //   margin: EdgeInsets.only(top: 30.0),
-    //   child: Icon(
-    //     FontAwesomeIcons.timesCircle,
-    //     color: Color(0xffFFFFFF),
-    //   ),
-    // );
-
     final brandLogo = Container(
       margin: EdgeInsets.only(top: 250.0, bottom: 100.0),
       child: Center(child: Image.asset("assets/ezgas_logo_white_text.png")),
@@ -52,9 +32,7 @@ class CustomerIntro extends StatelessWidget {
                 context,
                 new MaterialPageRoute(
                     builder: (context) => new CustomerRegistration()));
-          }
-          // Navigator.pushNamed(context, CustomerRegisterPartOne.id);
-          ),
+          }),
     );
 
     final signInButton = Container(
@@ -79,14 +57,16 @@ class CustomerIntro extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color(0xff323E6E),
-      body: Container(
-          child: new Column(
-        children: <Widget>[
-          brandLogo,
-          registerButton,
-          signInButton,
-        ],
-      )),
+      body: SingleChildScrollView(
+        child: Container(
+            child: new Column(
+          children: <Widget>[
+            brandLogo,
+            registerButton,
+            signInButton,
+          ],
+        )),
+      ),
     );
   }
 }
