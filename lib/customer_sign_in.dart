@@ -48,12 +48,6 @@ class _CustomerSignInState extends State<CustomerSignIn> {
     ),
   );
 
-  final signInAsDealer = Text(
-    "Sign in as dealer",
-    style: TextStyle(
-        fontSize: 15.0, fontWeight: FontWeight.bold, color: Color(0xffFFA630)),
-  );
-
   bool showSpinner = false;
 
   @override
@@ -111,7 +105,6 @@ class _CustomerSignInState extends State<CustomerSignIn> {
                   SizedBox(
                     height: 30.0,
                   ),
-                  signInAsDealer,
                   SizedBox(
                     height: 200.0,
                   ),
