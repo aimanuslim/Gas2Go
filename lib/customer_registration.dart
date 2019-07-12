@@ -40,7 +40,6 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
       focusedBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Color(0xffFFA630))),
       labelText: 'Email address',
-      // errorText: 'Your email must contain a "@" and a "."',
     ),
   );
 
@@ -68,10 +67,10 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
 
   Future<void> registerNewUser() async {
     final formState = _formKey.currentState;
-    setState(() {
-      showSpinner = true;
-    });
     if (formState.validate()) {
+      setState(() {
+        showSpinner = true;
+      });
       formState.save();
       try {
         final newUser = await _auth.createUserWithEmailAndPassword(
@@ -107,47 +106,53 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
                 Navigator.pop(context);
               },
             )),
-        body: ModalProgressHUD(
-          inAsyncCall: showSpinner,
-          child: Form(
-            key: _formKey,
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 50.0),
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, bottom: 30.0, left: 20.0),
-                    child: emailInput,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, bottom: 30.0, left: 20.0),
-                    child: passwordInput,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, bottom: 50.0, left: 20.0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            child: new RaisedButton(
-                              child: Text("Complete Registration",
-                                  style: TextStyle(color: Color(0xff222222))),
-                              color: Color(0xffFFA630),
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(30.0)),
-                              elevation: 10,
-                              onPressed: registerNewUser,
+        body: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: ModalProgressHUD(
+            inAsyncCall: showSpinner,
+            child: Form(
+              key: _formKey,
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 50.0),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 20.0, bottom: 30.0, left: 20.0),
+                      child: emailInput,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 20.0, bottom: 50.0, left: 20.0),
+                      child: passwordInput,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 20.0, bottom: 50.0, left: 20.0),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: new RaisedButton(
+                                child: Text("Complete Registration",
+                                    style: TextStyle(color: Color(0xff222222))),
+                                color: Color(0xffFFA630),
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(30.0)),
+                                elevation: 10,
+                                onPressed: registerNewUser,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
