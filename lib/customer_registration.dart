@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'customer_screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,8 +17,17 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
   static String email;
   static String password;
 
-  final emailInput = TextField(
-    onChanged: (value) {
+  @override
+  void initState() {
+    RaisedButton(
+      onPressed: null,
+    );
+    super.initState();
+  }
+
+  final emailInput = TextFormField(
+    validator: (value) => !value.contains('@') ? 'Not a valid email.' : null,
+    onSaved: (value) {
       email = value;
     },
     keyboardType: TextInputType.emailAddress,
@@ -33,8 +44,10 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
     ),
   );
 
-  final passwordInput = TextField(
-    onChanged: (value) {
+  final passwordInput = TextFormField(
+    validator: (value) =>
+        value.length < 6 ? 'Password must contain at least 6 characters' : null,
+    onSaved: (value) {
       password = value;
     },
     obscureText: true,
@@ -47,13 +60,34 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
       focusedBorder:
           OutlineInputBorder(borderSide: BorderSide(color: Color(0xffFFA630))),
       labelText: 'Password',
-      helperText: 'Password must contain at least 6 characters',
-      // suffixIcon: Icon(FontAwesomeIcons.eye),
     ),
   );
 
   final _formKey = GlobalKey<FormState>();
   bool showSpinner = false;
+
+  Future<void> registerNewUser() async {
+    final formState = _formKey.currentState;
+    setState(() {
+      showSpinner = true;
+    });
+    if (formState.validate()) {
+      formState.save();
+      try {
+        final newUser = await _auth.createUserWithEmailAndPassword(
+            email: email, password: password);
+        if (newUser != null) {
+          Navigator.push(context,
+              new MaterialPageRoute(builder: (context) => new HomeNav()));
+        }
+        setState(() {
+          showSpinner = false;
+        });
+      } catch (e) {
+        print(e.message);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,35 +133,15 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
                         Expanded(
                           child: Container(
                             child: new RaisedButton(
-                                child: Text("Complete Registration",
-                                    style: TextStyle(color: Color(0xff222222))),
-                                color: Color(0xffFFA630),
-                                shape: new RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(30.0)),
-                                elevation: 10,
-                                onPressed: () async {
-                                  setState(() {
-                                    showSpinner = true;
-                                  });
-                                  try {
-                                    final newUser = await _auth
-                                        .createUserWithEmailAndPassword(
-                                            email: email, password: password);
-                                    if (newUser != null) {
-                                      Navigator.push(
-                                          context,
-                                          new MaterialPageRoute(
-                                              builder: (context) =>
-                                                  new HomeNav()));
-                                    }
-                                    setState(() {
-                                      showSpinner = false;
-                                    });
-                                  } catch (e) {
-                                    print(e);
-                                  }
-                                }),
+                              child: Text("Complete Registration",
+                                  style: TextStyle(color: Color(0xff222222))),
+                              color: Color(0xffFFA630),
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              elevation: 10,
+                              onPressed: registerNewUser,
+                            ),
                           ),
                         ),
                       ],
