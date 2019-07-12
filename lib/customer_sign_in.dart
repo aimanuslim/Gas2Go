@@ -15,8 +15,17 @@ class _CustomerSignInState extends State<CustomerSignIn> {
   static String email;
   static String password;
 
-  final emailInput = TextField(
-    onChanged: (value) {
+  @override
+  void initState() {
+    RaisedButton(
+      onPressed: null,
+    );
+    super.initState();
+  }
+
+  final emailInput = TextFormField(
+    validator: (value) => !value.contains('@') ? 'Not a valid email.' : null,
+    onSaved: (value) {
       email = value;
     },
     keyboardType: TextInputType.emailAddress,
@@ -32,8 +41,8 @@ class _CustomerSignInState extends State<CustomerSignIn> {
     ),
   );
 
-  final passwordInput = TextField(
-    onChanged: (value) {
+  final passwordInput = TextFormField(
+    onSaved: (value) {
       password = value;
     },
     obscureText: true,
@@ -51,6 +60,29 @@ class _CustomerSignInState extends State<CustomerSignIn> {
 
   final _formKey = GlobalKey<FormState>();
   bool showSpinner = false;
+
+  Future<void> signInExistingUser() async {
+    final formState = _formKey.currentState;
+    if (formState.validate()) {
+      setState(() {
+        showSpinner = true;
+      });
+      formState.save();
+      try {
+        final user = await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
+        if (user != null) {
+          Navigator.push(context,
+              new MaterialPageRoute(builder: (context) => new HomeNav()));
+        }
+        setState(() {
+          showSpinner = false;
+        });
+      } catch (e) {
+        print(e.message);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,88 +102,72 @@ class _CustomerSignInState extends State<CustomerSignIn> {
                 Navigator.pop(context);
               },
             )),
-        body: ModalProgressHUD(
-          inAsyncCall: showSpinner,
-          child: Form(
-            key: _formKey,
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 50.0),
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, bottom: 30.0, left: 20.0),
-                    child: emailInput,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, bottom: 50.0, left: 20.0),
-                    child: passwordInput,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 50.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) =>
-                                    new CustomerForgotPassword()));
-                      },
-                      child: Text(
-                        "Forgot password?",
-                        style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xffE6E6E6)),
+        body: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: ModalProgressHUD(
+            inAsyncCall: showSpinner,
+            child: Form(
+              key: _formKey,
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 50.0),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 20.0, bottom: 30.0, left: 20.0),
+                      child: emailInput,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 20.0, bottom: 50.0, left: 20.0),
+                      child: passwordInput,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 50.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              new MaterialPageRoute(
+                                  builder: (context) =>
+                                      new CustomerForgotPassword()));
+                        },
+                        child: Text(
+                          "Forgot password?",
+                          style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xffE6E6E6)),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, bottom: 50.0, left: 20.0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            child: new RaisedButton(
-                              child: Text("Sign In",
-                                  style: TextStyle(color: Color(0xff222222))),
-                              color: Color(0xffFFA630),
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(30.0)),
-                              elevation: 10,
-                              onPressed: () async {
-                                setState(() {
-                                  showSpinner = true;
-                                });
-                                try {
-                                  final user =
-                                      await _auth.signInWithEmailAndPassword(
-                                          email: email, password: password);
-                                  if (user != null) {
-                                    Navigator.push(
-                                        context,
-                                        new MaterialPageRoute(
-                                            builder: (context) =>
-                                                new HomeNav()));
-                                  }
-
-                                  setState(() {
-                                    showSpinner = false;
-                                  });
-                                } catch (e) {
-                                  print(e);
-                                }
-                              },
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 20.0, bottom: 50.0, left: 20.0),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              child: new RaisedButton(
+                                child: Text("Sign In",
+                                    style: TextStyle(color: Color(0xff222222))),
+                                color: Color(0xffFFA630),
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(30.0)),
+                                elevation: 10,
+                                onPressed: signInExistingUser,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
