@@ -78,7 +78,7 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
           child: Form(
             key: _formKey,
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 30.0),
+              margin: EdgeInsets.symmetric(vertical: 50.0),
               child: Column(
                 children: <Widget>[
                   Padding(

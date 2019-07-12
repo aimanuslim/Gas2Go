@@ -3,6 +3,7 @@ import 'package:gas2go/customer_screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+// Customer - sign in screen
 class CustomerSignIn extends StatefulWidget {
   static const String id = "customer_sign_in";
   @override
@@ -48,6 +49,7 @@ class _CustomerSignInState extends State<CustomerSignIn> {
     ),
   );
 
+  final _formKey = GlobalKey<FormState>();
   bool showSpinner = false;
 
   @override
@@ -70,50 +72,48 @@ class _CustomerSignInState extends State<CustomerSignIn> {
             )),
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 50.0, right: 20.0, left: 20.0),
+          child: Form(
+            key: _formKey,
             child: Container(
+              margin: EdgeInsets.symmetric(vertical: 50.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  emailInput,
-                  SizedBox(
-                    height: 50.0,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, bottom: 30.0, left: 20.0),
+                    child: emailInput,
                   ),
-                  passwordInput,
-                  SizedBox(
-                    height: 50.0,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, bottom: 50.0, left: 20.0),
+                    child: passwordInput,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) =>
-                                  new CustomerForgotPassword()));
-                    },
-                    child: Text(
-                      "Forgot password?",
-                      style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xffE6E6E6)),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 50.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) =>
+                                    new CustomerForgotPassword()));
+                      },
+                      child: Text(
+                        "Forgot password?",
+                        style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffE6E6E6)),
+                      ),
                     ),
                   ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  SizedBox(
-                    height: 200.0,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, bottom: 50.0, left: 20.0),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
                           child: Container(
-                            // width: MediaQuery.of(context).size.width,
                             child: new RaisedButton(
                               child: Text("Sign In",
                                   style: TextStyle(color: Color(0xff222222))),
@@ -148,8 +148,8 @@ class _CustomerSignInState extends State<CustomerSignIn> {
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),
