@@ -6,6 +6,7 @@ import 'commonelements.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import 'package:flutter/services.dart';
 
 class HomeNav extends StatelessWidget {
   @override
@@ -1721,6 +1722,13 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
   String name = 'Ahmad Saiful';
   String email = 'ahmadsaiful@gmail.com';
   String phone = '017xxxxxxx';
+  final addressData = AddressData(
+    addressLine1: "W-10-9, I Residence",
+    addressLine2: "Persiaran Surian, Kota Damansara",
+    postcode: 47810,
+    city: "Petaling Jaya",
+    state: "Selangor",
+  ); 
 
   @override
   Widget build(BuildContext context) {
@@ -1800,7 +1808,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                 )
               ],
             ),
-            Row(
+            new Row(
               children: <Widget>[
                 Expanded(
                   child: Text(
@@ -1820,13 +1828,54 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                     })
               ],
             ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                  Text(
+                    addressData.addressLine1, textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                  Text(
+                    addressData.addressLine2,
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                  Text(
+                    '${addressData.postcode}', textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                  Text(
+                    addressData.city, textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                  Text(
+                    addressData.state, textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ), 
+                  ],)
+                  
+                ),
+                IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.edit,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      _valueFromEditFormAddress(context);
+                    })
+              ],
+            ),
             Padding(
               padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
             ),
             GestureDetector(
               onTap: null,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
@@ -1836,12 +1885,9 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      "Reset password",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                  Text(
+                    "Reset password",
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -1852,7 +1898,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             GestureDetector(
                 onTap: null,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Row(
                       children: <Widget>[
@@ -1862,15 +1908,9 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: GestureDetector(
-                        child: Text(
-                          "Sign out",
-                          style:
-                              TextStyle(color: Theme.of(context).accentColor),
-                        ),
-                      ),
+                    Text(
+                      "Sign out",
+                      style: TextStyle(color: Theme.of(context).accentColor),
                     ),
                   ],
                 )),
@@ -1906,6 +1946,18 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
       phone = resultPhone;
     });
   }
+
+  void _valueFromEditFormAddress(BuildContext context) async {
+    final resultAddress = await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => EditFormAddress())) 
+        as AddressData;
+
+        addressData.addressLine1 = resultAddress.addressLine1;
+        addressData.addressLine2 = resultAddress.addressLine2;
+        addressData.postcode = resultAddress.postcode;
+        addressData.city = resultAddress.city;
+        addressData.state = resultAddress.state;
+  }
 }
 
 class EditFormName extends StatefulWidget {
@@ -1918,6 +1970,7 @@ class EditFormName extends StatefulWidget {
 class EditFormNameState extends State<EditFormName> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController(text: 'name');
+  bool _autoValidate = false;
 
   @override
   void dispose() {
@@ -1938,15 +1991,16 @@ class EditFormNameState extends State<EditFormName> {
         padding: EdgeInsets.all(20.0),
         height: 400.0,
         child: new Form(
+          autovalidate: _autoValidate,
           key: _formKey,
           child: Column(
             children: <Widget>[
               TextFormField(
                   controller: nameController,
                   validator: (value) {
-                    if (value.isEmpty) {
-                      return "Enter some text";
-                    }
+                    if (value.isEmpty || value.length <5) {
+                      return "Name must be more than 4 characters";
+                    }else
                     return null;
                   }),
             ],
@@ -1960,6 +2014,8 @@ class EditFormNameState extends State<EditFormName> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             return _sendNameBack(context);
+          }else{
+            _autoValidate = true;
           }
         },
       ),
@@ -1982,6 +2038,7 @@ class EditFormEmail extends StatefulWidget {
 class EditFormEmailState extends State<EditFormEmail> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
+  bool _autoValidate = false;
 
   // @override
   // void dispose(){
@@ -2003,15 +2060,18 @@ class EditFormEmailState extends State<EditFormEmail> {
         padding: EdgeInsets.all(20.0),
         height: 400.0,
         child: new Form(
+          autovalidate: _autoValidate,
           key: _formKey,
           child: Column(
             children: <Widget>[
               TextFormField(
                   controller: emailController,
                   validator: (value) {
-                    if (value.isEmpty) {
-                      return "Enter email";
-                    }
+                    Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                    RegExp regex = new RegExp(pattern);
+                    if (value.isEmpty || !regex.hasMatch(value)) {
+                      return "Enter valid email";
+                    }else
                     return null;
                   }),
             ],
@@ -2025,6 +2085,8 @@ class EditFormEmailState extends State<EditFormEmail> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             return _sendEmailBack(context);
+          }else{
+            _autoValidate = true;
           }
         },
       ),
@@ -2047,6 +2109,7 @@ class EditFormPhone extends StatefulWidget {
 class EditFormPhoneState extends State<EditFormPhone> {
   final _formKey = GlobalKey<FormState>();
   final phoneController = TextEditingController();
+  bool _autoValidate = false;
 
   @override
   void dispose() {
@@ -2068,13 +2131,19 @@ class EditFormPhoneState extends State<EditFormPhone> {
         height: 400.0,
         child: new Form(
           key: _formKey,
+          autovalidate: _autoValidate,
           child: Column(
             children: <Widget>[
               TextFormField(
                   controller: phoneController,
+                  keyboardType: TextInputType.numberWithOptions(),
+                  inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(
+                    hintText: "Enter your number"
+                  ),
                   validator: (value) {
-                    if (value.isEmpty) {
-                      return "Enter phone number";
+                    if (value.isEmpty || value.length !=10) {
+                      return "Phone number must be of 10 digits";
                     }
                     return null;
                   }),
@@ -2089,7 +2158,8 @@ class EditFormPhoneState extends State<EditFormPhone> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             return _sendPhoneBack(context);
-          }
+          }else
+          _autoValidate = true;
         },
       ),
     );
@@ -2098,6 +2168,135 @@ class EditFormPhoneState extends State<EditFormPhone> {
   void _sendPhoneBack(BuildContext context) {
     String phoneToSendBack = phoneController.text;
     Navigator.pop(context, phoneToSendBack);
+  }
+}
+
+
+class AddressData {
+  String addressLine1;
+  String addressLine2;
+  int postcode;
+  String city;
+  String state;
+
+  AddressData({this.addressLine1, this.addressLine2, this.postcode, this.city, this.state});
+
+
+}
+
+class EditFormAddress extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return EditFormAddressState();
+  }
+}
+
+class EditFormAddressState extends State<EditFormAddress> {
+  final _formKey = GlobalKey<FormState>();
+  final addressLine1Controller = TextEditingController();
+  final addressLine2Controller = TextEditingController();
+  final postcodeController = TextEditingController();
+  final cityController = TextEditingController();
+  final stateController = TextEditingController();
+  final AddressData addressData;
+  bool _autoValidate = false;
+
+  EditFormAddressState({this.addressData});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: new AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: new Text("Edit Address"),
+      ),
+      body: new SingleChildScrollView(
+        padding: EdgeInsets.all(20.0),
+        child: new Form(
+          key: _formKey,
+          autovalidate: _autoValidate,
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                  controller: addressLine1Controller,
+                  decoration: InputDecoration(
+                    hintText: "Unit/House number, Building"
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter your unit or house number, followed by building name";
+                    }
+                    return null;
+                  }),
+              TextFormField(
+                  controller: addressLine2Controller,
+                  decoration: InputDecoration(
+                    hintText: "Road, Town"
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter the road where you reside, followed by the town";
+                    }
+                    return null;
+                  }),
+              TextFormField(
+                  controller: postcodeController,
+                  keyboardType: TextInputType.numberWithOptions(),
+                  inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(
+                    hintText: "Postcode"
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty || value.length !=5) {
+                      return "Enter 5 digit postcode";
+                    }
+                    return null;
+                  }),
+              TextFormField(
+                  controller: cityController,
+                  decoration: InputDecoration(
+                    hintText: "City"
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter the city where you reside";
+                    }
+                    return null;
+                  }),
+              TextFormField(
+                  controller: stateController,
+                  decoration: InputDecoration(
+                    hintText: "State"
+                  ),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return "Enter the state where you reside";
+                    }
+                    return null;
+                  }),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        backgroundColor: Theme.of(context).accentColor,
+        foregroundColor: Theme.of(context).textSelectionColor,
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            return _sendAddressBack(context);
+          }else
+          _autoValidate = true;
+        },
+      ),
+    );
+  }
+
+  void _sendAddressBack(BuildContext context) {
+    Navigator.pop(context, addressData);
   }
 }
 
