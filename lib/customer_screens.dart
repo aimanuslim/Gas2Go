@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:flutter/services.dart';
+import 'package:gas2go/intro.dart';
 
 class HomeNav extends StatelessWidget {
   @override
@@ -1722,6 +1723,8 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
   String name = 'Ahmad Saiful';
   String email = 'ahmadsaiful@gmail.com';
   String phone = '017xxxxxxx';
+  final _auth = FirebaseAuth.instance;
+
   final addressData = AddressData(
     addressLine1: "W-10-9, I Residence",
     addressLine2: "Persiaran Surian, Kota Damansara",
@@ -1729,6 +1732,12 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
     city: "Petaling Jaya",
     state: "Selangor",
   );
+
+  void signOut() async {
+    await _auth.signOut();
+    Navigator.push(context,
+        new MaterialPageRoute(builder: (context) => new CustomerIntro()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1831,45 +1840,47 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
             new Row(
               children: <Widget>[
                 Expanded(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      addressData.addressLine1,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                    Text(
-                      addressData.addressLine2,
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                    Text(
-                      '${addressData.postcode}',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                    Text(
-                      addressData.city,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                    Text(
-                      addressData.state,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
-                    ),
-                  ],
-                )),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        addressData.addressLine1,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      ),
+                      Text(
+                        addressData.addressLine2,
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      ),
+                      Text(
+                        '${addressData.postcode}',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      ),
+                      Text(
+                        addressData.city,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      ),
+                      Text(
+                        addressData.state,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      ),
+                    ],
+                  ),
+                ),
                 IconButton(
-                    iconSize: 12,
-                    alignment: Alignment.center,
-                    icon: new Icon(
-                      Icons.edit,
-                      color: Theme.of(context).buttonColor,
-                    ),
-                    onPressed: () {
-                      _valueFromEditFormAddress(context);
-                    })
+                  iconSize: 12,
+                  alignment: Alignment.center,
+                  icon: new Icon(
+                    Icons.edit,
+                    color: Theme.of(context).buttonColor,
+                  ),
+                  onPressed: () {
+                    _valueFromEditFormAddress(context);
+                  },
+                ),
               ],
             ),
             Padding(
@@ -1904,7 +1915,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
               padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
             ),
             GestureDetector(
-                onTap: null,
+                onTap: signOut,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
