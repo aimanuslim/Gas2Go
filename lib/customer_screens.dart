@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gas2go/texts.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'commonelements.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
@@ -1724,6 +1725,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
   String email = 'ahmadsaiful@gmail.com';
   String phone = '017xxxxxxx';
   final _auth = FirebaseAuth.instance;
+  bool showSpinner = false;
 
   final addressData = AddressData(
     addressLine1: "W-10-9, I Residence",
@@ -1734,6 +1736,10 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
   );
 
   void signOut() async {
+    setState(() {
+      showSpinner = true;
+    });
+    Future.delayed(Duration(seconds: 2));
     await _auth.signOut();
     Navigator.push(context,
         new MaterialPageRoute(builder: (context) => new CustomerIntro()));
@@ -1761,168 +1767,142 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
         ),
         backgroundColor: Theme.of(context).backgroundColor,
       ),
-      body: new Container(
-        padding: const EdgeInsets.all(10),
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    "Personal details",
-                    style: new TextStyle(color: Colors.grey, fontSize: 16.0),
-                  ),
-                ),
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    name,
-                    style: new TextStyle(color: Colors.white, fontSize: 15.0),
-                  ),
-                ),
-                new IconButton(
-                    iconSize: 12,
-                    alignment: Alignment.center,
-                    icon: new Icon(
-                      Icons.edit,
-                      color: Theme.of(context).buttonColor,
-                    ),
-                    onPressed: () {
-                      _valueFromEditFormName(context);
-                    })
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: new Text(
-                    email,
-                    style: new TextStyle(color: Colors.white, fontSize: 15.0),
-                  ),
-                ),
-                new IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.edit,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    _valueFromEditFormEmail(context);
-                  },
-                )
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: Text(
-                    phone,
-                    style: TextStyle(color: Colors.white, fontSize: 15.0),
-                  ),
-                ),
-                IconButton(
-                    iconSize: 12,
-                    alignment: Alignment.center,
-                    icon: new Icon(
-                      Icons.edit,
-                      color: Theme.of(context).buttonColor,
-                    ),
-                    onPressed: () {
-                      _valueFromEditFormPhone(context);
-                    })
-              ],
-            ),
-            new Row(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        addressData.addressLine1,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white, fontSize: 15.0),
-                      ),
-                      Text(
-                        addressData.addressLine2,
-                        style: TextStyle(color: Colors.white, fontSize: 15.0),
-                      ),
-                      Text(
-                        '${addressData.postcode}',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white, fontSize: 15.0),
-                      ),
-                      Text(
-                        addressData.city,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white, fontSize: 15.0),
-                      ),
-                      Text(
-                        addressData.state,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white, fontSize: 15.0),
-                      ),
-                    ],
-                  ),
-                ),
-                IconButton(
-                  iconSize: 12,
-                  alignment: Alignment.center,
-                  icon: new Icon(
-                    Icons.edit,
-                    color: Theme.of(context).buttonColor,
-                  ),
-                  onPressed: () {
-                    _valueFromEditFormAddress(context);
-                  },
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
-            ),
-            GestureDetector(
-              onTap: null,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: new Container(
+          padding: const EdgeInsets.all(10),
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              new Row(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.lock,
-                        color: Theme.of(context).buttonColor,
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      "Reset password",
-                      style: TextStyle(
-                        color: Theme.of(context).buttonColor,
-                      ),
+                  Expanded(
+                    child: new Text(
+                      "Personal details",
+                      style: new TextStyle(color: Colors.grey, fontSize: 16.0),
                     ),
                   ),
                 ],
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
-            ),
-            GestureDetector(
-                onTap: signOut,
+              new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      name,
+                      style: new TextStyle(color: Colors.white, fontSize: 15.0),
+                    ),
+                  ),
+                  new IconButton(
+                      iconSize: 12,
+                      alignment: Alignment.center,
+                      icon: new Icon(
+                        Icons.edit,
+                        color: Theme.of(context).buttonColor,
+                      ),
+                      onPressed: () {
+                        _valueFromEditFormName(context);
+                      })
+                ],
+              ),
+              new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new Text(
+                      email,
+                      style: new TextStyle(color: Colors.white, fontSize: 15.0),
+                    ),
+                  ),
+                  new IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.edit,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      _valueFromEditFormEmail(context);
+                    },
+                  )
+                ],
+              ),
+              new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      phone,
+                      style: TextStyle(color: Colors.white, fontSize: 15.0),
+                    ),
+                  ),
+                  IconButton(
+                      iconSize: 12,
+                      alignment: Alignment.center,
+                      icon: new Icon(
+                        Icons.edit,
+                        color: Theme.of(context).buttonColor,
+                      ),
+                      onPressed: () {
+                        _valueFromEditFormPhone(context);
+                      })
+                ],
+              ),
+              new Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          addressData.addressLine1,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.white, fontSize: 15.0),
+                        ),
+                        Text(
+                          addressData.addressLine2,
+                          style: TextStyle(color: Colors.white, fontSize: 15.0),
+                        ),
+                        Text(
+                          '${addressData.postcode}',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.white, fontSize: 15.0),
+                        ),
+                        Text(
+                          addressData.city,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.white, fontSize: 15.0),
+                        ),
+                        Text(
+                          addressData.state,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.white, fontSize: 15.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    iconSize: 12,
+                    alignment: Alignment.center,
+                    icon: new Icon(
+                      Icons.edit,
+                      color: Theme.of(context).buttonColor,
+                    ),
+                    onPressed: () {
+                      _valueFromEditFormAddress(context);
+                    },
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
+              ),
+              GestureDetector(
+                onTap: null,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Row(
                       children: <Widget>[
                         Icon(
-                          Icons.exit_to_app,
+                          Icons.lock,
                           color: Theme.of(context).buttonColor,
                         ),
                       ],
@@ -1930,13 +1910,43 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        "Sign out",
-                        style: TextStyle(color: Theme.of(context).buttonColor),
+                        "Reset password",
+                        style: TextStyle(
+                          color: Theme.of(context).buttonColor,
+                        ),
                       ),
                     ),
                   ],
-                )),
-          ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0, 0),
+              ),
+              GestureDetector(
+                  onTap: signOut,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.exit_to_app,
+                            color: Theme.of(context).buttonColor,
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Text(
+                          "Sign out",
+                          style:
+                              TextStyle(color: Theme.of(context).buttonColor),
+                        ),
+                      ),
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );

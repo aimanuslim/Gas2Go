@@ -75,6 +75,7 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
       try {
         final newUser = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        newUser.sendEmailVerification();
         if (newUser != null) {
           Navigator.push(context,
               new MaterialPageRoute(builder: (context) => new HomeNav()));
@@ -90,69 +91,63 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: Scaffold(
-        resizeToAvoidBottomPadding: false,
-        backgroundColor: Color(0xff323E6E),
-        appBar: AppBar(
-            title: Text("Register"),
-            backgroundColor: Color(0xff323E6E),
-            leading: IconButton(
-              tooltip: "Previous page",
-              icon:
-                  Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )),
-        body: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            FocusScope.of(context).requestFocus(new FocusNode());
-          },
-          child: ModalProgressHUD(
-            inAsyncCall: showSpinner,
-            child: Form(
-              key: _formKey,
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 50.0),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          right: 20.0, bottom: 30.0, left: 20.0),
-                      child: emailInput,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          right: 20.0, bottom: 50.0, left: 20.0),
-                      child: passwordInput,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          right: 20.0, bottom: 50.0, left: 20.0),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              child: new RaisedButton(
-                                child: Text("Complete Registration",
-                                    style: TextStyle(color: Color(0xff222222))),
-                                color: Color(0xffFFA630),
-                                shape: new RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(30.0)),
-                                elevation: 10,
-                                onPressed: registerNewUser,
-                              ),
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: Color(0xff323E6E),
+      appBar: AppBar(
+          title: Text("Register"),
+          backgroundColor: Color(0xff323E6E),
+          leading: IconButton(
+            tooltip: "Previous page",
+            icon: Icon(Icons.arrow_back, color: Theme.of(context).buttonColor),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )),
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Form(
+            key: _formKey,
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              margin: EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 30.0),
+                    child: emailInput,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 50.0),
+                    child: passwordInput,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 50.0),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            child: new RaisedButton(
+                              child: Text("Complete Registration",
+                                  style: TextStyle(color: Color(0xff222222))),
+                              color: Color(0xffFFA630),
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              elevation: 10,
+                              onPressed: registerNewUser,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

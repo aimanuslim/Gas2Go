@@ -225,7 +225,7 @@ class _CustomerForgotPasswordState extends State<CustomerForgotPassword> {
       });
       formState.save();
       try {
-        // await _auth.sendPasswordResetConfirmation(email: email);
+        await _auth.sendPasswordResetEmail(email: email);
         Navigator.push(
             context,
             new MaterialPageRoute(
