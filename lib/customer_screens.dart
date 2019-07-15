@@ -719,7 +719,22 @@ class CustomerHomePageState extends State<CustomerHomePage>
 
 // Home Tab - Screen 13 //
 
-class ConfirmOrder extends StatelessWidget {
+class ConfirmOrder extends StatefulWidget {
+  @override
+  ConfirmOrderState createState() =>
+      ConfirmOrderState();
+}
+
+
+class ConfirmOrderState extends State<ConfirmOrder> {
+  final _formKey = GlobalKey<FormState>();
+  final addressLine1Controller = TextEditingController();
+  final addressLine2Controller = TextEditingController();
+  final postcodeController = TextEditingController();
+  final cityController = TextEditingController();
+  final stateController = TextEditingController();
+  bool _autoValidate = false;
+  
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -736,57 +751,132 @@ class ConfirmOrder extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: new Text("Select Address"),
+        title: new Text("Enter Address"),
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: new Container(
         padding: EdgeInsets.all(20.0),
-        child: new Column(children: <Widget>[
-          Expanded(
-            child: new Column(
+        child: new Column(
+          children: <Widget>[
+        Expanded(
+          child: new SingleChildScrollView(
+          padding: EdgeInsets.all(10.0),
+          child: new Form(
+            key: _formKey,
+            autovalidate: _autoValidate,
+            child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Row(
-                    children: <Widget>[
-                      new Icon(
-                        Icons.location_on,
-                        color: Colors.grey,
-                      ),
-                      new Text(
-                        "Delivery Address",
-                        style:
-                            new TextStyle(color: Colors.white, fontSize: 16.0),
-                      ),
-                    ],
-                  ),
-                ),
-                new Container(
-                  child: new Container(
-                    child: Column(
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: new Text(
-                                "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor",
-                                style: new TextStyle(
-                                    color: Colors.white, fontSize: 14.0),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
+                TextFormField(
+                    controller: addressLine1Controller,
+                    decoration: InputDecoration(
+                      hintText: "Unit/House number, Building"
                     ),
-                  ),
-                ),
-                new Expanded(
-                  child: new SelectDifferentAddress(),
-                ),
+                    validator: (value) {
+                      if (value?.isEmpty?? true) {
+                        return "Enter your unit or house number, followed by building name";
+                      }
+                      return null;
+                    }),
+                Padding(padding: EdgeInsets.all(10.0),),
+                TextFormField(
+                    controller: addressLine2Controller,
+                    decoration: InputDecoration(
+                      hintText: "Road, Town"
+                    ),
+                    validator: (value) {
+                      if (value?.isEmpty?? true) {
+                        return "Enter the road where you reside, followed by the town";
+                      }
+                      return null;
+                    }),
+                Padding(padding: EdgeInsets.all(10.0),),
+                TextFormField(
+                    controller: postcodeController,
+                    keyboardType: TextInputType.numberWithOptions(),
+                    inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+                    decoration: InputDecoration(
+                      hintText: "Postcode"
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty || value.length !=5) {
+                        return "Enter 5 digit postcode";
+                      }
+                      return null;
+                    }),
+                Padding(padding: EdgeInsets.all(10.0),),
+                TextFormField(
+                    controller: cityController,
+                    decoration: InputDecoration(
+                      hintText: "City"
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Enter the city where you reside";
+                      }
+                      return null;
+                    }),
+                Padding(padding: EdgeInsets.all(10.0),),
+                TextFormField(
+                    controller: stateController,
+                    decoration: InputDecoration(
+                      hintText: "State"
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Enter the state where you reside";
+                      }
+                      return null;
+                    }),
               ],
             ),
           ),
+      ),
+        ),
+          // Expanded(
+          //   child: new Column(
+          //     children: <Widget>[
+          //       Padding(
+          //         padding: const EdgeInsets.all(15.0),
+          //         child: Row(
+          //           children: <Widget>[
+          //             new Icon(
+          //               Icons.location_on,
+          //               color: Colors.grey,
+          //             ),
+          //             new Text(
+          //               "Delivery Address",
+          //               style:
+          //                   new TextStyle(color: Colors.white, fontSize: 16.0),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //       new Container(
+          //         child: new Container(
+          //           child: Column(
+          //             children: <Widget>[
+          //               Column(
+          //                 children: <Widget>[
+          //                   Padding(
+          //                     padding: const EdgeInsets.all(15.0),
+          //                     child: new Text(
+          //                       "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor",
+          //                       style: new TextStyle(
+          //                           color: Colors.white, fontSize: 14.0),
+          //                     ),
+          //                   ),
+          //                 ],
+          //               )
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //       new Expanded(
+          //         child: new SelectDifferentAddress(),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           new Container(
             width: MediaQuery.of(context).size.width,
             child: new RaisedButton(
@@ -798,8 +888,13 @@ class ConfirmOrder extends StatelessWidget {
                   borderRadius: new BorderRadius.circular(30.0)),
               elevation: 50,
               onPressed: () {
-                Navigator.push(context,
+                if (_formKey.currentState.validate()){
+                  return
+                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DeliveryWindow()));
+                }else{
+                  _autoValidate = true;
+                }
               },
             ),
           ),
