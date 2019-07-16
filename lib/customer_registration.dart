@@ -17,16 +17,8 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
   static String email;
   static String password;
 
-  @override
-  void initState() {
-    RaisedButton(
-      onPressed: null,
-    );
-    super.initState();
-  }
-
   final emailInput = TextFormField(
-    validator: (value) => !value.contains('@') ? 'Not a valid email.' : null,
+    validator: _validateEmail,
     onSaved: (value) {
       email = value;
     },
@@ -43,9 +35,32 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
     ),
   );
 
+  static String _validateEmail(String value) {
+    if (value.isEmpty) {
+      // The form is empty
+      return "Enter email address";
+    }
+    // This is just a regular expression for email addresses
+    String p = "[a-zA-Z0-9\+\.\_\%\-\+]{1,256}" +
+        "\\@" +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+        "(" +
+        "\\." +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+        ")+";
+    RegExp regExp = new RegExp(p);
+
+    if (regExp.hasMatch(value)) {
+      // So, the email is valid
+      return null;
+    }
+
+    // The pattern of the email didn't match the regex above.
+    return 'Please enter a valid email';
+  }
+
   final passwordInput = TextFormField(
-    validator: (value) =>
-        value.length < 6 ? 'Password must contain at least 6 characters' : null,
+    validator: _validatePassword,
     onSaved: (value) {
       password = value;
     },
@@ -61,6 +76,19 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
       labelText: 'Password',
     ),
   );
+
+  static String _validatePassword(String value) {
+    String patttern = r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$)';
+    RegExp regExp = new RegExp(patttern);
+    if (value.isEmpty) {
+      return "Password is required";
+    } else if (value.length < 8) {
+      return "Password must have a minimum of 8 characters";
+    } else if (!regExp.hasMatch(value)) {
+      return "Please set a strong password, containing at least one uppercase letter,\none lowercase letter and one number. ";
+    }
+    return null;
+  }
 
   final _formKey = GlobalKey<FormState>();
   bool showSpinner = false;
@@ -132,15 +160,19 @@ class _CustomerRegistrationState extends State<CustomerRegistration> {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            child: new RaisedButton(
-                              child: Text("Complete Registration",
-                                  style: TextStyle(color: Color(0xff222222))),
-                              color: Color(0xffFFA630),
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(30.0)),
-                              elevation: 10,
-                              onPressed: registerNewUser,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 40.0),
+                              child: new RaisedButton(
+                                child: Text("Complete Registration",
+                                    style: TextStyle(color: Color(0xff222222))),
+                                color: Color(0xffFFA630),
+                                shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(30.0)),
+                                elevation: 10,
+                                onPressed: registerNewUser,
+                              ),
                             ),
                           ),
                         ),

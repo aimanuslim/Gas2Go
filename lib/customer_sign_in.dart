@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gas2go/customer_screens.dart';
@@ -13,8 +15,10 @@ class CustomerSignIn extends StatefulWidget {
   _CustomerSignInState createState() => _CustomerSignInState();
 }
 
+enum authProblems { UserNotFound, PasswordNotValid, NetworkError }
+
 class _CustomerSignInState extends State<CustomerSignIn> {
-  final _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   static String email;
   static String password;
 
@@ -27,7 +31,7 @@ class _CustomerSignInState extends State<CustomerSignIn> {
   }
 
   final emailInput = TextFormField(
-    validator: (value) => !value.contains('@') ? 'Not a valid email.' : null,
+    validator: _validateEmail,
     onSaved: (value) {
       email = value;
     },
@@ -43,6 +47,30 @@ class _CustomerSignInState extends State<CustomerSignIn> {
       labelText: 'Email address',
     ),
   );
+
+  static String _validateEmail(String value) {
+    if (value.isEmpty) {
+      // The form is empty
+      return "Enter email address";
+    }
+    // This is just a regular expression for email addresses
+    String p = "[a-zA-Z0-9\+\.\_\%\-\+]{1,256}" +
+        "\\@" +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+        "(" +
+        "\\." +
+        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+        ")+";
+    RegExp regExp = new RegExp(p);
+
+    if (regExp.hasMatch(value)) {
+      // So, the email is valid
+      return null;
+    }
+
+    // The pattern of the email didn't match the regex above.
+    return 'Please enter a valid email';
+  }
 
   final passwordInput = TextFormField(
     onSaved: (value) {
@@ -82,7 +110,42 @@ class _CustomerSignInState extends State<CustomerSignIn> {
           showSpinner = false;
         });
       } catch (e) {
-        print(e.message);
+        authProblems errorType;
+        if (Platform.isAndroid) {
+          switch (e.message) {
+            case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+              errorType = authProblems.UserNotFound;
+              break;
+            case 'The password is invalid or the user does not have a password.':
+              errorType = authProblems.PasswordNotValid;
+              break;
+            case 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.':
+              errorType = authProblems.NetworkError;
+              break;
+            // ...
+            default:
+              print('Case ${e.message} is not jet implemented');
+          }
+        } else if (Platform.isIOS) {
+          switch (e.code) {
+            case 'Error 17011':
+              errorType = authProblems.UserNotFound;
+              break;
+            case 'Error 17009':
+              errorType = authProblems.PasswordNotValid;
+              break;
+            case 'Error 17020':
+              errorType = authProblems.NetworkError;
+              break;
+            // ...
+            default:
+              print('Case ${e.message} is not jet implemented');
+          }
+        }
+        print('The error is $errorType');
+        // final errorSnackBar = SnackBar(
+        //   content: Text("The error is $errorType"),
+        // );
       }
     }
   }
@@ -167,7 +230,7 @@ class _CustomerSignInState extends State<CustomerSignIn> {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
