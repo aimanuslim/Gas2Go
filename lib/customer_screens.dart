@@ -9,6 +9,37 @@ import 'package:share/share.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:flutter/services.dart';
 import 'package:gas2go/intro.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final _auth = FirebaseAuth.instance;
+final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
+num quantity = 1;
+String customerName;
+String addressLineOne;
+String addressLineTwo;
+int postcode;
+String city;
+String state;
+int customerPhoneNumber;
+final nameController = TextEditingController();
+final addressLine1Controller = TextEditingController();
+final addressLine2Controller = TextEditingController();
+final postcodeController = TextEditingController();
+final cityController = TextEditingController();
+final stateController = TextEditingController();
+final phoneNumberController = TextEditingController();
+
+void getCurrentUser() async {
+  try {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      loggedInUser = user;
+    }
+  } catch (e) {
+    print(e);
+  }
+}
 
 class HomeNav extends StatelessWidget {
   @override
@@ -40,9 +71,6 @@ class CustomerAppEntry extends StatefulWidget {
 }
 
 class _CustomerAppEntryState extends State<CustomerAppEntry> {
-  // final Key keyOne = PageStorageKey('pageOne');
-  // final Key keyTwo = PageStorageKey('pageTwo');
-
   int currentTab = 0;
 
   CustomerHomePage one;
@@ -50,9 +78,6 @@ class _CustomerAppEntryState extends State<CustomerAppEntry> {
   ProfileTab three;
   List<Widget> pages;
   Widget currentPage;
-
-  // List<Data> dataList;
-  // final PageStorageBucket bucket = PageStorageBucket();
 
   @override
   void initState() {
@@ -65,6 +90,8 @@ class _CustomerAppEntryState extends State<CustomerAppEntry> {
     currentPage = one;
 
     super.initState();
+
+    getCurrentUser();
   }
 
   @override
@@ -104,40 +131,9 @@ class _CustomerAppEntryState extends State<CustomerAppEntry> {
   }
 }
 
-// class PageOne extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Homepage"),
-//         backgroundColor: Colors.green,
-//       ),
-//       backgroundColor: Colors.green,
-//     );
-//   }
-// }
-
-// class PageTwo extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 300.0,
-//       color: Colors.pink,
-//     );
-//   }
-// }
-
-// class PageThree extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 300.0,
-//       color: Colors.orange,
-//     );
-//   }
-// }
-
 // Home Tab - Screen 12 //
+
+// final numOfBarrels;
 
 class CustomerHomePage extends StatefulWidget {
   @override
@@ -164,7 +160,6 @@ class CustomerHomePageState extends State<CustomerHomePage>
     _maxOrder = false;
   }
 
-  num quantity = 1;
   double basePriceNew14 = 115.0;
   double basePriceNew12 = 111.2;
   double basePriceRefill14 = 35.0;
@@ -721,20 +716,14 @@ class CustomerHomePageState extends State<CustomerHomePage>
 
 class ConfirmOrder extends StatefulWidget {
   @override
-  ConfirmOrderState createState() =>
-      ConfirmOrderState();
+  ConfirmOrderState createState() => ConfirmOrderState();
 }
-
 
 class ConfirmOrderState extends State<ConfirmOrder> {
   final _formKey = GlobalKey<FormState>();
-  final addressLine1Controller = TextEditingController();
-  final addressLine2Controller = TextEditingController();
-  final postcodeController = TextEditingController();
-  final cityController = TextEditingController();
-  final stateController = TextEditingController();
+
   bool _autoValidate = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -751,154 +740,229 @@ class ConfirmOrderState extends State<ConfirmOrder> {
             Navigator.pop(context);
           },
         ),
-        title: new Text("Enter Address"),
+        title: Text("Enter your details"),
       ),
       backgroundColor: Theme.of(context).backgroundColor,
-      body: new Container(
-        padding: EdgeInsets.all(20.0),
-        child: new Column(
-          children: <Widget>[
-        Expanded(
-          child: new SingleChildScrollView(
-          padding: EdgeInsets.all(10.0),
-          child: new Form(
-            key: _formKey,
-            autovalidate: _autoValidate,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                    controller: addressLine1Controller,
-                    decoration: InputDecoration(
-                      hintText: "Unit/House number, Building"
-                    ),
-                    validator: (value) {
-                      if (value?.isEmpty?? true) {
-                        return "Enter your unit or house number, followed by building name";
-                      }
-                      return null;
-                    }),
-                Padding(padding: EdgeInsets.all(10.0),),
-                TextFormField(
-                    controller: addressLine2Controller,
-                    decoration: InputDecoration(
-                      hintText: "Road, Town"
-                    ),
-                    validator: (value) {
-                      if (value?.isEmpty?? true) {
-                        return "Enter the road where you reside, followed by the town";
-                      }
-                      return null;
-                    }),
-                Padding(padding: EdgeInsets.all(10.0),),
-                TextFormField(
-                    controller: postcodeController,
-                    keyboardType: TextInputType.numberWithOptions(),
-                    inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
-                    decoration: InputDecoration(
-                      hintText: "Postcode"
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty || value.length !=5) {
-                        return "Enter 5 digit postcode";
-                      }
-                      return null;
-                    }),
-                Padding(padding: EdgeInsets.all(10.0),),
-                TextFormField(
-                    controller: cityController,
-                    decoration: InputDecoration(
-                      hintText: "City"
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Enter the city where you reside";
-                      }
-                      return null;
-                    }),
-                Padding(padding: EdgeInsets.all(10.0),),
-                TextFormField(
-                    controller: stateController,
-                    decoration: InputDecoration(
-                      hintText: "State"
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Enter the state where you reside";
-                      }
-                      return null;
-                    }),
-              ],
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          child: Column(children: <Widget>[
+            Expanded(
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  autovalidate: _autoValidate,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            customerName = value;
+                          },
+                          controller: nameController,
+                          decoration: InputDecoration(hintText: "Name"),
+                          validator: (value) {
+                            if (value?.isEmpty ?? true) {
+                              return "Enter your name";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            addressLineOne = value;
+                          },
+                          controller: addressLine1Controller,
+                          decoration: InputDecoration(
+                              hintText: "Unit/House number, building"),
+                          validator: (value) {
+                            if (value?.isEmpty ?? true) {
+                              return "Enter your unit or house number, followed by building name";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            addressLineTwo = value;
+                          },
+                          controller: addressLine2Controller,
+                          decoration: InputDecoration(hintText: "Street, Town"),
+                          validator: (value) {
+                            if (value?.isEmpty ?? true) {
+                              return "Enter the street name where you reside, followed by the town";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            postcode = value as int;
+                          },
+                          controller: postcodeController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          inputFormatters: [
+                            WhitelistingTextInputFormatter.digitsOnly
+                          ],
+                          decoration: InputDecoration(hintText: "Postcode"),
+                          validator: (value) {
+                            if (value.isEmpty || value.length != 5) {
+                              return "Enter 5 digit postcode";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            city = value;
+                          },
+                          controller: cityController,
+                          decoration: InputDecoration(hintText: "City"),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Enter the city where you reside";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            state = value;
+                          },
+                          controller: stateController,
+                          decoration: InputDecoration(hintText: "State"),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Enter the state where you reside";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        child: TextFormField(
+                          onSaved: (value) {
+                            customerPhoneNumber = value as int;
+                          },
+                          controller: phoneNumberController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          inputFormatters: [
+                            WhitelistingTextInputFormatter.digitsOnly
+                          ],
+                          decoration: InputDecoration(
+                            prefixText: "+60",
+                            hintText: "Phone number",
+                          ),
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return "Enter your phone number";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-          ),
-      ),
+            // Expanded(
+            //   child: new Column(
+            //     children: <Widget>[
+            //       Padding(
+            //         padding: const EdgeInsets.all(15.0),
+            //         child: Row(
+            //           children: <Widget>[
+            //             new Icon(
+            //               Icons.location_on,
+            //               color: Colors.grey,
+            //             ),
+            //             new Text(
+            //               "Delivery Address",
+            //               style:
+            //                   new TextStyle(color: Colors.white, fontSize: 16.0),
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //       new Container(
+            //         child: new Container(
+            //           child: Column(
+            //             children: <Widget>[
+            //               Column(
+            //                 children: <Widget>[
+            //                   Padding(
+            //                     padding: const EdgeInsets.all(15.0),
+            //                     child: new Text(
+            //                       "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor",
+            //                       style: new TextStyle(
+            //                           color: Colors.white, fontSize: 14.0),
+            //                     ),
+            //                   ),
+            //                 ],
+            //               )
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //       new Expanded(
+            //         child: new SelectDifferentAddress(),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            new Container(
+              width: MediaQuery.of(context).size.width,
+              child: new RaisedButton(
+                child: Text("Confirm Address",
+                    style:
+                        TextStyle(color: Theme.of(context).textSelectionColor)),
+                color: Theme.of(context).accentColor,
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0)),
+                elevation: 10,
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    return Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DeliveryWindow()));
+                  } else {
+                    _autoValidate = true;
+                  }
+                },
+              ),
+            ),
+          ]),
         ),
-          // Expanded(
-          //   child: new Column(
-          //     children: <Widget>[
-          //       Padding(
-          //         padding: const EdgeInsets.all(15.0),
-          //         child: Row(
-          //           children: <Widget>[
-          //             new Icon(
-          //               Icons.location_on,
-          //               color: Colors.grey,
-          //             ),
-          //             new Text(
-          //               "Delivery Address",
-          //               style:
-          //                   new TextStyle(color: Colors.white, fontSize: 16.0),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //       new Container(
-          //         child: new Container(
-          //           child: Column(
-          //             children: <Widget>[
-          //               Column(
-          //                 children: <Widget>[
-          //                   Padding(
-          //                     padding: const EdgeInsets.all(15.0),
-          //                     child: new Text(
-          //                       "No.18, Jalan SS15/2 Desa Petaling, Petaling Jaya 47305 Selangor",
-          //                       style: new TextStyle(
-          //                           color: Colors.white, fontSize: 14.0),
-          //                     ),
-          //                   ),
-          //                 ],
-          //               )
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //       new Expanded(
-          //         child: new SelectDifferentAddress(),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          new Container(
-            width: MediaQuery.of(context).size.width,
-            child: new RaisedButton(
-              child: Text("Confirm Address",
-                  style:
-                      TextStyle(color: Theme.of(context).textSelectionColor)),
-              color: Theme.of(context).accentColor,
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0)),
-              elevation: 50,
-              onPressed: () {
-                if (_formKey.currentState.validate()){
-                  return
-                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DeliveryWindow()));
-                }else{
-                  _autoValidate = true;
-                }
-              },
-            ),
-          ),
-        ]),
       ),
     );
   }
@@ -1302,8 +1366,20 @@ class CustomerOrderState extends State<CustomerOrderPage> {
               color: Theme.of(context).accentColor,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
-              elevation: 50,
+              elevation: 10,
               onPressed: () {
+                _firestore.collection('customer_orders').add(
+                  {
+                    'customerName': customerName,
+                    'customerEmail': loggedInUser.email,
+                    'customerPhoneNumber': customerPhoneNumber,
+                    'addressLineOne': addressLineOne,
+                    'addressLineTwo': addressLineTwo,
+                    'postcode': postcode,
+                    'city': city,
+                    'state': state,
+                  },
+                );
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -3179,7 +3255,7 @@ class PrivacyPolicyState extends State<PrivacyPolicy> {
           Padding(
             padding: const EdgeInsets.only(bottom: 30.0),
             child: Text(
-              "Auxci Sdn Bhd (hereinafter, “we”, “us”, or “our”) (Company No. 1325487-W) values privacy and we are committed to protecting all Personal Information (as defined below) kept by us, in accordance with the relevant laws (including the Personal Data Protection Act, 2010), this Privacy Notice and our Terms of Use. For the avoidance of doubt, unless the context requires otherwise, the words used in this Privacy Notice shall have the same meanings stipulated in the Terms of Use.",
+              "Auxci Sdn Bhd (hereinafter, “we���, “us”, or “our”) (Company No. 1325487-W) values privacy and we are committed to protecting all Personal Information (as defined below) kept by us, in accordance with the relevant laws (including the Personal Data Protection Act, 2010), this Privacy Notice and our Terms of Use. For the avoidance of doubt, unless the context requires otherwise, the words used in this Privacy Notice shall have the same meanings stipulated in the Terms of Use.",
               style: TextStyle(fontSize: 15.0, height: 1.2),
             ),
           ),
