@@ -154,6 +154,7 @@ class CustomerHomePageState extends State<CustomerHomePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    //_tabController.addListener(listener)
     _secondTabController = TabController(length: 2, vsync: this);
     _thirdTabController = TabController(length: 2, vsync: this);
     _minOrder = true;
@@ -954,7 +955,7 @@ class ConfirmOrderState extends State<ConfirmOrder> {
                     return Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DeliveryWindow()));
+                            builder: (context) => CustomerOrderPage()));
                   } else {
                     _autoValidate = true;
                   }
