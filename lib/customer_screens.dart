@@ -2155,7 +2155,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
     final resultAddress = await Navigator.push(
             context, MaterialPageRoute(builder: (context) => EditFormAddress()))
         as AddressData;
-
+    print(resultAddress);
     addressData.addressLine1 = resultAddress.addressLine1;
     addressData.addressLine2 = resultAddress.addressLine2;
     addressData.postcode = resultAddress.postcode;
@@ -2403,7 +2403,7 @@ class EditFormAddressState extends State<EditFormAddress> {
   final postcodeController = TextEditingController();
   final cityController = TextEditingController();
   final stateController = TextEditingController();
-  final AddressData addressData;
+  AddressData addressData;
   bool _autoValidate = false;
 
   EditFormAddressState({this.addressData});
@@ -2482,6 +2482,13 @@ class EditFormAddressState extends State<EditFormAddress> {
         foregroundColor: Theme.of(context).textSelectionColor,
         onPressed: () {
           if (_formKey.currentState.validate()) {
+            this.addressData = new AddressData();
+            this.addressData.addressLine1 = addressLine1Controller.text;
+            this.addressData.addressLine2 = addressLine2Controller.text;
+            this.addressData.postcode = int.parse(postcodeController.text);
+            this.addressData.city = cityController.text;
+            this.addressData.state = stateController.text;
+
             return _sendAddressBack(context);
           } else
             _autoValidate = true;
@@ -2492,6 +2499,7 @@ class EditFormAddressState extends State<EditFormAddress> {
 
   void _sendAddressBack(BuildContext context) {
     Navigator.pop(context, addressData);
+    print('popped');
   }
 }
 
