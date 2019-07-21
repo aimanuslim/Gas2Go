@@ -724,9 +724,11 @@ class ConfirmOrderState extends State<ConfirmOrder> {
   final _formKey = GlobalKey<FormState>();
 
   bool _autoValidate = false;
-
+  bool addressExist = false;
   @override
   Widget build(BuildContext context) {
+
+
     return new Scaffold(
       appBar: new AppBar(
         centerTitle: true,
@@ -2138,7 +2140,7 @@ class _ProfileTabSettingsState extends State<ProfileTabSettings> {
         context, MaterialPageRoute(builder: (context) => EditFormEmail()));
 
     setState(() {
-      email = resultEmail;
+      // email = resultEmail;
     });
   }
 
@@ -2389,6 +2391,12 @@ class AddressData {
       this.state});
 }
 
+
+OrderDtailclass {
+
+  int price,
+  int quantity
+}
 class EditFormAddress extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -2404,6 +2412,7 @@ class EditFormAddressState extends State<EditFormAddress> {
   final cityController = TextEditingController();
   final stateController = TextEditingController();
   AddressData addressData;
+  OrderDt ordDtl =  
   bool _autoValidate = false;
 
   EditFormAddressState({this.addressData});
